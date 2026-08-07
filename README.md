@@ -20,7 +20,7 @@ analysis, data visualization, OOP, and testing practices for Data Engineering
   `ON CONFLICT DO NOTHING` — re-ingesting the same file is always a safe no-op
 - **Normalized relational schema** — lookup tables for users/modules/loggers/
   levels, a fact table with foreign keys, indexes, and nullable columns for
-  fields that don't apply to every line (no every log line has an
+  fields that don't apply to every line (not every log line has an
   authenticated user or an HTTP context), plus an ingestion audit log
 - **Analytics**: total/level counts, error %, top error messages, most active
   users, peak logging hours, daily/monthly trends, duplicate & malformed-line
@@ -32,6 +32,8 @@ analysis, data visualization, OOP, and testing practices for Data Engineering
   and a response-time histogram) and **CSV/JSON report export**
 - **CLI** (argparse) with `init-db`, `generate-sample`, `ingest`, `analyze`,
   `report`, `charts`, and a one-shot `pipeline` command
+- **Simple desktop GUI** (Tkinter, no extra dependencies) — the same actions
+  as the CLI, driven by buttons instead of arguments
 - **Sample log generator** — realistic synthetic logs (business-hours traffic
   curve, HTTP request context, intentional duplicates/malformed lines/
   exceptions with stack traces) for testing without real data
@@ -69,7 +71,8 @@ src/log_analyzer/
 ├── analytics/      Pandas/NumPy/SciPy analysis
 ├── visualization/  Matplotlib chart generation
 ├── reports/        CSV/JSON exporters
-└── utils/          sample log generator
+├── gui/            Tkinter desktop GUI
+└── utils/          sample log generator, shared summary formatting
 tests/              pytest suite (mirrors src/log_analyzer/)
 sql/schema.sql      raw DDL (mirrors the ORM models)
 data/logs/          drop real .log files here for ingestion
@@ -77,11 +80,27 @@ data/sample/         generated sample logs land here
 outputs/reports/     generated CSV/JSON reports
 outputs/charts/       generated PNG charts
 main.py             CLI entry point
+gui.py              Tkinter GUI entry point
 ```
 
 ## Installation
 
 **Prerequisites:** Python 3.13, PostgreSQL 17 running locally (or reachable).
+
+### Quick setup (Git Bash / macOS / Linux)
+
+[setup.sh](setup.sh) automates everything below in one step — creates the
+venv, installs dependencies + the package in editable mode, and creates
+`.env` from the template if it doesn't exist yet. Safe to re-run.
+
+```bash
+git clone <your-fork-url>
+cd log-files-analyzer
+./setup.sh
+# then edit .env with your real PostgreSQL credentials
+```
+
+### Manual setup (PowerShell)
 
 ```powershell
 # 1. Clone and enter the project
@@ -158,6 +177,44 @@ python main.py --log-level DEBUG ingest data/logs/app.log
 ```
 
 Run `python main.py -h` or `python main.py <command> -h` for the full option list.
+
+## GUI
+
+A simple Tkinter desktop app wraps the same services the CLI uses, for
+anyone who'd rather click buttons than type commands:
+
+```powershell
+python gui.py
+```
+
+Buttons: **Browse** to pick a `.log` file (or **Generate Sample Log** to
+create one), **Initialize Database**, **Ingest Selected File**, **Run
+Analytics**, **Generate Charts**, **Export Reports**, and shortcuts to open
+the charts/reports output folders. All long-running actions run on a
+background thread with live output streamed into the panel, so the window
+never freezes. No extra dependencies — Tkinter ships with Python.
+
+### Building a standalone .exe
+
+[build_exe.sh](build_exe.sh) packages the GUI into a single `LFA.exe` via
+PyInstaller — no Python install needed to run it on another Windows machine:
+
+```bash
+./build_exe.sh
+```
+
+This installs PyInstaller (from [requirements-dev.txt](requirements-dev.txt),
+kept separate from `requirements.txt` since it's a build-time tool, not a
+runtime dependency) and produces `dist/LFA.exe` (~85 MB — pandas/numpy/scipy/
+matplotlib bundled in). Before running the built exe:
+
+1. Copy `.env` next to `dist/LFA.exe` — a frozen exe resolves its config
+   directory relative to the executable's own location, not the source tree
+   (`log_analyzer/config/settings.py` detects `sys.frozen` and adjusts
+   `PROJECT_ROOT` accordingly), so `.env`/`data/`/`outputs/` all need to live
+   beside the `.exe`, not beside `gui.py`.
+2. Make sure PostgreSQL is reachable with the credentials in that `.env`.
+3. Double-click `LFA.exe`, or run it from a terminal.
 
 ### Example output
 

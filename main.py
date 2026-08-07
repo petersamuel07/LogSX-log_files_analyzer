@@ -36,6 +36,7 @@ from pathlib import Path
 from typing import Any
 
 from log_analyzer.config import get_settings, setup_logging
+from log_analyzer.utils import format_analytics_summary, format_ingestion_summary
 
 logger = logging.getLogger(__name__)
 
@@ -85,50 +86,13 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def _print_ingestion_summary(summary: dict[str, Any]) -> None:
-    print(f"\n{summary['source_file']}")
-    print(f"  total lines:      {summary['total_lines']}")
-    print(f"  valid lines:      {summary['valid_lines']}")
-    print(f"  malformed lines:  {summary['malformed_lines']}")
-    print(f"  inserted:         {summary['inserted_lines']}")
-    print(f"  duplicates:       {summary['duplicate_lines']}")
+    print()
+    print(format_ingestion_summary(summary))
 
 
 def _print_analytics_summary(summary: dict[str, Any]) -> None:
-    print("\n=== Log Analytics Summary ===")
-    print(f"Total logs:        {summary['total_log_count']}")
-    print(f"Error percentage:  {summary['error_percentage']}%")
-    print(f"Avg logs/hour:     {summary['average_logs_per_hour']}")
-
-    print("\nLevel counts:")
-    for level, count in summary["level_counts"].items():
-        print(f"  {level:10s} {count}")
-
-    print("\nTop error messages:")
-    for rec in summary["most_common_error_messages"][:5]:
-        print(f"  {rec['count']:5d}  {rec['message']}")
-
-    print("\nMost active users:")
-    for rec in summary["most_active_users"][:5]:
-        print(f"  {rec['count']:5d}  {rec['user']}")
-
-    print("\nPeak logging hours:")
-    for rec in summary["peak_logging_hours"]:
-        print(f"  hour {rec['hour']:02d}:00  -> {rec['count']} logs")
-
-    stats = summary["statistical_summary"]
-    if stats:
-        print("\nStatistical summary (daily volume):")
-        print(
-            f"  mean={stats['mean_logs_per_day']}  median={stats['median_logs_per_day']}  "
-            f"std={stats['std_dev_logs_per_day']}  skew={stats['skewness']}  kurtosis={stats['kurtosis']}"
-        )
-        if stats["outlier_days"]:
-            print(f"  outlier days: {', '.join(stats['outlier_days'])}")
-
-    dup = summary["duplicate_summary"]
-    mal = summary["malformed_summary"]
-    print(f"\nDuplicates skipped (all runs):  {dup['duplicate_lines_detected']}")
-    print(f"Malformed lines (all runs):     {mal['malformed_lines_detected']} ({mal['malformed_rate_pct']}%)")
+    print()
+    print(format_analytics_summary(summary))
 
 
 def cmd_init_db(args: argparse.Namespace) -> None:

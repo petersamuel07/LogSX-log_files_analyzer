@@ -3,14 +3,21 @@
 from __future__ import annotations
 
 import os
+import sys
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 
 from dotenv import load_dotenv
 
-# Project root = three levels up from this file (src/log_analyzer/config/settings.py -> repo root)
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+if getattr(sys, "frozen", False):
+    # Running as a PyInstaller-built .exe: __file__ resolves inside a temp
+    # extraction directory (sys._MEIPASS) that's wiped after the process
+    # exits, so .env/data/outputs must live next to the executable instead.
+    PROJECT_ROOT = Path(sys.executable).resolve().parent
+else:
+    # Project root = three levels up from this file (src/log_analyzer/config/settings.py -> repo root)
+    PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 
 @dataclass(frozen=True)
