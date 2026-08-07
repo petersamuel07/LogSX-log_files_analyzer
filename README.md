@@ -11,21 +11,30 @@ analysis, data visualization, OOP, and testing practices for Data Engineering
 
 ## Features
 
-- **Regex-based parsing & validation** of `.log` files, streamed line-by-line
-  (constant memory regardless of file size)
+- **Regex-based parsing & validation** of realistic production log lines —
+  timestamp, level, PID, thread, logger/module/function, trace/user/session
+  ID, IP, HTTP method/endpoint/status/response time, message, and multi-line
+  exception + stack trace — streamed line-by-line (constant memory regardless
+  of file size)
 - **Automatic de-duplication** via a SHA-256 content hash + PostgreSQL
   `ON CONFLICT DO NOTHING` — re-ingesting the same file is always a safe no-op
-- **Normalized relational schema** — lookup tables for users/modules/levels,
-  a fact table with foreign keys and indexes, and an ingestion audit log
+- **Normalized relational schema** — lookup tables for users/modules/loggers/
+  levels, a fact table with foreign keys, indexes, and nullable columns for
+  fields that don't apply to every line (no every log line has an
+  authenticated user or an HTTP context), plus an ingestion audit log
 - **Analytics**: total/level counts, error %, top error messages, most active
   users, peak logging hours, daily/monthly trends, duplicate & malformed-line
-  detection, top-10 events, average throughput, and NumPy/SciPy statistics
-  (mean/median/std/skewness/kurtosis, z-score outlier-day detection)
-- **Auto-generated Matplotlib charts** and **CSV/JSON report export**
+  detection, top-10 events, average throughput, NumPy/SciPy statistics
+  (mean/median/std/skewness/kurtosis, z-score outlier-day detection),
+  response-time percentiles (p90/p95/p99), HTTP status-code breakdown,
+  top/slowest endpoints, and exception-type frequency
+- **Auto-generated Matplotlib charts** (8, including status-code breakdown
+  and a response-time histogram) and **CSV/JSON report export**
 - **CLI** (argparse) with `init-db`, `generate-sample`, `ingest`, `analyze`,
   `report`, `charts`, and a one-shot `pipeline` command
 - **Sample log generator** — realistic synthetic logs (business-hours traffic
-  curve, intentional duplicates and malformed lines) for testing without real data
+  curve, HTTP request context, intentional duplicates/malformed lines/
+  exceptions with stack traces) for testing without real data
 - Full **pytest** suite, centralized **logging**, `.env`-based configuration
 
 ## Tech Stack
@@ -95,6 +104,40 @@ copy .env.example .env
 python main.py init-db
 ```
 
+## Log Line Format
+
+`.log` files must contain lines in this format (see
+[src/log_analyzer/parser/log_parser.py](src/log_analyzer/parser/log_parser.py)
+for the full regex):
+
+```
+2026-08-07 14:32:10,512 [INFO] [pid:4821] [thread:MainThread] logger=app.controllers.auth_controller module=auth_service func=login trace_id=7f3c1a92e1b4 user_id=1042 session_id=sess_88ad3f ip=203.0.113.42 method=POST endpoint=/api/v1/login status=200 response_time_ms=142 - User login successful
+```
+
+Fields that don't apply to a given line (no HTTP context, no authenticated
+user) use a literal `-` placeholder:
+
+```
+2026-08-07 03:00:00,001 [INFO] [pid:4821] [thread:Scheduler-1] logger=app.jobs.cleanup_job module=notification_service func=run_job trace_id=- user_id=- session_id=- ip=- method=- endpoint=- status=- response_time_ms=- - Nightly cleanup job started
+```
+
+ERROR/CRITICAL lines may be followed by a plain-text exception + stack trace
+— any non-matching line is treated as a continuation of the ERROR/CRITICAL
+entry immediately above it (never a non-error one, which stays flagged as
+malformed):
+
+```
+2026-08-07 14:35:02,004 [ERROR] [pid:4821] [thread:Thread-7] logger=app.controllers.auth_controller module=auth_service func=authenticate trace_id=9d2b7e10ab3 user_id=1042 session_id=sess_88ad3f ip=203.0.113.42 method=POST endpoint=/api/v1/login status=500 response_time_ms=980 - Unhandled exception during authentication
+Traceback (most recent call last):
+  File "auth_controller.py", line 44, in authenticate
+    verify_password(user, password)
+ValueError: invalid credentials
+```
+
+Lines that don't match this format are never fatal — they're logged as
+malformed and skipped, and the count is tracked in `ingestion_runs` for the
+malformed-detection analytics.
+
 ## Usage
 
 ```powershell
@@ -120,35 +163,47 @@ Run `python main.py -h` or `python main.py <command> -h` for the full option lis
 
 ```
 === Log Analytics Summary ===
-Total logs:        2000
-Error percentage:  11.55%
-Avg logs/hour:     2.7
+Total logs:        5000
+Error percentage:  12.44%
+Avg logs/hour:     6.73
 
 Level counts:
-  INFO       1099
-  WARNING    332
-  DEBUG      270
-  ERROR      231
-  CRITICAL   68
+  INFO       2730
+  WARNING    765
+  DEBUG      739
+  ERROR      622
+  CRITICAL   144
 
 Top error messages:
-     49  Timeout while calling external API
-     43  Null pointer exception encountered
-     42  Failed to authenticate user
-     39  Database connection failed
-     24  Out of memory - restarting worker
+    159  Database connection failed
+    113  Null pointer exception encountered
+    112  Failed to authenticate user
+    111  Timeout while calling external API
+     50  Out of memory - restarting worker
 
 Peak logging hours:
-  hour 10:00  -> 189 logs
-  hour 13:00  -> 182 logs
-  hour 14:00  -> 178 logs
+  hour 13:00  -> 460 logs
+  hour 14:00  -> 459 logs
+  hour 11:00  -> 453 logs
 
 Statistical summary (daily volume):
-  mean=64.52  median=64.0  std=7.85  skew=-0.647  kurtosis=0.962
-  outlier days: 2026-07-19
+  mean=161.29  median=161.0  std=15.27  skew=-0.025  kurtosis=-0.92
+  outlier days: 2026-07-31
 
-Duplicates skipped (all runs):  2120
-Malformed lines (all runs):     62 (1.48%)
+Duplicates skipped (all runs):  162
+Malformed lines (all runs):     100 (1.46%)
+```
+
+Response-time / HTTP metrics (from the same run's `analytics_summary.json`):
+
+```json
+"response_time_stats": {
+  "sample_count": 3259, "mean_ms": 574.29, "median_ms": 272.0,
+  "p90_ms": 1681.0, "p95_ms": 3215.5, "p99_ms": 4568.12
+},
+"status_code_distribution": { "2xx": 2125, "3xx": 144, "4xx": 552, "5xx": 438 },
+"http_error_rate": 30.38,
+"top_endpoints": [{ "endpoint": "/api/v1/notifications", "count": 546 }]
 ```
 
 Generated charts (`outputs/charts/`):
@@ -156,13 +211,17 @@ Generated charts (`outputs/charts/`):
 | | |
 |---|---|
 | ![Level distribution](docs/images/level_distribution.png) | ![Daily trend](docs/images/daily_trend.png) |
+| ![Status code distribution](docs/images/status_code_distribution.png) | ![Response time distribution](docs/images/response_time_distribution.png) |
 | ![Peak hours](docs/images/hourly_activity.png) | ![Top errors](docs/images/top_errors.png) |
+| ![Top endpoints](docs/images/top_endpoints.png) | ![Top users](docs/images/top_users.png) |
 
 ## Database Schema
 
-Normalized schema — `users`, `modules`, `log_levels` lookup tables referenced
-by foreign key from the `log_entries` fact table, plus an `ingestion_runs`
-audit table. Full breakdown and ER diagram: [docs/database_schema.md](docs/database_schema.md).
+Normalized schema — `users`, `modules`, `loggers`, `log_levels` lookup tables
+referenced by foreign key from the `log_entries` fact table (nullable FKs
+where a field genuinely doesn't apply to every line, e.g. unauthenticated
+requests have no `user_id`), plus an `ingestion_runs` audit table. Full
+breakdown and ER diagram: [docs/database_schema.md](docs/database_schema.md).
 Raw SQL: [sql/schema.sql](sql/schema.sql).
 
 ## Testing

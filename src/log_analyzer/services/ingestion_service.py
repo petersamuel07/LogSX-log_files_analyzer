@@ -17,7 +17,7 @@ from sqlalchemy.orm import Session
 from tqdm import tqdm
 
 from log_analyzer.database.connection import session_scope
-from log_analyzer.models import IngestionRun, LogEntry, LogLevel, Module, User
+from log_analyzer.models import IngestionRun, LogEntry, LogLevel, Logger, Module, User
 from log_analyzer.parser.log_parser import LogParser, ParsedLogEntry
 
 logger = logging.getLogger(__name__)
@@ -31,14 +31,19 @@ class IngestionService:
         self._level_cache: dict[str, int] = {}
         self._user_cache: dict[str, int] = {}
         self._module_cache: dict[str, int] = {}
+        self._logger_cache: dict[str, int] = {}
 
     def _load_lookup_caches(self, session: Session) -> None:
-        """Warm in-memory caches so repeated usernames/modules don't hit the DB per row."""
+        """Warm in-memory caches so repeated usernames/modules/loggers don't hit the DB per row."""
         self._level_cache = {row.name: row.id for row in session.query(LogLevel).all()}
         self._user_cache = {row.username: row.id for row in session.query(User).all()}
         self._module_cache = {row.name: row.id for row in session.query(Module).all()}
+        self._logger_cache = {row.name: row.id for row in session.query(Logger).all()}
 
-    def _get_or_create_user(self, session: Session, username: str) -> int:
+    def _get_or_create_user(self, session: Session, username: str | None) -> int | None:
+        """Returns None unchanged — unauthenticated/background log lines have no user."""
+        if username is None:
+            return None
         if username in self._user_cache:
             return self._user_cache[username]
         user = session.query(User).filter_by(username=username).one_or_none()
@@ -59,6 +64,17 @@ class IngestionService:
             session.flush()
         self._module_cache[module_name] = module.id
         return module.id
+
+    def _get_or_create_logger(self, session: Session, logger_name: str) -> int:
+        if logger_name in self._logger_cache:
+            return self._logger_cache[logger_name]
+        logger_row = session.query(Logger).filter_by(name=logger_name).one_or_none()
+        if logger_row is None:
+            logger_row = Logger(name=logger_name)
+            session.add(logger_row)
+            session.flush()
+        self._logger_cache[logger_name] = logger_row.id
+        return logger_row.id
 
     def _flush_batch(self, session: Session, batch: list[ParsedLogEntry]) -> tuple[int, int]:
         """Insert a batch, skipping rows whose log_hash already exists.
@@ -82,10 +98,23 @@ class IngestionService:
                 {
                     "log_hash": entry.log_hash,
                     "timestamp": entry.timestamp,
+                    "pid": entry.pid,
+                    "thread_name": entry.thread,
+                    "function_name": entry.function,
+                    "trace_id": entry.trace_id,
+                    "session_id": entry.session_id,
+                    "ip_address": entry.ip_address,
+                    "http_method": entry.http_method,
+                    "http_endpoint": entry.http_endpoint,
+                    "status_code": entry.status_code,
+                    "response_time_ms": entry.response_time_ms,
+                    "exception_type": entry.exception_type,
+                    "stack_trace": entry.stack_trace,
                     "message": entry.message,
-                    "user_id": self._get_or_create_user(session, entry.user),
+                    "user_id": self._get_or_create_user(session, entry.user_id),
                     "level_id": level_id,
                     "module_id": self._get_or_create_module(session, entry.module),
+                    "logger_id": self._get_or_create_logger(session, entry.logger),
                 }
             )
 

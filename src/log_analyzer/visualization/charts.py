@@ -43,6 +43,11 @@ LEVEL_COLORS = {
 }
 LEVEL_ORDER = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 
+# Status-class colors reuse the reserved good/warning/critical palette roles,
+# since 2xx/4xx/5xx genuinely are a status scale, not an arbitrary category.
+STATUS_CLASS_COLORS = {"2xx": "#0ca30c", "3xx": SEQUENTIAL_BLUE, "4xx": "#fab219", "5xx": "#d03b3b"}
+STATUS_CLASS_ORDER = ["2xx", "3xx", "4xx", "5xx"]
+
 plt.rcParams.update(
     {
         "figure.facecolor": SURFACE,
@@ -140,12 +145,61 @@ class ChartGenerator:
         ax.set_xlabel("Log count")
         return self._finalize(fig, ax, "top_users.png", f"Top {len(records)} Most Active Users")
 
+    def plot_status_code_distribution(self) -> Path | None:
+        """2xx/3xx/4xx/5xx breakdown. Returns None if no log lines carry HTTP context."""
+        distribution = self.analytics.status_code_distribution()
+        if not distribution:
+            logger.info("No HTTP status codes present — skipping status_code_distribution chart.")
+            return None
+
+        classes = [c for c in STATUS_CLASS_ORDER if c in distribution]
+        values = [distribution[c] for c in classes]
+        colors = [STATUS_CLASS_COLORS[c] for c in classes]
+
+        fig, ax = plt.subplots(figsize=(6, 4.5))
+        bars = ax.bar(classes, values, color=colors, width=0.5)
+        ax.bar_label(bars, padding=3, color=INK_SECONDARY, fontsize=9)
+        ax.set_ylabel("Request count")
+        return self._finalize(fig, ax, "status_code_distribution.png", "HTTP Status Code Distribution")
+
+    def plot_response_time_distribution(self) -> Path | None:
+        """Histogram of response times. Returns None if no log lines carry a response time."""
+        response_times = self.analytics.df["response_time_ms"].dropna()
+        if response_times.empty:
+            logger.info("No response times present — skipping response_time_distribution chart.")
+            return None
+
+        fig, ax = plt.subplots(figsize=(8, 4.5))
+        ax.hist(response_times, bins=30, color=SEQUENTIAL_BLUE, edgecolor=SURFACE, linewidth=0.5)
+        ax.set_xlabel("Response time (ms)")
+        ax.set_ylabel("Request count")
+        return self._finalize(fig, ax, "response_time_distribution.png", "Response Time Distribution")
+
+    def plot_top_endpoints(self, top_n: int = 10) -> Path | None:
+        """Most frequently hit HTTP endpoints. Returns None if no log lines carry HTTP context."""
+        records = list(reversed(self.analytics.top_endpoints(top_n)))
+        if not records:
+            logger.info("No HTTP endpoints present — skipping top_endpoints chart.")
+            return None
+
+        labels = [r["endpoint"] for r in records]
+        values = [r["count"] for r in records]
+
+        fig, ax = plt.subplots(figsize=(7, 5))
+        ax.barh(labels, values, color=SEQUENTIAL_BLUE, height=0.6)
+        ax.set_xlabel("Request count")
+        return self._finalize(fig, ax, "top_endpoints.png", f"Top {len(records)} HTTP Endpoints")
+
     def generate_all(self) -> list[Path]:
-        """Generate and save every chart. Returns the list of written file paths."""
-        return [
+        """Generate and save every chart. Skips HTTP-specific charts if no request-scoped data exists."""
+        charts = [
             self.plot_level_distribution(),
             self.plot_daily_trend(),
             self.plot_hourly_activity(),
             self.plot_top_errors(),
             self.plot_top_users(),
+            self.plot_status_code_distribution(),
+            self.plot_response_time_distribution(),
+            self.plot_top_endpoints(),
         ]
+        return [path for path in charts if path is not None]

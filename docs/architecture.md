@@ -33,11 +33,20 @@ flowchart LR
 ```
 
 1. **Extract** — `LogParser` reads `.log` files line by line (streaming, not
-   loaded fully into memory) and validates each line against a regex.
-   Malformed lines are logged and skipped, never fatal.
+   loaded fully into memory) and validates each line against a regex covering
+   16 fields (timestamp, level, pid, thread, logger, module, function, trace
+   id, user id, session id, IP, HTTP method/endpoint/status/response time,
+   message). Malformed lines are logged and skipped, never fatal. Fields that
+   don't apply to a given line (no HTTP context, no authenticated user) use a
+   `-` placeholder, matching the Apache/Nginx "absent value" convention.
 2. **Transform** — every valid line becomes a `ParsedLogEntry`, including a
-   SHA-256 hash of its content (timestamp + level + user + module + message).
-   That hash is the de-duplication key.
+   SHA-256 hash of the raw line (the de-duplication key). ERROR/CRITICAL
+   entries may be followed by a multi-line exception + stack trace; any line
+   that doesn't match the primary pattern is treated as a continuation of the
+   preceding ERROR/CRITICAL entry (never a non-error one — DEBUG/INFO/WARNING
+   entries have no legitimate reason to be followed by unstructured text, so
+   that case stays flagged as malformed). This mirrors how real multiline log
+   shippers like Filebeat group stack traces with the line above them.
 3. **Load** — `IngestionService` batches entries (default 1000/batch),
    resolves `users`/`modules` lookup rows (with an in-memory cache to avoid
    N+1 queries), and bulk-inserts into `log_entries` using PostgreSQL's
@@ -53,9 +62,9 @@ flowchart LR
 
 ## Why a normalized schema instead of one flat table
 
-`users`, `modules`, and `log_levels` are separate lookup tables referenced by
-foreign key from `log_entries`, rather than storing the username/module/level
-as raw strings on every row. This:
+`users`, `modules`, `loggers`, and `log_levels` are separate lookup tables
+referenced by foreign key from `log_entries`, rather than storing the
+username/module/logger/level as raw strings on every row. This:
 
 - Enforces referential integrity (a `log_entries.level_id` can only reference
   a real, seeded severity — never a typo).

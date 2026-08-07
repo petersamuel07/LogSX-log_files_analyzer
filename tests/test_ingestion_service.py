@@ -34,6 +34,22 @@ def _ensure_schema():
     initialize_database()
 
 
+def _make_line(unique_token: str, *, level: str = "INFO", with_http: bool = True) -> str:
+    """Build a well-formed line in the realistic production-log format for test isolation."""
+    if with_http:
+        context = (
+            f"trace_id={unique_token[:16]} user_id=9001 session_id=sess_{unique_token[:8]} "
+            "ip=203.0.113.99 method=GET endpoint=/api/v1/pytest status=200 response_time_ms=42"
+        )
+    else:
+        context = "trace_id=- user_id=- session_id=- ip=- method=- endpoint=- status=- response_time_ms=-"
+    return (
+        f"2026-01-01 10:00:00,000 [{level}] [pid:9999] [thread:MainThread] "
+        f"logger=pytest.logger module=pytest_module func=pytest_func {context} "
+        f"- pytest check {unique_token}"
+    )
+
+
 def test_ingest_file_is_idempotent(tmp_path: Path):
     """Ingesting the same file twice must insert once and skip the second time.
 
@@ -44,11 +60,7 @@ def test_ingest_file_is_idempotent(tmp_path: Path):
     """
     unique_token = uuid.uuid4().hex
     log_file = tmp_path / "idempotency_test.log"
-    log_file.write_text(
-        f"2026-01-01 10:00:00,000 [INFO] user=pytest_idempotency_user module=pytest_module"
-        f" - pytest idempotency check {unique_token}\n",
-        encoding="utf-8",
-    )
+    log_file.write_text(_make_line(unique_token) + "\n", encoding="utf-8")
 
     service = IngestionService()
     first = service.ingest_file(log_file)
@@ -64,9 +76,7 @@ def test_ingest_file_skips_malformed_lines(tmp_path: Path):
     unique_token = uuid.uuid4().hex
     log_file = tmp_path / "malformed_test.log"
     log_file.write_text(
-        f"2026-01-01 10:00:00,000 [INFO] user=pytest_malformed_user module=pytest_module"
-        f" - a perfectly valid line {unique_token}\n"
-        "this line is not in the expected format at all\n",
+        f"{_make_line(unique_token)}\nthis line is not in the expected format at all\n",
         encoding="utf-8",
     )
 
@@ -75,3 +85,33 @@ def test_ingest_file_skips_malformed_lines(tmp_path: Path):
     assert summary["valid_lines"] == 1
     assert summary["malformed_lines"] == 1
     assert summary["inserted_lines"] == 1
+
+
+def test_ingest_file_handles_unauthenticated_background_line(tmp_path: Path):
+    """A line with no user/HTTP context must ingest with a NULL user_id, not fail."""
+    unique_token = uuid.uuid4().hex
+    log_file = tmp_path / "background_test.log"
+    log_file.write_text(_make_line(unique_token, with_http=False) + "\n", encoding="utf-8")
+
+    summary = IngestionService().ingest_file(log_file)
+
+    assert summary["valid_lines"] == 1
+    assert summary["inserted_lines"] == 1
+
+
+def test_ingest_file_attaches_stack_trace(tmp_path: Path):
+    unique_token = uuid.uuid4().hex
+    log_file = tmp_path / "exception_test.log"
+    log_file.write_text(
+        f"{_make_line(unique_token, level='ERROR')}\n"
+        'Traceback (most recent call last):\n'
+        '  File "x.py", line 1, in y\n'
+        "ValueError: pytest induced failure\n",
+        encoding="utf-8",
+    )
+
+    summary = IngestionService().ingest_file(log_file)
+
+    assert summary["valid_lines"] == 1
+    assert summary["inserted_lines"] == 1
+    assert summary["malformed_lines"] == 0

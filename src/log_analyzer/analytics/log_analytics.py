@@ -1,9 +1,9 @@
 """Pandas/NumPy/SciPy analytics computed over the log_entries table.
 
 LogAnalytics loads the fully joined dataset (log_entries + users + log_levels
-+ modules) into a single Pandas DataFrame once per instance, then every
-analytic method is a cheap in-memory Pandas/NumPy/SciPy operation on that
-DataFrame rather than a fresh SQL round-trip.
++ modules + loggers) into a single Pandas DataFrame once per instance, then
+every analytic method is a cheap in-memory Pandas/NumPy/SciPy operation on
+that DataFrame rather than a fresh SQL round-trip.
 """
 
 from __future__ import annotations
@@ -25,13 +25,27 @@ _JOINED_QUERY = """
         le.id,
         le."timestamp" AS timestamp,
         le.message,
+        le.pid,
+        le.thread_name,
+        le.function_name,
+        le.trace_id,
+        le.session_id,
+        le.ip_address,
+        le.http_method,
+        le.http_endpoint,
+        le.status_code,
+        le.response_time_ms,
+        le.exception_type,
+        le.stack_trace,
         ll.name AS level,
         u.username AS user,
-        m.name AS module
+        m.name AS module,
+        lg.name AS logger
     FROM log_entries le
     JOIN log_levels ll ON le.level_id = ll.id
-    JOIN users u ON le.user_id = u.id
+    LEFT JOIN users u ON le.user_id = u.id
     JOIN modules m ON le.module_id = m.id
+    JOIN loggers lg ON le.logger_id = lg.id
 """
 
 
@@ -135,6 +149,79 @@ class LogAnalytics:
         return round(self.total_log_count() / hours, 2)
 
     # ------------------------------------------------------------------
+    # HTTP / request-context metrics (only present on request-scoped log lines)
+    # ------------------------------------------------------------------
+
+    def response_time_stats(self) -> dict[str, Any]:
+        """Latency percentiles (NumPy) over every log line with a recorded response time.
+
+        Background/system logs have no response_time_ms (they're not tied to
+        an HTTP request), so this is computed only over the request-scoped subset.
+        """
+        response_times = self.df["response_time_ms"].dropna()
+        if response_times.empty:
+            return {}
+
+        values = response_times.to_numpy(dtype=float)
+        return {
+            "sample_count": int(len(values)),
+            "mean_ms": round(float(np.mean(values)), 2),
+            "median_ms": round(float(np.median(values)), 2),
+            "p90_ms": round(float(np.percentile(values, 90)), 2),
+            "p95_ms": round(float(np.percentile(values, 95)), 2),
+            "p99_ms": round(float(np.percentile(values, 99)), 2),
+            "min_ms": round(float(np.min(values)), 2),
+            "max_ms": round(float(np.max(values)), 2),
+        }
+
+    def status_code_distribution(self) -> dict[str, int]:
+        """HTTP status codes bucketed into 2xx/3xx/4xx/5xx classes."""
+        statuses = self.df["status_code"].dropna()
+        if statuses.empty:
+            return {}
+        class_labels = {200: "2xx", 300: "3xx", 400: "4xx", 500: "5xx"}
+        classes = (statuses.astype(int) // 100 * 100).map(class_labels)
+        counts = classes.value_counts()
+        return {str(label): int(count) for label, count in counts.items()}
+
+    def http_error_rate(self) -> float:
+        """Percentage of HTTP requests returning 4xx/5xx — distinct from the log-level error_percentage()."""
+        statuses = self.df["status_code"].dropna()
+        if statuses.empty:
+            return 0.0
+        error_count = int((statuses >= 400).sum())
+        return round(error_count / len(statuses) * 100, 2)
+
+    def top_endpoints(self, top_n: int = 10) -> list[dict[str, Any]]:
+        """Most frequently hit HTTP endpoints."""
+        endpoints = self.df["http_endpoint"].dropna()
+        counts = endpoints.value_counts().head(top_n)
+        return _series_to_records(counts, key_name="endpoint")
+
+    def slowest_endpoints(self, top_n: int = 10, min_samples: int = 5) -> list[dict[str, Any]]:
+        """Endpoints with the highest average response time (min_samples avoids noise from rare routes)."""
+        http_df = self.df.dropna(subset=["http_endpoint", "response_time_ms"])
+        if http_df.empty:
+            return []
+
+        grouped = http_df.groupby("http_endpoint")["response_time_ms"].agg(["mean", "count"])
+        grouped = grouped[grouped["count"] >= min_samples].sort_values("mean", ascending=False).head(top_n)
+        return [
+            {
+                "endpoint": str(endpoint),
+                "avg_response_time_ms": round(float(row["mean"]), 2),
+                "sample_count": int(row["count"]),
+            }
+            for endpoint, row in grouped.iterrows()
+        ]
+
+    def exception_type_breakdown(self, top_n: int = 10) -> list[dict[str, Any]]:
+        """Most common exception types among ERROR/CRITICAL entries that carried a stack trace."""
+        exceptions = self.df["exception_type"].dropna()
+        counts = exceptions.value_counts().head(top_n)
+        return _series_to_records(counts, key_name="exception_type")
+
+    # ------------------------------------------------------------------
     # Ingestion-run-backed quality metrics (duplicate / malformed detection)
     # ------------------------------------------------------------------
 
@@ -229,6 +316,12 @@ class LogAnalytics:
             "monthly_trend": self.monthly_trend(),
             "top_frequent_events": self.top_frequent_events(top_n),
             "average_logs_per_hour": self.average_logs_per_hour(),
+            "response_time_stats": self.response_time_stats(),
+            "status_code_distribution": self.status_code_distribution(),
+            "http_error_rate": self.http_error_rate(),
+            "top_endpoints": self.top_endpoints(top_n),
+            "slowest_endpoints": self.slowest_endpoints(top_n),
+            "exception_type_breakdown": self.exception_type_breakdown(top_n),
             "duplicate_summary": self.duplicate_summary(),
             "malformed_summary": self.malformed_summary(),
             "statistical_summary": self.statistical_summary(),

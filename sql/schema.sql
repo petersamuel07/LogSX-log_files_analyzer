@@ -31,24 +31,50 @@ CREATE TABLE IF NOT EXISTS modules (
     name VARCHAR(150) NOT NULL UNIQUE
 );
 
+CREATE TABLE IF NOT EXISTS loggers (
+    id   SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE
+);
+
 CREATE INDEX IF NOT EXISTS ix_users_username ON users (username);
 CREATE INDEX IF NOT EXISTS ix_modules_name ON modules (name);
+CREATE INDEX IF NOT EXISTS ix_loggers_name ON loggers (name);
 CREATE INDEX IF NOT EXISTS ix_log_levels_name ON log_levels (name);
 
 -- ============================================================
--- Fact table
+-- Fact table — modeled on a realistic production application log line
 -- ============================================================
 
 CREATE TABLE IF NOT EXISTS log_entries (
     id          SERIAL PRIMARY KEY,
-    log_hash    CHAR(64) NOT NULL UNIQUE,       -- SHA-256 dedup key
+    log_hash    CHAR(64) NOT NULL UNIQUE,       -- SHA-256 of the raw primary log line
     "timestamp" TIMESTAMP NOT NULL,
-    message     TEXT NOT NULL,
-    created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
 
-    user_id   INTEGER NOT NULL REFERENCES users (id),
+    -- Process / origin
+    pid           INTEGER NOT NULL,
+    thread_name   VARCHAR(100) NOT NULL,
+    function_name VARCHAR(150) NOT NULL,
+
+    -- Distributed tracing / request context — nullable: not every log line is request-scoped
+    trace_id         VARCHAR(64),
+    session_id       VARCHAR(64),
+    ip_address       VARCHAR(45),                -- 45 = max IPv6 text length
+    http_method      VARCHAR(10),
+    http_endpoint    VARCHAR(255),
+    status_code      INTEGER,
+    response_time_ms INTEGER,
+
+    -- Error detail — nullable: only present on exception-raising ERROR/CRITICAL entries
+    exception_type VARCHAR(255),
+    stack_trace    TEXT,
+
+    message    TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+
+    user_id   INTEGER REFERENCES users (id),           -- nullable: unauthenticated/background logs
     level_id  INTEGER NOT NULL REFERENCES log_levels (id),
-    module_id INTEGER NOT NULL REFERENCES modules (id)
+    module_id INTEGER NOT NULL REFERENCES modules (id),
+    logger_id INTEGER NOT NULL REFERENCES loggers (id)
 );
 
 CREATE INDEX IF NOT EXISTS ix_log_entries_log_hash ON log_entries (log_hash);
@@ -56,6 +82,10 @@ CREATE INDEX IF NOT EXISTS ix_log_entries_timestamp ON log_entries ("timestamp")
 CREATE INDEX IF NOT EXISTS ix_log_entries_user_id ON log_entries (user_id);
 CREATE INDEX IF NOT EXISTS ix_log_entries_level_id ON log_entries (level_id);
 CREATE INDEX IF NOT EXISTS ix_log_entries_module_id ON log_entries (module_id);
+CREATE INDEX IF NOT EXISTS ix_log_entries_logger_id ON log_entries (logger_id);
+CREATE INDEX IF NOT EXISTS ix_log_entries_trace_id ON log_entries (trace_id);
+CREATE INDEX IF NOT EXISTS ix_log_entries_http_endpoint ON log_entries (http_endpoint);
+CREATE INDEX IF NOT EXISTS ix_log_entries_status_code ON log_entries (status_code);
 
 -- Composite index for the most common analytics query shape: filtering/grouping
 -- by level within a timestamp range (e.g. "ERROR counts per day").
