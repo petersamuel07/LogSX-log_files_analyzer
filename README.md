@@ -1,4 +1,4 @@
-# Log File Analyzer
+# Log File Analyzer :
 
 A production-style ETL and analytics pipeline for application log files: parses
 raw `.log` files with regex, loads them into a normalized PostgreSQL schema
