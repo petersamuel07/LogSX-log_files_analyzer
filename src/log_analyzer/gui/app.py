@@ -32,7 +32,7 @@ class LogAnalyzerGUI:
         setup_logging(get_settings().log_level)
 
         self.root = Tk()
-        self.root.title("Log File Analyzer")
+        self.root.title("LFA — Log File Analyzer")
         self.root.geometry("760x560")
         self.root.minsize(600, 400)
 
@@ -47,7 +47,7 @@ class LogAnalyzerGUI:
     # ------------------------------------------------------------------
 
     def _build_widgets(self) -> None:
-        title = Label(self.root, text="Log File Analyzer", font=("Segoe UI", 16, "bold"))
+        title = Label(self.root, text="LFA — Log File Analyzer", font=("Segoe UI", 16, "bold"))
         title.pack(pady=(12, 4))
 
         file_frame = Frame(self.root)
