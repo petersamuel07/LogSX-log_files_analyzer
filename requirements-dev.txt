@@ -1,0 +1,5 @@
+# Extra tooling only needed to build a standalone .exe — not required to
+# run the app from source. Install with: pip install -r requirements-dev.txt
+-r requirements.txt
+
+pyinstaller>=6.0

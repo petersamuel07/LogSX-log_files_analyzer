@@ -194,6 +194,28 @@ the charts/reports output folders. All long-running actions run on a
 background thread with live output streamed into the panel, so the window
 never freezes. No extra dependencies — Tkinter ships with Python.
 
+### Building a standalone .exe
+
+[build_exe.sh](build_exe.sh) packages the GUI into a single `LFA.exe` via
+PyInstaller — no Python install needed to run it on another Windows machine:
+
+```bash
+./build_exe.sh
+```
+
+This installs PyInstaller (from [requirements-dev.txt](requirements-dev.txt),
+kept separate from `requirements.txt` since it's a build-time tool, not a
+runtime dependency) and produces `dist/LFA.exe` (~85 MB — pandas/numpy/scipy/
+matplotlib bundled in). Before running the built exe:
+
+1. Copy `.env` next to `dist/LFA.exe` — a frozen exe resolves its config
+   directory relative to the executable's own location, not the source tree
+   (`log_analyzer/config/settings.py` detects `sys.frozen` and adjusts
+   `PROJECT_ROOT` accordingly), so `.env`/`data/`/`outputs/` all need to live
+   beside the `.exe`, not beside `gui.py`.
+2. Make sure PostgreSQL is reachable with the credentials in that `.env`.
+3. Double-click `LFA.exe`, or run it from a terminal.
+
 ### Example output
 
 ```
