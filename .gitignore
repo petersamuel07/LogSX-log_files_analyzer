@@ -1,0 +1,37 @@
+# --- Secrets ---
+.env
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# --- Virtual environments ---
+venv/
+.venv/
+env/
+
+# --- Testing / coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Generated data (keep folders, ignore contents) ---
+data/logs/*
+!data/logs/.gitkeep
+outputs/reports/*
+!outputs/reports/.gitkeep
+outputs/charts/*
+!outputs/charts/.gitkeep
+
+# --- IDE ---
+.vscode/
+.idea/
+.claude/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
