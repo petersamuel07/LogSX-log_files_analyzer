@@ -1,0 +1,2100 @@
+
+
+
+
+
+
+
+
+
+2026-07-08 02:13:02,944 [CRITICAL] user=bob module=auth_service - Data corruption detected in table orders
+2026-07-08 04:59:23,899 [WARNING] user=alice module=notification_service - Deprecated API endpoint called
+2026-07-08 05:08:36,894 [INFO] user=diana module=inventory_service - Health check passed
+2026-07-08 07:23:18,214 [ERROR] user=heidi module=payment_gateway - Payment declined for order #707
+2026-07-08 07:24:12,486 [CRITICAL] user=grace module=inventory_service - Service unavailable - shutting down
+2026-07-08 07:32:23,241 [ERROR] user=heidi module=order_service - Database connection failed
+2026-07-08 08:12:07,835 [INFO] user=grace module=order_service - User login successful
+2026-07-08 08:12:07,835 [INFO] user=grace module=order_service - User login successful
+2026-07-08 08:31:47,440 [INFO] user=charlie module=order_service - Payment processed successfully
+2026-07-08 08:38:49,746 [DEBUG] user=diana module=order_service - Cache lookup for key session_3676
+2026-07-08 08:43:14,794 [DEBUG] user=charlie module=inventory_service - Query executed in 3193ms
+2026-07-08 08:43:14,794 [DEBUG] user=charlie module=inventory_service - Query executed in 3193ms
+2026-07-08 08:49:19,870 [INFO] user=diana module=auth_service - User logged out
+2026-07-08 09:27:43,770 [WARNING] user=heidi module=api_gateway - Deprecated API endpoint called
+2026-07-08 09:34:25,541 [INFO] user=charlie module=api_gateway - Payment processed successfully
+2026-07-08 09:41:03,400 [INFO] user=erin module=payment_gateway - Payment processed successfully
+2026-07-08 09:41:28,828 [INFO] user=erin module=auth_service - User login successful
+2026-07-08 10:07:01,630 [ERROR] user=alice module=payment_gateway - Null pointer exception encountered
+2026-07-08 10:09:58,605 [CRITICAL] user=alice module=payment_gateway - Out of memory - restarting worker
+2026-07-08 10:09:58,605 [CRITICAL] user=alice module=payment_gateway - Out of memory - restarting worker
+2026-07-08 10:38:37,384 [DEBUG] user=grace module=api_gateway - Query executed in 7980ms
+2026-07-08 10:43:33,477 [INFO] user=alice module=order_service - Health check passed
+2026-07-08 10:46:28,025 [INFO] user=bob module=payment_gateway - Order #3185 created
+2026-07-08 10:46:46,928 [INFO] user=alice module=order_service - User login successful
+2026-07-08 10:49:32,908 [INFO] user=charlie module=order_service - User logged out
+2026-07-08 10:56:10,675 [WARNING] user=grace module=auth_service - Retrying failed request (attempt 3559)
+2026-07-08 10:57:33,995 [INFO] user=diana module=order_service - User login successful
+2026-07-08 11:12:15,854 [CRITICAL] user=grace module=payment_gateway - Data corruption detected in table orders
+2026-07-08 11:12:33,672 [INFO] user=bob module=auth_service - Order #8711 created
+2026-07-08 11:26:17,316 [ERROR] user=charlie module=order_service - Null pointer exception encountered
+2026-07-08 11:30:01,417 [DEBUG] user=alice module=order_service - Entering function process_request
+2026-07-08 11:32:20,994 [CRITICAL] user=frank module=payment_gateway - Service unavailable - shutting down
+2026-07-08 11:32:47,720 [INFO] user=grace module=payment_gateway - User login successful
+2026-07-08 11:55:33,118 [INFO] user=charlie module=payment_gateway - User login successful
+2026-07-08 11:55:33,118 [INFO] user=charlie module=payment_gateway - User login successful
+2026-07-08 12:01:35,823 [INFO] user=bob module=payment_gateway - User logged out
+2026-07-08 12:03:50,910 [INFO] user=alice module=order_service - User login successful
+2026-07-08 12:22:35,963 [INFO] user=frank module=auth_service - Payment processed successfully
+2026-07-08 12:23:43,911 [WARNING] user=heidi module=inventory_service - Deprecated API endpoint called
+2026-07-08 12:34:09,877 [INFO] user=heidi module=inventory_service - User logged out
+2026-07-08 12:47:10,966 [WARNING] user=bob module=api_gateway - Retrying failed request (attempt 7462)
+2026-07-08 12:56:46,965 [DEBUG] user=charlie module=auth_service - Cache lookup for key session_6137
+2026-07-08 13:05:03,938 [DEBUG] user=heidi module=auth_service - Query executed in 7315ms
+2026-07-08 13:11:24,669 [INFO] user=erin module=api_gateway - Payment processed successfully
+2026-07-08 13:15:16,816 [INFO] user=bob module=auth_service - Health check passed
+2026-07-08 13:33:06,831 [DEBUG] user=charlie module=inventory_service - Query executed in 699ms
+2026-07-08 13:36:13,976 [ERROR] user=frank module=inventory_service - Payment declined for order #9737
+2026-07-08 13:47:46,083 [INFO] user=frank module=inventory_service - Health check passed
+2026-07-08 13:53:28,486 [INFO] user=bob module=order_service - User logged out
+2026-07-08 13:59:19,589 [WARNING] user=bob module=payment_gateway - Deprecated API endpoint called
+2026-07-08 14:05:40,846 [INFO] user=alice module=notification_service - Order #8191 created
+2026-07-08 14:31:05,814 [ERROR] user=bob module=api_gateway - Payment declined for order #8758
+2026-07-08 14:52:12,024 [INFO] user=grace module=order_service - Order #8880 created
+2026-07-08 14:52:12,024 [INFO] user=grace module=order_service - Order #8880 created
+2026-07-08 14:54:05,669 [INFO] user=diana module=api_gateway - Order #4915 created
+2026-07-08 15:07:13,161 [DEBUG] user=grace module=auth_service - Query executed in 2473ms
+2026-07-08 15:08:18,046 [INFO] user=alice module=payment_gateway - User logged out
+2026-07-08 15:08:48,489 [CRITICAL] user=heidi module=notification_service - Service unavailable - shutting down
+2026-07-08 15:08:48,489 [CRITICAL] user=heidi module=notification_service - Service unavailable - shutting down
+2026-07-08 15:14:39,042 [WARNING] user=diana module=order_service - Slow query detected (8728ms)
+2026-07-08 15:36:38,353 [INFO] user=grace module=auth_service - User login successful
+2026-07-08 15:49:43,294 [ERROR] user=frank module=auth_service - Failed to authenticate user
+2026-07-08 15:51:48,196 [DEBUG] user=diana module=payment_gateway - Cache lookup for key session_967
+2026-07-08 15:55:17,750 [INFO] user=erin module=payment_gateway - Payment processed successfully
+2026-07-08 16:00:23,010 [WARNING] user=grace module=payment_gateway - Slow query detected (3019ms)
+2026-07-08 16:11:29,392 [WARNING] user=bob module=order_service - High memory usage detected (577%)
+2026-07-08 16:11:34,127 [INFO] user=bob module=auth_service - User login successful
+2026-07-08 16:17:05,255 [INFO] user=diana module=payment_gateway - User login successful
+2026-07-08 16:30:53,824 [INFO] user=bob module=order_service - Health check passed
+2026-07-08 16:50:50,418 [WARNING] user=diana module=inventory_service - Deprecated API endpoint called
+2026-07-08 16:55:37,449 [WARNING] user=bob module=payment_gateway - Slow query detected (9890ms)
+2026-07-08 16:55:37,449 [WARNING] user=bob module=payment_gateway - Slow query detected (9890ms)
+2026-07-08 17:08:24,672 [INFO] user=bob module=api_gateway - User login successful
+2026-07-08 17:10:18,076 [INFO] user=erin module=inventory_service - Payment processed successfully
+2026-07-08 17:32:23,697 [INFO] user=grace module=api_gateway - User logged out
+2026-07-08 18:20:59,317 [INFO] user=erin module=payment_gateway - User login successful
+2026-07-08 18:35:20,794 [WARNING] user=heidi module=payment_gateway - Retrying failed request (attempt 6499)
+2026-07-08 18:41:14,467 [DEBUG] user=bob module=api_gateway - Query executed in 1660ms
+2026-07-08 18:52:25,703 [WARNING] user=erin module=auth_service - Deprecated API endpoint called
+2026-07-08 19:31:33,269 [INFO] user=grace module=order_service - Payment processed successfully
+2026-07-08 19:36:00,267 [WARNING] user=diana module=notification_service - Retrying failed request (attempt 7451)
+2026-07-08 19:53:10,012 [INFO] user=erin module=payment_gateway - User logged out
+2026-07-08 20:04:20,722 [ERROR] user=heidi module=api_gateway - Database connection failed
+2026-07-08 23:17:21,870 [INFO] user=charlie module=api_gateway - Payment processed successfully
+2026-07-08 23:28:52,041 [WARNING] user=erin module=notification_service - High memory usage detected (5306%)
+2026-07-08 23:54:30,109 [INFO] user=erin module=inventory_service - Payment processed successfully
+2026-07-09 00:35:22,069 [ERROR] user=erin module=payment_gateway - Payment declined for order #8009
+2026-07-09 06:33:53,721 [WARNING] user=heidi module=notification_service - Slow query detected (2701ms)
+2026-07-09 07:07:21,639 [WARNING] user=grace module=payment_gateway - High memory usage detected (9283%)
+2026-07-09 07:13:31,211 [INFO] user=heidi module=payment_gateway - Order #5248 created
+2026-07-09 07:37:14,947 [WARNING] user=diana module=inventory_service - Deprecated API endpoint called
+2026-07-09 07:54:47,964 [INFO] user=diana module=payment_gateway - Payment processed successfully
+2026-07-09 08:01:48,626 [WARNING] user=erin module=payment_gateway - Retrying failed request (attempt 1750)
+2026-07-09 08:34:59,081 [INFO] user=charlie module=payment_gateway - Payment processed successfully
+2026-07-09 08:35:58,531 [INFO] user=bob module=payment_gateway - Health check passed
+2026-07-09 08:49:42,763 [DEBUG] user=bob module=order_service - Entering function process_request
+2026-07-09 08:51:39,150 [INFO] user=charlie module=auth_service - Order #3547 created
+2026-07-09 08:52:10,782 [WARNING] user=bob module=auth_service - Slow query detected (2299ms)
+2026-07-09 09:01:48,700 [WARNING] user=grace module=inventory_service - Retrying failed request (attempt 887)
+2026-07-09 09:02:51,323 [INFO] user=diana module=api_gateway - Payment processed successfully
+2026-07-09 09:09:45,158 [INFO] user=erin module=api_gateway - Payment processed successfully
+2026-07-09 09:35:27,981 [CRITICAL] user=diana module=notification_service - Service unavailable - shutting down
+2026-07-09 09:53:28,634 [CRITICAL] user=charlie module=inventory_service - Out of memory - restarting worker
+2026-07-09 10:00:45,761 [ERROR] user=erin module=notification_service - Failed to authenticate user
+2026-07-09 10:04:16,100 [CRITICAL] user=heidi module=api_gateway - Data corruption detected in table orders
+2026-07-09 10:11:09,481 [WARNING] user=charlie module=payment_gateway - Slow query detected (161ms)
+2026-07-09 10:21:56,783 [CRITICAL] user=alice module=auth_service - Out of memory - restarting worker
+2026-07-09 10:24:41,810 [INFO] user=grace module=payment_gateway - User logged out
+2026-07-09 10:28:48,202 [INFO] user=grace module=notification_service - Order #4630 created
+2026-07-09 10:35:34,971 [DEBUG] user=charlie module=api_gateway - Query executed in 2590ms
+2026-07-09 10:35:41,804 [ERROR] user=erin module=notification_service - Failed to authenticate user
+2026-07-09 10:36:12,505 [INFO] user=heidi module=api_gateway - Order #2122 created
+2026-07-09 10:37:08,330 [INFO] user=erin module=payment_gateway - User logged out
+2026-07-09 10:40:44,397 [ERROR] user=charlie module=order_service - Database connection failed
+2026-07-09 10:41:17,657 [INFO] user=erin module=notification_service - User login successful
+2026-07-09 10:49:04,283 [CRITICAL] user=grace module=api_gateway - Data corruption detected in table orders
+2026-07-09 11:20:10,651 [INFO] user=frank module=api_gateway - User login successful
+2026-07-09 11:20:20,668 [INFO] user=grace module=auth_service - User login successful
+2026-07-09 11:20:54,092 [WARNING] user=erin module=api_gateway - High memory usage detected (5008%)
+2026-07-09 11:41:29,388 [INFO] user=charlie module=auth_service - User logged out
+2026-07-09 12:45:42,491 [ERROR] user=frank module=payment_gateway - Database connection failed
+2026-07-09 12:47:51,491 [ERROR] user=bob module=notification_service - Null pointer exception encountered
+2026-07-09 13:02:33,156 [ERROR] user=grace module=auth_service - Database connection failed
+2026-07-09 13:34:34,841 [INFO] user=grace module=notification_service - Health check passed
+2026-07-09 13:57:06,509 [INFO] user=frank module=api_gateway - Order #9669 created
+2026-07-09 14:02:06,939 [WARNING] user=grace module=api_gateway - Deprecated API endpoint called
+2026-07-09 15:07:47,131 [INFO] user=grace module=api_gateway - User login successful
+2026-07-09 15:10:29,388 [INFO] user=bob module=notification_service - Order #8752 created
+2026-07-09 15:21:19,596 [INFO] user=erin module=inventory_service - Order #7320 created
+2026-07-09 15:31:48,972 [INFO] user=frank module=inventory_service - Order #5170 created
+2026-07-09 15:56:49,181 [INFO] user=frank module=notification_service - Order #7221 created
+2026-07-09 16:22:43,300 [ERROR] user=frank module=order_service - Payment declined for order #1725
+2026-07-09 16:32:36,430 [INFO] user=heidi module=inventory_service - User logged out
+2026-07-09 17:16:06,779 [INFO] user=erin module=notification_service - Payment processed successfully
+2026-07-09 17:16:24,670 [DEBUG] user=bob module=order_service - Query executed in 5634ms
+2026-07-09 17:24:26,537 [DEBUG] user=alice module=notification_service - Cache lookup for key session_1490
+2026-07-09 17:46:42,841 [INFO] user=grace module=notification_service - User logged out
+2026-07-09 17:56:15,437 [ERROR] user=heidi module=notification_service - Timeout while calling external API
+2026-07-09 18:07:24,262 [INFO] user=alice module=api_gateway - Payment processed successfully
+2026-07-09 18:25:02,159 [WARNING] user=charlie module=inventory_service - Retrying failed request (attempt 6092)
+2026-07-09 18:53:36,685 [INFO] user=diana module=auth_service - User login successful
+2026-07-09 18:58:33,756 [DEBUG] user=grace module=order_service - Query executed in 2036ms
+2026-07-09 18:58:33,756 [DEBUG] user=grace module=order_service - Query executed in 2036ms
+2026-07-09 19:47:38,366 [INFO] user=bob module=payment_gateway - Order #1972 created
+2026-07-09 20:48:38,977 [INFO] user=charlie module=order_service - User logged out
+2026-07-09 22:21:52,196 [INFO] user=bob module=auth_service - Health check passed
+2026-07-10 02:43:31,688 [WARNING] user=heidi module=api_gateway - Deprecated API endpoint called
+2026-07-10 03:59:54,161 [INFO] user=alice module=auth_service - User login successful
+2026-07-10 06:21:49,133 [ERROR] user=alice module=auth_service - Timeout while calling external API
+2026-07-10 06:38:43,720 [DEBUG] user=diana module=auth_service - Cache lookup for key session_9732
+2026-07-10 06:50:27,268 [WARNING] user=grace module=inventory_service - Slow query detected (6725ms)
+2026-07-10 06:57:35,657 [WARNING] user=grace module=auth_service - Deprecated API endpoint called
+2026-07-10 06:59:36,443 [WARNING] user=frank module=auth_service - High memory usage detected (7553%)
+2026-07-10 07:09:36,642 [WARNING] user=grace module=payment_gateway - Retrying failed request (attempt 9944)
+2026-07-10 07:13:19,486 [INFO] user=grace module=payment_gateway - User logged out
+2026-07-10 07:48:05,302 [INFO] user=charlie module=order_service - Payment processed successfully
+2026-07-10 08:07:20,045 [INFO] user=bob module=order_service - User logged out
+2026-07-10 08:24:09,054 [WARNING] user=erin module=inventory_service - High memory usage detected (8565%)
+2026-07-10 08:47:48,394 [INFO] user=grace module=inventory_service - Health check passed
+2026-07-10 09:10:48,966 [INFO] user=bob module=inventory_service - User logged out
+2026-07-10 09:12:28,675 [DEBUG] user=alice module=payment_gateway - Cache lookup for key session_9346
+2026-07-10 09:55:43,597 [INFO] user=grace module=auth_service - Payment processed successfully
+2026-07-10 10:08:07,711 [INFO] user=bob module=inventory_service - User logged out
+2026-07-10 10:11:16,902 [INFO] user=alice module=api_gateway - Health check passed
+2026-07-10 10:26:57,667 [INFO] user=alice module=order_service - User logged out
+2026-07-10 10:43:35,895 [INFO] user=alice module=payment_gateway - Health check passed
+2026-07-10 10:46:43,323 [INFO] user=grace module=api_gateway - User login successful
+2026-07-10 10:50:17,265 [INFO] user=frank module=auth_service - Health check passed
+2026-07-10 10:53:45,646 [DEBUG] user=erin module=notification_service - Cache lookup for key session_1360
+2026-07-10 10:58:03,706 [INFO] user=erin module=inventory_service - Order #6922 created
+2026-07-10 10:59:48,123 [DEBUG] user=diana module=notification_service - Entering function process_request
+2026-07-10 11:29:17,855 [WARNING] user=frank module=order_service - Retrying failed request (attempt 1866)
+2026-07-10 11:32:35,488 [INFO] user=grace module=auth_service - User logged out
+2026-07-10 11:35:30,062 [DEBUG] user=diana module=api_gateway - Entering function process_request
+2026-07-10 11:42:59,381 [DEBUG] user=heidi module=payment_gateway - Cache lookup for key session_9355
+2026-07-10 11:50:19,637 [INFO] user=heidi module=notification_service - Health check passed
+2026-07-10 11:58:25,949 [WARNING] user=bob module=notification_service - Retrying failed request (attempt 7249)
+2026-07-10 12:03:28,105 [DEBUG] user=diana module=order_service - Query executed in 7793ms
+2026-07-10 12:17:59,581 [INFO] user=heidi module=order_service - Order #6417 created
+2026-07-10 12:24:07,046 [DEBUG] user=bob module=api_gateway - Query executed in 6324ms
+2026-07-10 12:29:23,903 [INFO] user=heidi module=order_service - Health check passed
+2026-07-10 12:30:28,646 [INFO] user=frank module=api_gateway - Payment processed successfully
+2026-07-10 12:57:33,819 [INFO] user=erin module=auth_service - Health check passed
+2026-07-10 13:00:23,205 [INFO] user=erin module=order_service - Payment processed successfully
+2026-07-10 13:08:53,490 [ERROR] user=alice module=order_service - Null pointer exception encountered
+2026-07-10 13:11:41,621 [INFO] user=heidi module=order_service - Payment processed successfully
+2026-07-10 14:21:32,068 [INFO] user=diana module=order_service - User login successful
+2026-07-10 14:51:54,179 [ERROR] user=frank module=api_gateway - Null pointer exception encountered
+2026-07-10 15:05:06,268 [INFO] user=alice module=auth_service - Health check passed
+2026-07-10 15:22:28,932 [INFO] user=bob module=api_gateway - User login successful
+2026-07-10 15:27:41,168 [CRITICAL] user=frank module=notification_service - Data corruption detected in table orders
+2026-07-10 15:31:48,112 [WARNING] user=heidi module=inventory_service - Retrying failed request (attempt 5120)
+2026-07-10 15:35:59,443 [INFO] user=charlie module=inventory_service - User login successful
+2026-07-10 15:39:15,832 [DEBUG] user=frank module=api_gateway - Query executed in 3751ms
+2026-07-10 15:39:51,669 [INFO] user=erin module=payment_gateway - Health check passed
+2026-07-10 16:25:38,365 [INFO] user=diana module=order_service - Health check passed
+2026-07-10 16:54:10,653 [DEBUG] user=erin module=inventory_service - Cache lookup for key session_6694
+2026-07-10 17:10:05,300 [ERROR] user=heidi module=api_gateway - Failed to authenticate user
+2026-07-10 17:46:19,106 [DEBUG] user=frank module=auth_service - Query executed in 6165ms
+2026-07-10 17:46:47,321 [INFO] user=erin module=inventory_service - Health check passed
+2026-07-10 18:01:21,837 [ERROR] user=diana module=auth_service - Timeout while calling external API
+2026-07-10 18:04:30,429 [ERROR] user=frank module=order_service - Timeout while calling external API
+2026-07-10 18:26:02,015 [INFO] user=erin module=inventory_service - Order #69 created
+2026-07-10 18:26:02,015 [INFO] user=erin module=inventory_service - Order #69 created
+2026-07-10 18:29:12,268 [INFO] user=alice module=auth_service - User logged out
+2026-07-10 19:32:17,840 [DEBUG] user=bob module=order_service - Entering function process_request
+2026-07-10 19:32:17,840 [DEBUG] user=bob module=order_service - Entering function process_request
+2026-07-10 19:40:49,647 [WARNING] user=grace module=auth_service - Retrying failed request (attempt 9869)
+2026-07-10 20:18:47,891 [CRITICAL] user=erin module=payment_gateway - Out of memory - restarting worker
+2026-07-10 21:43:05,326 [WARNING] user=grace module=auth_service - Slow query detected (197ms)
+2026-07-10 22:13:34,118 [INFO] user=charlie module=order_service - User login successful
+2026-07-10 22:13:34,118 [INFO] user=charlie module=order_service - User login successful
+2026-07-11 01:41:10,450 [DEBUG] user=charlie module=auth_service - Query executed in 9229ms
+2026-07-11 02:42:25,426 [ERROR] user=charlie module=notification_service - Null pointer exception encountered
+2026-07-11 03:09:26,891 [DEBUG] user=heidi module=auth_service - Query executed in 7487ms
+2026-07-11 06:14:05,724 [INFO] user=diana module=auth_service - Health check passed
+2026-07-11 07:11:02,481 [ERROR] user=heidi module=auth_service - Payment declined for order #2436
+2026-07-11 07:12:16,147 [ERROR] user=heidi module=payment_gateway - Failed to authenticate user
+2026-07-11 07:45:16,998 [INFO] user=frank module=auth_service - User logged out
+2026-07-11 08:19:20,139 [INFO] user=bob module=order_service - Health check passed
+2026-07-11 08:26:47,339 [WARNING] user=bob module=payment_gateway - Deprecated API endpoint called
+2026-07-11 08:30:11,967 [DEBUG] user=grace module=api_gateway - Cache lookup for key session_923
+2026-07-11 08:40:55,992 [DEBUG] user=alice module=api_gateway - Entering function process_request
+2026-07-11 08:46:03,965 [INFO] user=grace module=api_gateway - Order #1853 created
+2026-07-11 08:48:42,227 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-07-11 08:48:42,227 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-07-11 09:16:30,859 [INFO] user=grace module=auth_service - Order #984 created
+2026-07-11 09:22:13,686 [DEBUG] user=erin module=inventory_service - Query executed in 5978ms
+2026-07-11 09:25:06,097 [DEBUG] user=diana module=api_gateway - Entering function process_request
+2026-07-11 09:35:56,942 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-07-11 10:19:36,411 [CRITICAL] user=bob module=notification_service - Service unavailable - shutting down
+2026-07-11 10:27:30,699 [INFO] user=heidi module=notification_service - Payment processed successfully
+2026-07-11 10:32:10,011 [WARNING] user=bob module=order_service - Deprecated API endpoint called
+2026-07-11 10:32:25,138 [INFO] user=alice module=notification_service - Order #1076 created
+2026-07-11 10:37:00,265 [INFO] user=diana module=auth_service - Order #9556 created
+2026-07-11 10:43:43,937 [ERROR] user=bob module=order_service - Timeout while calling external API
+2026-07-11 10:44:18,567 [DEBUG] user=erin module=notification_service - Entering function process_request
+2026-07-11 10:47:57,685 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-07-11 11:26:50,286 [ERROR] user=alice module=api_gateway - Database connection failed
+2026-07-11 11:28:28,153 [INFO] user=diana module=payment_gateway - User login successful
+2026-07-11 11:43:11,300 [DEBUG] user=grace module=payment_gateway - Query executed in 6047ms
+2026-07-11 12:42:44,542 [WARNING] user=frank module=inventory_service - Deprecated API endpoint called
+2026-07-11 12:50:51,105 [INFO] user=diana module=api_gateway - Health check passed
+2026-07-11 13:22:52,147 [INFO] user=erin module=order_service - Payment processed successfully
+2026-07-11 13:22:52,147 [INFO] user=erin module=order_service - Payment processed successfully
+2026-07-11 13:25:52,731 [INFO] user=frank module=notification_service - User logged out
+2026-07-11 13:45:55,405 [INFO] user=erin module=auth_service - User login successful
+2026-07-11 13:59:38,068 [INFO] user=heidi module=inventory_service - User login successful
+2026-07-11 14:32:01,885 [INFO] user=diana module=api_gateway - Order #4409 created
+2026-07-11 14:47:06,970 [INFO] user=grace module=order_service - User logged out
+2026-07-11 14:49:18,081 [INFO] user=diana module=api_gateway - User login successful
+2026-07-11 14:53:29,724 [INFO] user=heidi module=auth_service - Health check passed
+2026-07-11 15:02:25,872 [INFO] user=bob module=inventory_service - User logged out
+2026-07-11 15:09:49,113 [ERROR] user=alice module=auth_service - Payment declined for order #9612
+2026-07-11 15:12:48,163 [INFO] user=diana module=payment_gateway - Payment processed successfully
+2026-07-11 15:12:58,763 [INFO] user=bob module=notification_service - User login successful
+2026-07-11 15:46:37,481 [INFO] user=bob module=payment_gateway - Order #5333 created
+2026-07-11 16:14:38,821 [INFO] user=alice module=notification_service - Health check passed
+2026-07-11 16:18:10,825 [INFO] user=diana module=api_gateway - Health check passed
+2026-07-11 16:25:13,991 [WARNING] user=heidi module=api_gateway - Deprecated API endpoint called
+2026-07-11 17:01:17,747 [INFO] user=diana module=api_gateway - User login successful
+2026-07-11 17:08:16,177 [INFO] user=grace module=order_service - Health check passed
+2026-07-11 17:23:24,407 [DEBUG] user=alice module=payment_gateway - Cache lookup for key session_8524
+2026-07-11 17:28:10,235 [INFO] user=heidi module=notification_service - User login successful
+2026-07-11 17:54:42,248 [INFO] user=diana module=inventory_service - Payment processed successfully
+2026-07-11 18:23:54,869 [DEBUG] user=heidi module=payment_gateway - Cache lookup for key session_977
+2026-07-11 18:47:47,742 [INFO] user=bob module=api_gateway - Payment processed successfully
+2026-07-11 21:03:13,013 [INFO] user=diana module=api_gateway - User login successful
+2026-07-11 22:24:02,985 [WARNING] user=bob module=inventory_service - Deprecated API endpoint called
+2026-07-11 23:12:27,599 [INFO] user=charlie module=auth_service - Payment processed successfully
+2026-07-12 01:21:30,034 [DEBUG] user=frank module=order_service - Cache lookup for key session_3414
+2026-07-12 04:12:25,336 [ERROR] user=frank module=order_service - Payment declined for order #3653
+2026-07-12 05:00:09,268 [INFO] user=heidi module=notification_service - Health check passed
+2026-07-12 06:04:03,182 [ERROR] user=charlie module=auth_service - Timeout while calling external API
+2026-07-12 06:05:55,746 [INFO] user=charlie module=order_service - Health check passed
+2026-07-12 06:57:19,338 [INFO] user=frank module=api_gateway - User logged out
+2026-07-12 07:03:58,789 [ERROR] user=erin module=auth_service - Failed to authenticate user
+2026-07-12 07:45:18,182 [INFO] user=diana module=api_gateway - Order #5088 created
+2026-07-12 08:12:58,613 [INFO] user=heidi module=payment_gateway - Health check passed
+2026-07-12 08:25:50,816 [INFO] user=heidi module=payment_gateway - User logged out
+2026-07-12 09:03:32,471 [ERROR] user=charlie module=inventory_service - Payment declined for order #432
+2026-07-12 09:05:11,325 [INFO] user=heidi module=auth_service - User login successful
+2026-07-12 09:08:56,594 [INFO] user=heidi module=api_gateway - User login successful
+2026-07-12 09:31:25,756 [INFO] user=frank module=auth_service - Payment processed successfully
+2026-07-12 09:33:02,480 [ERROR] user=diana module=auth_service - Failed to authenticate user
+2026-07-12 09:52:14,057 [DEBUG] user=heidi module=payment_gateway - Query executed in 6899ms
+2026-07-12 09:54:33,452 [INFO] user=diana module=notification_service - User logged out
+2026-07-12 10:03:15,429 [DEBUG] user=grace module=auth_service - Entering function process_request
+2026-07-12 10:07:42,570 [INFO] user=frank module=order_service - User logged out
+2026-07-12 10:07:55,501 [INFO] user=heidi module=inventory_service - User login successful
+2026-07-12 10:13:35,750 [INFO] user=diana module=order_service - Order #6126 created
+2026-07-12 10:17:07,544 [INFO] user=grace module=inventory_service - User login successful
+2026-07-12 10:20:22,616 [DEBUG] user=alice module=payment_gateway - Entering function process_request
+2026-07-12 10:28:28,536 [INFO] user=bob module=notification_service - Order #642 created
+2026-07-12 10:34:10,331 [INFO] user=alice module=notification_service - Payment processed successfully
+2026-07-12 10:51:25,179 [ERROR] user=frank module=notification_service - Null pointer exception encountered
+2026-07-12 11:20:31,203 [INFO] user=grace module=inventory_service - Health check passed
+2026-07-12 11:24:50,774 [INFO] user=diana module=inventory_service - Payment processed successfully
+2026-07-12 11:25:56,386 [INFO] user=erin module=payment_gateway - User login successful
+2026-07-12 11:47:21,854 [INFO] user=diana module=auth_service - Health check passed
+2026-07-12 11:49:03,886 [INFO] user=erin module=auth_service - Order #4688 created
+2026-07-12 11:55:10,976 [INFO] user=frank module=auth_service - Health check passed
+2026-07-12 12:05:03,238 [CRITICAL] user=heidi module=notification_service - Out of memory - restarting worker
+2026-07-12 12:20:49,543 [INFO] user=bob module=payment_gateway - Order #5034 created
+2026-07-12 12:28:21,550 [WARNING] user=erin module=order_service - Slow query detected (5967ms)
+2026-07-12 12:40:29,913 [INFO] user=heidi module=inventory_service - User login successful
+2026-07-12 12:45:18,240 [INFO] user=heidi module=api_gateway - Order #4500 created
+2026-07-12 13:26:10,586 [INFO] user=charlie module=auth_service - Order #4278 created
+2026-07-12 13:31:32,770 [ERROR] user=alice module=payment_gateway - Payment declined for order #9782
+2026-07-12 13:36:09,096 [ERROR] user=erin module=notification_service - Failed to authenticate user
+2026-07-12 13:38:38,289 [INFO] user=bob module=auth_service - User logged out
+2026-07-12 13:48:46,254 [DEBUG] user=erin module=auth_service - Cache lookup for key session_1851
+2026-07-12 13:52:50,667 [INFO] user=heidi module=auth_service - User logged out
+2026-07-12 14:37:53,812 [WARNING] user=grace module=notification_service - Slow query detected (690ms)
+2026-07-12 14:38:16,814 [CRITICAL] user=diana module=inventory_service - Data corruption detected in table orders
+2026-07-12 14:39:59,082 [WARNING] user=alice module=order_service - High memory usage detected (6820%)
+2026-07-12 14:51:34,423 [INFO] user=alice module=payment_gateway - User login successful
+2026-07-12 15:19:30,421 [INFO] user=charlie module=inventory_service - Order #8642 created
+2026-07-12 15:57:28,835 [INFO] user=bob module=payment_gateway - Order #7872 created
+2026-07-12 16:35:03,600 [DEBUG] user=grace module=auth_service - Query executed in 6106ms
+2026-07-12 16:42:57,593 [INFO] user=heidi module=order_service - Payment processed successfully
+2026-07-12 16:44:51,963 [INFO] user=erin module=inventory_service - User logged out
+2026-07-12 16:52:21,532 [INFO] user=bob module=inventory_service - Order #5584 created
+2026-07-12 17:29:55,553 [INFO] user=alice module=api_gateway - Payment processed successfully
+2026-07-12 17:48:19,722 [INFO] user=grace module=payment_gateway - User logged out
+2026-07-12 18:43:42,504 [INFO] user=frank module=payment_gateway - User login successful
+2026-07-12 18:50:07,826 [WARNING] user=alice module=notification_service - High memory usage detected (8808%)
+2026-07-12 19:07:19,241 [INFO] user=grace module=inventory_service - User login successful
+2026-07-12 19:18:32,722 [ERROR] user=heidi module=auth_service - Payment declined for order #8166
+2026-07-12 19:27:01,272 [INFO] user=grace module=notification_service - Order #4339 created
+2026-07-12 19:53:17,728 [INFO] user=bob module=notification_service - Order #2722 created
+2026-07-12 20:20:56,698 [DEBUG] user=erin module=inventory_service - Cache lookup for key session_8271
+2026-07-12 20:53:43,668 [WARNING] user=heidi module=payment_gateway - Deprecated API endpoint called
+2026-07-12 22:27:22,661 [INFO] user=charlie module=notification_service - User logged out
+2026-07-12 23:11:43,786 [WARNING] user=frank module=auth_service - Retrying failed request (attempt 9704)
+2026-07-12 23:45:36,489 [WARNING] user=frank module=order_service - High memory usage detected (4481%)
+2026-07-13 00:29:53,635 [INFO] user=grace module=notification_service - Health check passed
+2026-07-13 01:22:48,289 [INFO] user=alice module=order_service - User login successful
+2026-07-13 05:08:57,005 [INFO] user=alice module=api_gateway - User login successful
+2026-07-13 05:25:37,577 [INFO] user=charlie module=inventory_service - Order #8752 created
+2026-07-13 05:39:56,202 [INFO] user=charlie module=payment_gateway - Health check passed
+2026-07-13 06:34:21,023 [INFO] user=bob module=auth_service - Health check passed
+2026-07-13 07:09:40,023 [WARNING] user=erin module=api_gateway - High memory usage detected (4506%)
+2026-07-13 07:31:52,070 [INFO] user=alice module=payment_gateway - User logged out
+2026-07-13 07:36:51,242 [WARNING] user=diana module=auth_service - Retrying failed request (attempt 6118)
+2026-07-13 08:08:16,488 [INFO] user=grace module=order_service - User logged out
+2026-07-13 08:08:59,017 [ERROR] user=bob module=inventory_service - Timeout while calling external API
+2026-07-13 08:20:38,970 [ERROR] user=heidi module=order_service - Timeout while calling external API
+2026-07-13 08:22:22,421 [WARNING] user=alice module=api_gateway - Deprecated API endpoint called
+2026-07-13 08:46:00,971 [INFO] user=charlie module=inventory_service - Payment processed successfully
+2026-07-13 08:47:27,005 [INFO] user=heidi module=api_gateway - Health check passed
+2026-07-13 08:52:25,381 [WARNING] user=bob module=auth_service - High memory usage detected (3642%)
+2026-07-13 09:10:41,853 [INFO] user=bob module=inventory_service - Health check passed
+2026-07-13 09:17:33,925 [INFO] user=grace module=payment_gateway - Payment processed successfully
+2026-07-13 09:29:14,471 [INFO] user=frank module=order_service - Health check passed
+2026-07-13 09:43:44,768 [INFO] user=erin module=auth_service - User logged out
+2026-07-13 09:46:21,350 [WARNING] user=grace module=api_gateway - Deprecated API endpoint called
+2026-07-13 09:59:27,281 [INFO] user=alice module=order_service - User logged out
+2026-07-13 10:13:33,222 [INFO] user=diana module=notification_service - User login successful
+2026-07-13 10:32:49,855 [WARNING] user=erin module=payment_gateway - High memory usage detected (7394%)
+2026-07-13 10:58:00,216 [WARNING] user=diana module=inventory_service - Retrying failed request (attempt 5456)
+2026-07-13 11:02:54,481 [ERROR] user=diana module=order_service - Payment declined for order #1772
+2026-07-13 11:11:15,916 [WARNING] user=alice module=api_gateway - Slow query detected (1502ms)
+2026-07-13 11:25:05,655 [INFO] user=erin module=api_gateway - User logged out
+2026-07-13 11:33:31,882 [WARNING] user=charlie module=notification_service - Retrying failed request (attempt 1417)
+2026-07-13 12:05:53,862 [DEBUG] user=alice module=inventory_service - Entering function process_request
+2026-07-13 12:19:36,352 [INFO] user=charlie module=order_service - User logged out
+2026-07-13 12:42:09,205 [WARNING] user=frank module=inventory_service - Slow query detected (2709ms)
+2026-07-13 12:43:55,895 [WARNING] user=grace module=auth_service - Retrying failed request (attempt 8571)
+2026-07-13 13:01:40,968 [INFO] user=grace module=api_gateway - User login successful
+2026-07-13 13:06:28,408 [INFO] user=alice module=payment_gateway - User login successful
+2026-07-13 13:14:19,789 [INFO] user=heidi module=payment_gateway - Order #4572 created
+2026-07-13 13:28:44,494 [DEBUG] user=erin module=inventory_service - Query executed in 2682ms
+2026-07-13 13:42:48,712 [INFO] user=diana module=auth_service - Health check passed
+2026-07-13 13:51:11,112 [ERROR] user=alice module=order_service - Payment declined for order #2130
+2026-07-13 13:56:57,833 [ERROR] user=frank module=inventory_service - Null pointer exception encountered
+2026-07-13 13:57:40,579 [DEBUG] user=diana module=notification_service - Entering function process_request
+2026-07-13 14:04:32,663 [DEBUG] user=alice module=order_service - Query executed in 7019ms
+2026-07-13 14:22:49,573 [CRITICAL] user=alice module=order_service - Service unavailable - shutting down
+2026-07-13 14:30:49,600 [INFO] user=grace module=payment_gateway - Order #3116 created
+2026-07-13 14:31:37,218 [WARNING] user=grace module=auth_service - Deprecated API endpoint called
+2026-07-13 14:40:20,099 [INFO] user=charlie module=order_service - Payment processed successfully
+2026-07-13 14:49:04,466 [INFO] user=alice module=auth_service - Order #7785 created
+2026-07-13 15:05:42,494 [INFO] user=charlie module=notification_service - Order #4628 created
+2026-07-13 15:36:05,997 [INFO] user=erin module=notification_service - Payment processed successfully
+2026-07-13 15:41:48,521 [INFO] user=bob module=payment_gateway - User logged out
+2026-07-13 15:50:05,363 [ERROR] user=diana module=api_gateway - Null pointer exception encountered
+2026-07-13 16:06:52,575 [INFO] user=bob module=auth_service - User logged out
+2026-07-13 16:18:02,879 [WARNING] user=frank module=payment_gateway - Deprecated API endpoint called
+2026-07-13 16:20:54,192 [INFO] user=heidi module=api_gateway - Health check passed
+2026-07-13 16:38:14,737 [CRITICAL] user=heidi module=notification_service - Out of memory - restarting worker
+2026-07-13 16:47:48,340 [DEBUG] user=diana module=api_gateway - Query executed in 1699ms
+2026-07-13 16:48:15,688 [WARNING] user=bob module=order_service - Deprecated API endpoint called
+2026-07-13 16:50:17,092 [INFO] user=frank module=api_gateway - User logged out
+2026-07-13 16:52:09,482 [INFO] user=alice module=payment_gateway - Health check passed
+2026-07-13 16:56:39,634 [INFO] user=alice module=inventory_service - Health check passed
+2026-07-13 17:38:13,843 [INFO] user=heidi module=inventory_service - Order #7067 created
+2026-07-13 17:55:58,930 [INFO] user=heidi module=notification_service - User login successful
+2026-07-13 17:57:26,918 [DEBUG] user=bob module=order_service - Query executed in 4883ms
+2026-07-13 17:59:26,718 [INFO] user=grace module=payment_gateway - Payment processed successfully
+2026-07-13 18:05:40,415 [WARNING] user=diana module=order_service - Deprecated API endpoint called
+2026-07-13 18:24:43,885 [DEBUG] user=erin module=payment_gateway - Cache lookup for key session_4806
+2026-07-13 18:34:52,001 [INFO] user=bob module=auth_service - Health check passed
+2026-07-13 19:53:43,602 [INFO] user=frank module=auth_service - Health check passed
+2026-07-13 19:58:21,638 [INFO] user=diana module=order_service - Health check passed
+2026-07-13 20:08:41,898 [INFO] user=diana module=notification_service - Order #1192 created
+2026-07-13 20:59:48,869 [ERROR] user=bob module=auth_service - Failed to authenticate user
+2026-07-13 21:07:50,183 [ERROR] user=frank module=inventory_service - Null pointer exception encountered
+2026-07-13 21:41:08,102 [INFO] user=grace module=order_service - Order #6731 created
+2026-07-13 21:49:49,200 [INFO] user=diana module=inventory_service - Payment processed successfully
+2026-07-13 22:15:35,996 [INFO] user=frank module=order_service - Order #9375 created
+2026-07-14 01:28:51,321 [INFO] user=bob module=payment_gateway - User logged out
+2026-07-14 05:59:42,849 [INFO] user=diana module=inventory_service - User logged out
+2026-07-14 06:06:02,812 [WARNING] user=bob module=auth_service - Slow query detected (7066ms)
+2026-07-14 07:01:38,933 [INFO] user=frank module=payment_gateway - Payment processed successfully
+2026-07-14 07:27:02,891 [INFO] user=frank module=payment_gateway - Payment processed successfully
+2026-07-14 07:45:36,642 [ERROR] user=frank module=inventory_service - Null pointer exception encountered
+2026-07-14 08:04:09,713 [INFO] user=bob module=inventory_service - Payment processed successfully
+2026-07-14 08:04:24,648 [INFO] user=heidi module=notification_service - User login successful
+2026-07-14 08:13:30,736 [CRITICAL] user=charlie module=payment_gateway - Data corruption detected in table orders
+2026-07-14 08:35:53,520 [DEBUG] user=diana module=api_gateway - Entering function process_request
+2026-07-14 08:49:16,084 [WARNING] user=frank module=api_gateway - Slow query detected (3505ms)
+2026-07-14 08:54:47,074 [CRITICAL] user=bob module=auth_service - Data corruption detected in table orders
+2026-07-14 08:59:39,010 [INFO] user=bob module=order_service - User logged out
+2026-07-14 09:01:37,704 [DEBUG] user=grace module=inventory_service - Entering function process_request
+2026-07-14 09:05:01,447 [INFO] user=erin module=notification_service - Order #5283 created
+2026-07-14 09:05:01,447 [INFO] user=erin module=notification_service - Order #5283 created
+2026-07-14 09:05:36,578 [ERROR] user=diana module=notification_service - Payment declined for order #531
+2026-07-14 09:11:19,014 [INFO] user=erin module=auth_service - Order #4854 created
+2026-07-14 09:35:31,932 [INFO] user=diana module=order_service - Health check passed
+2026-07-14 10:14:28,205 [DEBUG] user=bob module=notification_service - Entering function process_request
+2026-07-14 10:24:21,483 [INFO] user=charlie module=notification_service - User logged out
+2026-07-14 10:39:53,399 [INFO] user=grace module=auth_service - Health check passed
+2026-07-14 10:39:53,399 [INFO] user=grace module=auth_service - Health check passed
+2026-07-14 10:48:26,172 [DEBUG] user=charlie module=order_service - Cache lookup for key session_1979
+2026-07-14 10:48:29,045 [ERROR] user=alice module=inventory_service - Failed to authenticate user
+2026-07-14 11:04:22,500 [INFO] user=erin module=api_gateway - Health check passed
+2026-07-14 11:12:00,653 [WARNING] user=frank module=inventory_service - Slow query detected (8437ms)
+2026-07-14 11:29:15,888 [INFO] user=grace module=notification_service - Order #2469 created
+2026-07-14 11:43:46,243 [INFO] user=charlie module=api_gateway - Health check passed
+2026-07-14 12:35:15,939 [ERROR] user=grace module=payment_gateway - Payment declined for order #8487
+2026-07-14 12:43:25,715 [INFO] user=heidi module=payment_gateway - Payment processed successfully
+2026-07-14 12:47:34,053 [ERROR] user=erin module=inventory_service - Null pointer exception encountered
+2026-07-14 12:56:57,588 [ERROR] user=alice module=inventory_service - Null pointer exception encountered
+2026-07-14 13:01:47,751 [INFO] user=alice module=notification_service - User logged out
+2026-07-14 13:02:59,142 [INFO] user=erin module=order_service - User logged out
+2026-07-14 13:11:27,585 [INFO] user=frank module=order_service - User login successful
+2026-07-14 13:15:36,489 [INFO] user=grace module=api_gateway - Health check passed
+2026-07-14 13:46:04,535 [INFO] user=heidi module=auth_service - Payment processed successfully
+2026-07-14 14:01:53,179 [DEBUG] user=frank module=order_service - Entering function process_request
+2026-07-14 14:04:14,387 [INFO] user=erin module=payment_gateway - Payment processed successfully
+2026-07-14 14:09:10,185 [INFO] user=alice module=api_gateway - Payment processed successfully
+2026-07-14 14:09:23,780 [INFO] user=bob module=api_gateway - Payment processed successfully
+2026-07-14 14:10:39,142 [WARNING] user=diana module=api_gateway - Deprecated API endpoint called
+2026-07-14 14:17:00,416 [INFO] user=alice module=notification_service - Health check passed
+2026-07-14 14:25:27,988 [INFO] user=bob module=payment_gateway - User logged out
+2026-07-14 14:43:07,403 [INFO] user=bob module=order_service - User login successful
+2026-07-14 14:43:28,971 [INFO] user=frank module=inventory_service - User logged out
+2026-07-14 14:45:03,948 [ERROR] user=erin module=payment_gateway - Failed to authenticate user
+2026-07-14 15:03:32,968 [INFO] user=diana module=api_gateway - User login successful
+2026-07-14 15:48:37,459 [WARNING] user=bob module=payment_gateway - Slow query detected (7602ms)
+2026-07-14 15:56:02,692 [ERROR] user=frank module=notification_service - Failed to authenticate user
+2026-07-14 16:08:51,439 [INFO] user=diana module=payment_gateway - User logged out
+2026-07-14 16:14:16,622 [INFO] user=heidi module=payment_gateway - Order #9850 created
+2026-07-14 16:27:38,065 [DEBUG] user=bob module=payment_gateway - Query executed in 2622ms
+2026-07-14 16:54:11,454 [INFO] user=bob module=order_service - User logged out
+2026-07-14 17:05:28,886 [INFO] user=alice module=inventory_service - Payment processed successfully
+2026-07-14 17:40:38,564 [ERROR] user=bob module=api_gateway - Timeout while calling external API
+2026-07-14 17:44:33,439 [INFO] user=grace module=notification_service - Health check passed
+2026-07-14 17:48:58,943 [INFO] user=heidi module=auth_service - Health check passed
+2026-07-14 17:56:25,447 [INFO] user=grace module=payment_gateway - Health check passed
+2026-07-14 17:58:24,384 [DEBUG] user=grace module=order_service - Entering function process_request
+2026-07-14 19:54:11,180 [CRITICAL] user=diana module=notification_service - Out of memory - restarting worker
+2026-07-14 20:03:26,637 [DEBUG] user=grace module=inventory_service - Query executed in 9173ms
+2026-07-15 02:37:26,123 [INFO] user=frank module=auth_service - User login successful
+2026-07-15 06:36:12,441 [INFO] user=heidi module=payment_gateway - Order #3508 created
+2026-07-15 06:54:04,967 [INFO] user=charlie module=notification_service - User login successful
+2026-07-15 06:54:36,798 [WARNING] user=bob module=order_service - High memory usage detected (6334%)
+2026-07-15 07:14:15,599 [INFO] user=bob module=payment_gateway - User logged out
+2026-07-15 07:27:18,805 [CRITICAL] user=heidi module=notification_service - Data corruption detected in table orders
+2026-07-15 08:19:58,619 [INFO] user=diana module=inventory_service - Order #9387 created
+2026-07-15 08:35:19,533 [WARNING] user=charlie module=notification_service - Deprecated API endpoint called
+2026-07-15 08:43:15,032 [DEBUG] user=heidi module=payment_gateway - Query executed in 6230ms
+2026-07-15 08:50:23,593 [INFO] user=heidi module=auth_service - User logged out
+2026-07-15 08:54:25,220 [WARNING] user=bob module=order_service - Retrying failed request (attempt 3073)
+2026-07-15 09:05:01,491 [INFO] user=diana module=payment_gateway - Payment processed successfully
+2026-07-15 09:16:23,239 [WARNING] user=frank module=auth_service - Retrying failed request (attempt 7990)
+2026-07-15 09:51:47,153 [INFO] user=diana module=notification_service - Health check passed
+2026-07-15 09:59:46,964 [INFO] user=bob module=auth_service - Order #9457 created
+2026-07-15 10:03:57,351 [INFO] user=bob module=api_gateway - User logged out
+2026-07-15 10:13:08,080 [WARNING] user=diana module=payment_gateway - Retrying failed request (attempt 3713)
+2026-07-15 10:19:39,526 [ERROR] user=grace module=auth_service - Payment declined for order #9354
+2026-07-15 10:25:08,740 [INFO] user=grace module=inventory_service - Payment processed successfully
+2026-07-15 10:33:55,445 [ERROR] user=diana module=inventory_service - Timeout while calling external API
+2026-07-15 10:33:55,445 [ERROR] user=diana module=inventory_service - Timeout while calling external API
+2026-07-15 10:38:21,866 [INFO] user=erin module=notification_service - Payment processed successfully
+2026-07-15 10:42:38,929 [INFO] user=diana module=notification_service - User logged out
+2026-07-15 10:57:28,978 [DEBUG] user=alice module=auth_service - Cache lookup for key session_2794
+2026-07-15 10:59:36,091 [INFO] user=diana module=auth_service - Payment processed successfully
+2026-07-15 11:14:44,969 [WARNING] user=charlie module=notification_service - High memory usage detected (8736%)
+2026-07-15 11:23:39,165 [WARNING] user=alice module=payment_gateway - Slow query detected (882ms)
+2026-07-15 11:36:55,226 [INFO] user=frank module=payment_gateway - Payment processed successfully
+2026-07-15 12:18:18,683 [INFO] user=charlie module=notification_service - User logged out
+2026-07-15 12:21:35,781 [INFO] user=heidi module=payment_gateway - Health check passed
+2026-07-15 12:38:25,496 [INFO] user=erin module=api_gateway - Health check passed
+2026-07-15 12:45:42,486 [DEBUG] user=diana module=payment_gateway - Cache lookup for key session_5076
+2026-07-15 12:59:45,813 [INFO] user=bob module=api_gateway - Payment processed successfully
+2026-07-15 13:03:19,394 [ERROR] user=charlie module=api_gateway - Null pointer exception encountered
+2026-07-15 13:05:56,108 [WARNING] user=frank module=payment_gateway - Deprecated API endpoint called
+2026-07-15 13:08:10,598 [INFO] user=grace module=auth_service - Health check passed
+2026-07-15 13:39:05,251 [INFO] user=erin module=inventory_service - User logged out
+2026-07-15 13:39:20,101 [ERROR] user=diana module=inventory_service - Failed to authenticate user
+2026-07-15 14:16:22,085 [WARNING] user=erin module=api_gateway - Deprecated API endpoint called
+2026-07-15 14:16:22,085 [WARNING] user=erin module=api_gateway - Deprecated API endpoint called
+2026-07-15 14:29:07,021 [WARNING] user=charlie module=auth_service - Retrying failed request (attempt 7214)
+2026-07-15 14:30:58,940 [INFO] user=bob module=auth_service - Order #8011 created
+2026-07-15 14:37:04,655 [INFO] user=charlie module=auth_service - Health check passed
+2026-07-15 14:49:50,345 [INFO] user=grace module=api_gateway - User login successful
+2026-07-15 14:56:48,536 [INFO] user=alice module=notification_service - Health check passed
+2026-07-15 14:59:27,753 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-07-15 15:04:03,064 [INFO] user=alice module=api_gateway - Payment processed successfully
+2026-07-15 15:09:39,289 [DEBUG] user=grace module=payment_gateway - Query executed in 8152ms
+2026-07-15 15:30:28,265 [ERROR] user=grace module=notification_service - Timeout while calling external API
+2026-07-15 15:35:44,910 [ERROR] user=heidi module=api_gateway - Null pointer exception encountered
+2026-07-15 15:48:46,425 [ERROR] user=bob module=auth_service - Database connection failed
+2026-07-15 15:48:46,425 [ERROR] user=bob module=auth_service - Database connection failed
+2026-07-15 15:51:23,561 [INFO] user=frank module=inventory_service - User login successful
+2026-07-15 15:53:57,162 [INFO] user=erin module=api_gateway - Health check passed
+2026-07-15 15:55:18,564 [ERROR] user=heidi module=auth_service - Failed to authenticate user
+2026-07-15 15:58:31,491 [INFO] user=frank module=inventory_service - Health check passed
+2026-07-15 15:59:06,076 [INFO] user=alice module=notification_service - Order #3161 created
+2026-07-15 16:07:54,206 [ERROR] user=charlie module=api_gateway - Null pointer exception encountered
+2026-07-15 16:08:00,410 [INFO] user=alice module=auth_service - Order #7265 created
+2026-07-15 16:17:47,214 [ERROR] user=bob module=api_gateway - Failed to authenticate user
+2026-07-15 16:32:41,296 [DEBUG] user=frank module=order_service - Entering function process_request
+2026-07-15 16:45:28,219 [INFO] user=grace module=notification_service - User login successful
+2026-07-15 16:54:19,803 [WARNING] user=charlie module=auth_service - Slow query detected (3184ms)
+2026-07-15 16:58:11,109 [INFO] user=erin module=auth_service - User logged out
+2026-07-15 17:02:01,982 [WARNING] user=bob module=payment_gateway - Slow query detected (7330ms)
+2026-07-15 17:09:18,286 [INFO] user=erin module=payment_gateway - Health check passed
+2026-07-15 17:34:15,897 [WARNING] user=heidi module=payment_gateway - Slow query detected (3796ms)
+2026-07-15 17:35:57,627 [INFO] user=frank module=api_gateway - Health check passed
+2026-07-15 17:51:08,246 [WARNING] user=alice module=notification_service - Retrying failed request (attempt 8832)
+2026-07-15 18:33:10,058 [INFO] user=alice module=notification_service - Health check passed
+2026-07-15 18:48:36,682 [INFO] user=frank module=api_gateway - Payment processed successfully
+2026-07-15 19:02:53,406 [WARNING] user=alice module=payment_gateway - Slow query detected (2881ms)
+2026-07-15 19:31:07,081 [INFO] user=bob module=payment_gateway - Health check passed
+2026-07-15 20:08:32,988 [INFO] user=grace module=inventory_service - Order #8116 created
+2026-07-16 03:05:35,875 [WARNING] user=frank module=inventory_service - Retrying failed request (attempt 6229)
+2026-07-16 03:05:35,875 [WARNING] user=frank module=inventory_service - Retrying failed request (attempt 6229)
+2026-07-16 03:23:26,252 [ERROR] user=frank module=notification_service - Timeout while calling external API
+2026-07-16 06:10:58,343 [INFO] user=charlie module=inventory_service - User logged out
+2026-07-16 06:20:36,129 [INFO] user=charlie module=payment_gateway - Order #1916 created
+2026-07-16 06:38:17,565 [ERROR] user=diana module=payment_gateway - Timeout while calling external API
+2026-07-16 07:15:17,685 [INFO] user=diana module=auth_service - User login successful
+2026-07-16 07:16:20,118 [INFO] user=grace module=notification_service - User login successful
+2026-07-16 07:30:37,173 [ERROR] user=erin module=api_gateway - Failed to authenticate user
+2026-07-16 07:35:03,053 [INFO] user=grace module=api_gateway - User logged out
+2026-07-16 07:40:47,991 [INFO] user=bob module=inventory_service - User logged out
+2026-07-16 07:42:37,631 [INFO] user=alice module=notification_service - User logged out
+2026-07-16 08:08:40,839 [ERROR] user=heidi module=api_gateway - Database connection failed
+2026-07-16 08:17:12,434 [INFO] user=alice module=auth_service - Order #7434 created
+2026-07-16 08:17:36,512 [WARNING] user=diana module=auth_service - Retrying failed request (attempt 6490)
+2026-07-16 08:44:13,420 [DEBUG] user=alice module=inventory_service - Entering function process_request
+2026-07-16 08:46:38,982 [ERROR] user=heidi module=order_service - Payment declined for order #8567
+2026-07-16 08:54:53,220 [DEBUG] user=alice module=payment_gateway - Cache lookup for key session_3082
+2026-07-16 09:04:21,619 [WARNING] user=frank module=auth_service - High memory usage detected (7162%)
+2026-07-16 09:12:08,798 [WARNING] user=frank module=order_service - Slow query detected (4456ms)
+2026-07-16 09:18:11,986 [ERROR] user=grace module=payment_gateway - Payment declined for order #1941
+2026-07-16 09:26:31,568 [ERROR] user=alice module=notification_service - Payment declined for order #1403
+2026-07-16 10:12:45,776 [INFO] user=heidi module=notification_service - Payment processed successfully
+2026-07-16 10:22:07,349 [INFO] user=charlie module=api_gateway - User login successful
+2026-07-16 10:24:54,913 [DEBUG] user=grace module=inventory_service - Cache lookup for key session_5764
+2026-07-16 10:25:44,249 [INFO] user=heidi module=inventory_service - User login successful
+2026-07-16 10:39:54,962 [INFO] user=frank module=inventory_service - Order #5555 created
+2026-07-16 10:39:55,265 [DEBUG] user=diana module=inventory_service - Query executed in 1651ms
+2026-07-16 10:55:08,285 [ERROR] user=bob module=inventory_service - Timeout while calling external API
+2026-07-16 11:08:47,216 [INFO] user=charlie module=order_service - User login successful
+2026-07-16 11:34:13,678 [INFO] user=frank module=api_gateway - Health check passed
+2026-07-16 11:40:34,082 [INFO] user=charlie module=notification_service - Health check passed
+2026-07-16 11:45:35,496 [INFO] user=bob module=inventory_service - User login successful
+2026-07-16 11:52:29,408 [DEBUG] user=diana module=inventory_service - Entering function process_request
+2026-07-16 11:53:19,221 [DEBUG] user=grace module=auth_service - Entering function process_request
+2026-07-16 11:59:41,684 [INFO] user=diana module=api_gateway - Health check passed
+2026-07-16 11:59:56,899 [INFO] user=charlie module=auth_service - User logged out
+2026-07-16 12:16:07,631 [DEBUG] user=charlie module=order_service - Entering function process_request
+2026-07-16 12:32:58,249 [INFO] user=bob module=auth_service - Payment processed successfully
+2026-07-16 12:38:02,910 [INFO] user=erin module=notification_service - User logged out
+2026-07-16 12:41:36,200 [DEBUG] user=charlie module=inventory_service - Query executed in 3246ms
+2026-07-16 12:49:06,533 [INFO] user=heidi module=payment_gateway - User login successful
+2026-07-16 12:52:11,558 [INFO] user=erin module=auth_service - Health check passed
+2026-07-16 13:33:02,962 [WARNING] user=frank module=api_gateway - Slow query detected (7549ms)
+2026-07-16 13:41:30,755 [DEBUG] user=diana module=payment_gateway - Entering function process_request
+2026-07-16 13:44:23,325 [DEBUG] user=charlie module=payment_gateway - Cache lookup for key session_3141
+2026-07-16 13:52:49,369 [INFO] user=diana module=auth_service - Payment processed successfully
+2026-07-16 13:57:46,028 [DEBUG] user=frank module=auth_service - Query executed in 4524ms
+2026-07-16 13:57:53,835 [WARNING] user=grace module=notification_service - High memory usage detected (1271%)
+2026-07-16 14:14:36,911 [INFO] user=erin module=order_service - Health check passed
+2026-07-16 14:17:39,620 [INFO] user=alice module=order_service - Health check passed
+2026-07-16 14:31:55,956 [WARNING] user=heidi module=auth_service - Deprecated API endpoint called
+2026-07-16 14:31:55,956 [WARNING] user=heidi module=auth_service - Deprecated API endpoint called
+2026-07-16 14:42:17,106 [WARNING] user=diana module=notification_service - Slow query detected (3628ms)
+2026-07-16 14:45:38,294 [INFO] user=diana module=payment_gateway - Order #5696 created
+2026-07-16 15:01:09,420 [INFO] user=heidi module=auth_service - Payment processed successfully
+2026-07-16 15:03:44,209 [INFO] user=alice module=auth_service - User logged out
+2026-07-16 15:44:34,767 [DEBUG] user=alice module=notification_service - Cache lookup for key session_120
+2026-07-16 16:00:48,825 [INFO] user=diana module=inventory_service - User logged out
+2026-07-16 16:29:39,448 [INFO] user=diana module=inventory_service - Payment processed successfully
+2026-07-16 16:49:12,951 [INFO] user=alice module=notification_service - User login successful
+2026-07-16 18:43:11,423 [DEBUG] user=alice module=notification_service - Entering function process_request
+2026-07-16 19:06:01,229 [CRITICAL] user=heidi module=api_gateway - Service unavailable - shutting down
+2026-07-16 19:55:08,512 [INFO] user=alice module=auth_service - Order #3812 created
+2026-07-16 21:41:04,460 [WARNING] user=grace module=inventory_service - High memory usage detected (2054%)
+2026-07-16 21:50:08,242 [WARNING] user=charlie module=order_service - Retrying failed request (attempt 1989)
+2026-07-17 04:08:59,767 [INFO] user=frank module=api_gateway - Order #7863 created
+2026-07-17 07:02:36,272 [DEBUG] user=diana module=auth_service - Cache lookup for key session_1888
+2026-07-17 07:28:02,282 [DEBUG] user=diana module=notification_service - Cache lookup for key session_4369
+2026-07-17 07:32:01,116 [WARNING] user=erin module=order_service - Deprecated API endpoint called
+2026-07-17 07:38:49,763 [ERROR] user=heidi module=inventory_service - Timeout while calling external API
+2026-07-17 07:44:04,889 [INFO] user=diana module=api_gateway - Payment processed successfully
+2026-07-17 08:04:54,802 [CRITICAL] user=alice module=order_service - Out of memory - restarting worker
+2026-07-17 08:09:57,474 [INFO] user=bob module=inventory_service - Health check passed
+2026-07-17 08:14:32,764 [INFO] user=frank module=inventory_service - User login successful
+2026-07-17 08:47:32,955 [ERROR] user=grace module=api_gateway - Payment declined for order #3868
+2026-07-17 08:48:26,238 [DEBUG] user=alice module=order_service - Entering function process_request
+2026-07-17 08:49:25,804 [INFO] user=diana module=notification_service - Order #5305 created
+2026-07-17 09:06:04,519 [WARNING] user=frank module=notification_service - High memory usage detected (9840%)
+2026-07-17 09:11:33,069 [INFO] user=frank module=auth_service - Payment processed successfully
+2026-07-17 09:38:03,007 [INFO] user=heidi module=notification_service - Payment processed successfully
+2026-07-17 09:44:39,277 [INFO] user=erin module=payment_gateway - User login successful
+2026-07-17 09:49:51,713 [DEBUG] user=grace module=notification_service - Entering function process_request
+2026-07-17 09:58:13,790 [INFO] user=erin module=payment_gateway - Health check passed
+2026-07-17 09:58:58,831 [CRITICAL] user=frank module=inventory_service - Out of memory - restarting worker
+2026-07-17 10:06:24,515 [DEBUG] user=diana module=payment_gateway - Query executed in 5642ms
+2026-07-17 10:16:15,632 [INFO] user=charlie module=inventory_service - Order #472 created
+2026-07-17 10:54:27,193 [CRITICAL] user=heidi module=payment_gateway - Data corruption detected in table orders
+2026-07-17 10:56:06,760 [WARNING] user=erin module=api_gateway - High memory usage detected (2201%)
+2026-07-17 11:04:40,813 [INFO] user=charlie module=notification_service - Payment processed successfully
+2026-07-17 11:10:01,248 [INFO] user=charlie module=notification_service - User logged out
+2026-07-17 11:19:46,787 [ERROR] user=charlie module=payment_gateway - Payment declined for order #841
+2026-07-17 12:39:38,559 [INFO] user=alice module=auth_service - Payment processed successfully
+2026-07-17 12:39:38,559 [INFO] user=alice module=auth_service - Payment processed successfully
+2026-07-17 13:07:12,876 [INFO] user=grace module=payment_gateway - Order #7449 created
+2026-07-17 13:15:45,972 [WARNING] user=heidi module=inventory_service - High memory usage detected (1353%)
+2026-07-17 13:31:28,906 [INFO] user=frank module=api_gateway - User login successful
+2026-07-17 13:31:55,253 [WARNING] user=alice module=notification_service - Deprecated API endpoint called
+2026-07-17 13:44:27,368 [CRITICAL] user=frank module=inventory_service - Service unavailable - shutting down
+2026-07-17 14:23:27,206 [INFO] user=heidi module=notification_service - Payment processed successfully
+2026-07-17 14:37:06,037 [INFO] user=alice module=inventory_service - Order #7362 created
+2026-07-17 14:45:42,918 [INFO] user=heidi module=api_gateway - User login successful
+2026-07-17 14:49:51,320 [WARNING] user=erin module=inventory_service - High memory usage detected (3901%)
+2026-07-17 15:07:22,440 [INFO] user=heidi module=inventory_service - Payment processed successfully
+2026-07-17 15:15:01,915 [INFO] user=bob module=payment_gateway - Health check passed
+2026-07-17 15:19:26,807 [ERROR] user=bob module=payment_gateway - Null pointer exception encountered
+2026-07-17 15:23:45,555 [INFO] user=charlie module=api_gateway - Payment processed successfully
+2026-07-17 15:37:02,717 [DEBUG] user=alice module=api_gateway - Query executed in 1037ms
+2026-07-17 16:21:35,961 [INFO] user=charlie module=auth_service - Health check passed
+2026-07-17 17:00:15,047 [WARNING] user=diana module=api_gateway - High memory usage detected (722%)
+2026-07-17 18:06:27,189 [WARNING] user=diana module=order_service - Slow query detected (4591ms)
+2026-07-17 18:14:41,064 [INFO] user=alice module=notification_service - User logged out
+2026-07-17 18:28:02,064 [ERROR] user=charlie module=inventory_service - Timeout while calling external API
+2026-07-17 18:58:51,068 [INFO] user=charlie module=notification_service - Payment processed successfully
+2026-07-17 19:31:55,324 [CRITICAL] user=frank module=auth_service - Service unavailable - shutting down
+2026-07-17 20:14:36,515 [WARNING] user=grace module=api_gateway - High memory usage detected (1267%)
+2026-07-17 21:26:58,592 [INFO] user=erin module=order_service - Order #6628 created
+2026-07-17 22:04:36,168 [DEBUG] user=charlie module=auth_service - Entering function process_request
+2026-07-17 23:51:53,106 [INFO] user=erin module=api_gateway - User logged out
+2026-07-18 00:42:54,526 [ERROR] user=alice module=payment_gateway - Timeout while calling external API
+2026-07-18 04:06:20,574 [INFO] user=grace module=inventory_service - User login successful
+2026-07-18 04:38:03,570 [DEBUG] user=heidi module=auth_service - Query executed in 4224ms
+2026-07-18 07:27:41,052 [CRITICAL] user=diana module=order_service - Out of memory - restarting worker
+2026-07-18 08:05:07,091 [WARNING] user=grace module=payment_gateway - Retrying failed request (attempt 4245)
+2026-07-18 08:21:57,400 [DEBUG] user=alice module=api_gateway - Entering function process_request
+2026-07-18 08:44:00,914 [INFO] user=grace module=inventory_service - Health check passed
+2026-07-18 08:46:23,534 [INFO] user=diana module=notification_service - User logged out
+2026-07-18 09:05:28,315 [INFO] user=erin module=order_service - Health check passed
+2026-07-18 09:08:12,498 [INFO] user=grace module=payment_gateway - Order #6139 created
+2026-07-18 09:08:19,980 [INFO] user=grace module=order_service - Payment processed successfully
+2026-07-18 09:27:20,015 [INFO] user=frank module=auth_service - Order #1851 created
+2026-07-18 09:33:30,351 [WARNING] user=erin module=auth_service - Deprecated API endpoint called
+2026-07-18 09:49:19,743 [INFO] user=alice module=notification_service - User logged out
+2026-07-18 09:58:44,660 [WARNING] user=heidi module=auth_service - Deprecated API endpoint called
+2026-07-18 10:25:21,861 [INFO] user=diana module=inventory_service - User login successful
+2026-07-18 10:42:59,077 [INFO] user=charlie module=auth_service - Order #4151 created
+2026-07-18 10:51:07,338 [INFO] user=heidi module=payment_gateway - User logged out
+2026-07-18 10:52:39,369 [INFO] user=grace module=api_gateway - User logged out
+2026-07-18 10:54:33,537 [INFO] user=charlie module=api_gateway - User login successful
+2026-07-18 11:06:11,143 [ERROR] user=grace module=notification_service - Null pointer exception encountered
+2026-07-18 11:18:48,322 [INFO] user=frank module=auth_service - Order #8677 created
+2026-07-18 11:29:38,336 [INFO] user=heidi module=order_service - Order #5270 created
+2026-07-18 11:29:38,336 [INFO] user=heidi module=order_service - Order #5270 created
+2026-07-18 11:29:44,681 [ERROR] user=grace module=api_gateway - Database connection failed
+2026-07-18 11:47:40,118 [ERROR] user=grace module=inventory_service - Database connection failed
+2026-07-18 12:22:01,261 [INFO] user=alice module=api_gateway - Health check passed
+2026-07-18 12:26:59,861 [INFO] user=alice module=order_service - User login successful
+2026-07-18 12:56:02,898 [ERROR] user=alice module=notification_service - Database connection failed
+2026-07-18 13:03:40,009 [WARNING] user=bob module=inventory_service - Slow query detected (6180ms)
+2026-07-18 13:06:06,012 [ERROR] user=alice module=inventory_service - Failed to authenticate user
+2026-07-18 13:10:00,418 [INFO] user=bob module=payment_gateway - Order #2848 created
+2026-07-18 13:24:39,591 [WARNING] user=charlie module=api_gateway - Retrying failed request (attempt 7422)
+2026-07-18 13:24:43,465 [ERROR] user=alice module=payment_gateway - Null pointer exception encountered
+2026-07-18 13:24:43,465 [ERROR] user=alice module=payment_gateway - Null pointer exception encountered
+2026-07-18 13:42:45,427 [INFO] user=bob module=order_service - User logged out
+2026-07-18 14:09:13,128 [DEBUG] user=heidi module=auth_service - Cache lookup for key session_854
+2026-07-18 14:12:17,111 [INFO] user=grace module=payment_gateway - User login successful
+2026-07-18 14:13:27,256 [WARNING] user=erin module=notification_service - Slow query detected (8302ms)
+2026-07-18 14:14:02,903 [INFO] user=heidi module=payment_gateway - Order #6636 created
+2026-07-18 14:30:02,267 [INFO] user=charlie module=order_service - Payment processed successfully
+2026-07-18 14:43:17,454 [WARNING] user=frank module=order_service - Slow query detected (6206ms)
+2026-07-18 14:47:01,340 [WARNING] user=frank module=auth_service - Deprecated API endpoint called
+2026-07-18 14:48:02,659 [INFO] user=frank module=inventory_service - Order #5352 created
+2026-07-18 14:49:45,316 [DEBUG] user=charlie module=api_gateway - Cache lookup for key session_9372
+2026-07-18 14:51:38,796 [INFO] user=charlie module=api_gateway - User logged out
+2026-07-18 14:52:07,676 [INFO] user=charlie module=payment_gateway - Order #5935 created
+2026-07-18 14:52:32,619 [INFO] user=diana module=api_gateway - Payment processed successfully
+2026-07-18 14:52:45,586 [INFO] user=diana module=order_service - Payment processed successfully
+2026-07-18 15:13:30,239 [DEBUG] user=charlie module=inventory_service - Cache lookup for key session_3718
+2026-07-18 15:20:15,338 [ERROR] user=heidi module=inventory_service - Payment declined for order #1227
+2026-07-18 15:43:47,913 [DEBUG] user=erin module=payment_gateway - Cache lookup for key session_2287
+2026-07-18 15:52:55,698 [WARNING] user=heidi module=payment_gateway - Retrying failed request (attempt 2775)
+2026-07-18 15:58:59,406 [INFO] user=heidi module=auth_service - User login successful
+2026-07-18 16:08:11,894 [INFO] user=bob module=notification_service - User login successful
+2026-07-18 16:08:31,238 [DEBUG] user=frank module=api_gateway - Cache lookup for key session_8788
+2026-07-18 16:11:19,010 [DEBUG] user=grace module=inventory_service - Entering function process_request
+2026-07-18 16:25:05,843 [WARNING] user=charlie module=notification_service - Retrying failed request (attempt 3373)
+2026-07-18 16:31:09,937 [INFO] user=diana module=api_gateway - User login successful
+2026-07-18 16:38:30,675 [INFO] user=grace module=notification_service - User login successful
+2026-07-18 16:54:04,993 [INFO] user=erin module=api_gateway - User logged out
+2026-07-18 17:01:18,888 [ERROR] user=bob module=inventory_service - Null pointer exception encountered
+2026-07-18 17:05:02,550 [INFO] user=frank module=api_gateway - Health check passed
+2026-07-18 17:15:33,198 [WARNING] user=charlie module=notification_service - Slow query detected (8167ms)
+2026-07-18 17:18:50,152 [INFO] user=alice module=notification_service - User logged out
+2026-07-18 17:41:24,565 [INFO] user=bob module=order_service - User login successful
+2026-07-18 17:54:52,801 [INFO] user=heidi module=inventory_service - User logged out
+2026-07-18 18:05:41,587 [INFO] user=erin module=order_service - Payment processed successfully
+2026-07-18 18:21:33,033 [INFO] user=alice module=api_gateway - User login successful
+2026-07-18 18:41:02,316 [INFO] user=erin module=api_gateway - Order #1592 created
+2026-07-18 19:36:13,176 [INFO] user=heidi module=auth_service - Health check passed
+2026-07-18 19:39:07,095 [INFO] user=heidi module=payment_gateway - User login successful
+2026-07-18 19:57:39,868 [INFO] user=diana module=order_service - User logged out
+2026-07-18 20:54:39,494 [WARNING] user=charlie module=auth_service - Deprecated API endpoint called
+2026-07-18 21:53:16,297 [WARNING] user=grace module=notification_service - Retrying failed request (attempt 3455)
+2026-07-19 02:08:44,011 [INFO] user=erin module=api_gateway - Order #1957 created
+2026-07-19 03:32:36,247 [INFO] user=bob module=inventory_service - User logged out
+2026-07-19 06:12:26,563 [INFO] user=heidi module=payment_gateway - User logged out
+2026-07-19 06:42:56,453 [INFO] user=diana module=inventory_service - Payment processed successfully
+2026-07-19 07:16:16,390 [INFO] user=frank module=order_service - Order #6915 created
+2026-07-19 07:30:54,411 [DEBUG] user=erin module=inventory_service - Query executed in 511ms
+2026-07-19 07:43:37,511 [WARNING] user=alice module=notification_service - Slow query detected (7703ms)
+2026-07-19 08:44:14,072 [DEBUG] user=grace module=auth_service - Query executed in 7359ms
+2026-07-19 09:07:45,254 [WARNING] user=erin module=inventory_service - Retrying failed request (attempt 7454)
+2026-07-19 09:14:03,102 [WARNING] user=diana module=payment_gateway - High memory usage detected (8701%)
+2026-07-19 09:20:42,489 [ERROR] user=alice module=api_gateway - Payment declined for order #8499
+2026-07-19 09:47:35,215 [INFO] user=bob module=payment_gateway - Order #8536 created
+2026-07-19 09:49:51,839 [WARNING] user=diana module=payment_gateway - Retrying failed request (attempt 1776)
+2026-07-19 10:04:36,820 [WARNING] user=bob module=api_gateway - High memory usage detected (9698%)
+2026-07-19 10:21:18,463 [ERROR] user=grace module=inventory_service - Failed to authenticate user
+2026-07-19 10:33:51,501 [WARNING] user=bob module=inventory_service - Retrying failed request (attempt 10)
+2026-07-19 10:51:50,480 [INFO] user=heidi module=payment_gateway - User logged out
+2026-07-19 12:02:47,093 [WARNING] user=frank module=notification_service - Slow query detected (7540ms)
+2026-07-19 12:34:25,230 [INFO] user=frank module=api_gateway - User login successful
+2026-07-19 13:08:59,357 [CRITICAL] user=bob module=auth_service - Data corruption detected in table orders
+2026-07-19 13:36:42,893 [INFO] user=charlie module=inventory_service - Order #2936 created
+2026-07-19 13:56:54,801 [INFO] user=diana module=auth_service - Payment processed successfully
+2026-07-19 14:12:29,604 [WARNING] user=grace module=notification_service - Slow query detected (3665ms)
+2026-07-19 14:18:31,791 [ERROR] user=grace module=api_gateway - Payment declined for order #3955
+2026-07-19 14:34:48,273 [CRITICAL] user=erin module=notification_service - Service unavailable - shutting down
+2026-07-19 14:43:44,411 [INFO] user=charlie module=order_service - Health check passed
+2026-07-19 15:13:24,850 [INFO] user=frank module=notification_service - User logged out
+2026-07-19 15:21:05,096 [WARNING] user=charlie module=payment_gateway - High memory usage detected (8110%)
+2026-07-19 15:22:05,704 [INFO] user=diana module=notification_service - Order #3784 created
+2026-07-19 15:29:04,703 [INFO] user=alice module=payment_gateway - Payment processed successfully
+2026-07-19 15:31:06,729 [INFO] user=bob module=payment_gateway - Health check passed
+2026-07-19 16:02:23,284 [DEBUG] user=bob module=notification_service - Cache lookup for key session_2385
+2026-07-19 16:08:02,433 [DEBUG] user=heidi module=payment_gateway - Cache lookup for key session_3472
+2026-07-19 16:12:18,677 [DEBUG] user=bob module=api_gateway - Query executed in 8065ms
+2026-07-19 17:35:59,105 [DEBUG] user=erin module=auth_service - Query executed in 7874ms
+2026-07-19 17:41:24,281 [ERROR] user=grace module=api_gateway - Database connection failed
+2026-07-19 18:51:09,549 [INFO] user=bob module=order_service - User login successful
+2026-07-19 19:00:57,246 [DEBUG] user=grace module=payment_gateway - Query executed in 1906ms
+2026-07-19 19:24:46,177 [INFO] user=alice module=notification_service - Health check passed
+2026-07-19 19:52:11,655 [INFO] user=erin module=api_gateway - User logged out
+2026-07-19 21:13:54,322 [DEBUG] user=charlie module=order_service - Cache lookup for key session_4921
+2026-07-19 21:13:54,322 [DEBUG] user=charlie module=order_service - Cache lookup for key session_4921
+2026-07-20 06:29:25,487 [WARNING] user=frank module=auth_service - Deprecated API endpoint called
+2026-07-20 07:05:59,444 [INFO] user=bob module=order_service - Health check passed
+2026-07-20 08:13:17,450 [WARNING] user=diana module=inventory_service - Retrying failed request (attempt 2364)
+2026-07-20 08:18:16,916 [ERROR] user=bob module=inventory_service - Failed to authenticate user
+2026-07-20 08:21:11,098 [WARNING] user=grace module=inventory_service - Slow query detected (7773ms)
+2026-07-20 08:39:04,921 [INFO] user=frank module=order_service - Order #3843 created
+2026-07-20 09:02:46,183 [DEBUG] user=erin module=payment_gateway - Cache lookup for key session_2572
+2026-07-20 09:09:28,065 [ERROR] user=diana module=notification_service - Timeout while calling external API
+2026-07-20 09:13:22,099 [INFO] user=bob module=payment_gateway - Order #8163 created
+2026-07-20 09:18:12,001 [INFO] user=heidi module=inventory_service - Order #9985 created
+2026-07-20 09:18:16,714 [INFO] user=diana module=payment_gateway - Payment processed successfully
+2026-07-20 09:20:48,233 [CRITICAL] user=bob module=api_gateway - Service unavailable - shutting down
+2026-07-20 09:30:41,719 [INFO] user=heidi module=order_service - User login successful
+2026-07-20 09:36:36,931 [INFO] user=charlie module=auth_service - Payment processed successfully
+2026-07-20 09:52:44,020 [DEBUG] user=frank module=auth_service - Query executed in 8807ms
+2026-07-20 09:52:57,706 [ERROR] user=bob module=api_gateway - Null pointer exception encountered
+2026-07-20 09:57:41,871 [INFO] user=bob module=order_service - Order #5634 created
+2026-07-20 10:00:48,098 [DEBUG] user=bob module=order_service - Cache lookup for key session_1086
+2026-07-20 10:06:40,367 [INFO] user=grace module=api_gateway - User logged out
+2026-07-20 10:11:09,042 [INFO] user=grace module=order_service - Payment processed successfully
+2026-07-20 10:11:23,710 [DEBUG] user=charlie module=order_service - Cache lookup for key session_3909
+2026-07-20 10:26:14,247 [WARNING] user=erin module=inventory_service - High memory usage detected (1568%)
+2026-07-20 10:32:38,440 [INFO] user=frank module=inventory_service - User logged out
+2026-07-20 10:34:20,791 [WARNING] user=diana module=order_service - Retrying failed request (attempt 3155)
+2026-07-20 10:54:20,948 [INFO] user=grace module=api_gateway - Order #3880 created
+2026-07-20 10:57:38,479 [INFO] user=bob module=payment_gateway - User login successful
+2026-07-20 11:06:09,436 [INFO] user=alice module=inventory_service - Order #5176 created
+2026-07-20 11:06:16,162 [DEBUG] user=heidi module=auth_service - Entering function process_request
+2026-07-20 11:17:32,696 [ERROR] user=diana module=api_gateway - Payment declined for order #5251
+2026-07-20 11:29:17,313 [INFO] user=frank module=inventory_service - User logged out
+2026-07-20 11:52:00,625 [DEBUG] user=charlie module=payment_gateway - Entering function process_request
+2026-07-20 12:29:19,168 [INFO] user=diana module=payment_gateway - User logged out
+2026-07-20 12:43:37,707 [INFO] user=diana module=inventory_service - Payment processed successfully
+2026-07-20 12:52:27,151 [INFO] user=erin module=inventory_service - Health check passed
+2026-07-20 12:52:27,151 [INFO] user=erin module=inventory_service - Health check passed
+2026-07-20 12:59:04,143 [WARNING] user=alice module=notification_service - High memory usage detected (2161%)
+2026-07-20 13:01:35,203 [INFO] user=alice module=auth_service - Order #3812 created
+2026-07-20 13:04:06,839 [INFO] user=charlie module=notification_service - User logged out
+2026-07-20 13:19:05,404 [WARNING] user=erin module=auth_service - Retrying failed request (attempt 8751)
+2026-07-20 13:20:15,683 [INFO] user=bob module=api_gateway - User logged out
+2026-07-20 13:27:06,753 [DEBUG] user=frank module=notification_service - Cache lookup for key session_7232
+2026-07-20 13:49:54,685 [ERROR] user=frank module=payment_gateway - Failed to authenticate user
+2026-07-20 13:50:34,888 [INFO] user=erin module=payment_gateway - Health check passed
+2026-07-20 13:50:34,888 [INFO] user=erin module=payment_gateway - Health check passed
+2026-07-20 13:57:06,350 [DEBUG] user=diana module=payment_gateway - Cache lookup for key session_4611
+2026-07-20 14:11:02,846 [ERROR] user=erin module=auth_service - Payment declined for order #1710
+2026-07-20 14:17:02,706 [WARNING] user=charlie module=inventory_service - High memory usage detected (8018%)
+2026-07-20 14:18:23,993 [ERROR] user=charlie module=payment_gateway - Timeout while calling external API
+2026-07-20 14:18:23,993 [ERROR] user=charlie module=payment_gateway - Timeout while calling external API
+2026-07-20 14:29:51,781 [ERROR] user=alice module=inventory_service - Payment declined for order #6602
+2026-07-20 14:51:47,892 [INFO] user=grace module=order_service - User logged out
+2026-07-20 15:15:15,335 [INFO] user=heidi module=order_service - User login successful
+2026-07-20 16:07:37,610 [WARNING] user=diana module=payment_gateway - High memory usage detected (9408%)
+2026-07-20 16:09:23,553 [INFO] user=bob module=api_gateway - User logged out
+2026-07-20 16:35:54,055 [INFO] user=charlie module=auth_service - Order #8309 created
+2026-07-20 16:36:50,811 [INFO] user=frank module=notification_service - User login successful
+2026-07-20 16:45:51,304 [DEBUG] user=frank module=inventory_service - Query executed in 2827ms
+2026-07-20 16:47:04,560 [DEBUG] user=alice module=api_gateway - Entering function process_request
+2026-07-20 16:48:56,506 [INFO] user=heidi module=order_service - Payment processed successfully
+2026-07-20 16:51:38,029 [INFO] user=erin module=order_service - Order #3151 created
+2026-07-20 16:57:25,843 [DEBUG] user=alice module=notification_service - Cache lookup for key session_3150
+2026-07-20 17:24:36,754 [ERROR] user=bob module=notification_service - Null pointer exception encountered
+2026-07-20 17:24:36,754 [ERROR] user=bob module=notification_service - Null pointer exception encountered
+2026-07-20 17:41:43,481 [INFO] user=alice module=order_service - Health check passed
+2026-07-20 17:51:13,193 [INFO] user=erin module=payment_gateway - Payment processed successfully
+2026-07-20 18:08:43,564 [WARNING] user=heidi module=order_service - High memory usage detected (7848%)
+2026-07-20 18:11:37,446 [DEBUG] user=charlie module=inventory_service - Query executed in 7246ms
+2026-07-20 18:18:08,861 [DEBUG] user=alice module=api_gateway - Query executed in 77ms
+2026-07-20 18:39:14,654 [INFO] user=alice module=payment_gateway - User logged out
+2026-07-20 19:38:38,517 [DEBUG] user=grace module=payment_gateway - Cache lookup for key session_2584
+2026-07-20 19:46:40,061 [INFO] user=heidi module=order_service - User logged out
+2026-07-20 20:03:45,772 [WARNING] user=grace module=payment_gateway - Deprecated API endpoint called
+2026-07-20 20:16:55,489 [INFO] user=heidi module=inventory_service - Payment processed successfully
+2026-07-20 20:43:55,958 [INFO] user=alice module=inventory_service - User logged out
+2026-07-20 21:14:33,415 [INFO] user=bob module=notification_service - Payment processed successfully
+2026-07-20 21:42:25,281 [INFO] user=erin module=api_gateway - Payment processed successfully
+2026-07-20 21:42:25,281 [INFO] user=erin module=api_gateway - Payment processed successfully
+2026-07-21 00:11:02,136 [INFO] user=bob module=api_gateway - Order #842 created
+2026-07-21 01:57:32,481 [INFO] user=heidi module=auth_service - Order #7989 created
+2026-07-21 04:34:22,651 [WARNING] user=diana module=payment_gateway - High memory usage detected (6719%)
+2026-07-21 05:27:24,150 [INFO] user=grace module=payment_gateway - User login successful
+2026-07-21 06:04:15,646 [INFO] user=frank module=api_gateway - Health check passed
+2026-07-21 07:06:43,833 [DEBUG] user=heidi module=payment_gateway - Entering function process_request
+2026-07-21 07:07:50,152 [INFO] user=heidi module=api_gateway - Order #4529 created
+2026-07-21 08:03:05,436 [INFO] user=charlie module=auth_service - Health check passed
+2026-07-21 08:13:06,365 [INFO] user=diana module=notification_service - Health check passed
+2026-07-21 08:17:05,453 [INFO] user=alice module=inventory_service - Health check passed
+2026-07-21 08:18:55,031 [ERROR] user=alice module=api_gateway - Failed to authenticate user
+2026-07-21 08:47:40,355 [INFO] user=frank module=api_gateway - User logged out
+2026-07-21 08:54:40,627 [INFO] user=diana module=notification_service - User login successful
+2026-07-21 09:01:16,964 [INFO] user=frank module=inventory_service - Payment processed successfully
+2026-07-21 09:04:03,274 [INFO] user=frank module=auth_service - User logged out
+2026-07-21 09:06:42,441 [DEBUG] user=heidi module=payment_gateway - Entering function process_request
+2026-07-21 09:33:55,621 [WARNING] user=charlie module=api_gateway - Slow query detected (9008ms)
+2026-07-21 09:36:10,413 [WARNING] user=heidi module=payment_gateway - Deprecated API endpoint called
+2026-07-21 09:38:32,193 [INFO] user=erin module=api_gateway - User login successful
+2026-07-21 09:46:19,738 [INFO] user=frank module=auth_service - Health check passed
+2026-07-21 09:50:26,235 [INFO] user=frank module=api_gateway - Health check passed
+2026-07-21 09:58:36,717 [ERROR] user=diana module=auth_service - Null pointer exception encountered
+2026-07-21 10:00:47,223 [INFO] user=erin module=api_gateway - User login successful
+2026-07-21 10:18:24,575 [INFO] user=charlie module=order_service - Health check passed
+2026-07-21 10:19:46,959 [WARNING] user=heidi module=payment_gateway - Retrying failed request (attempt 2536)
+2026-07-21 10:19:46,959 [WARNING] user=heidi module=payment_gateway - Retrying failed request (attempt 2536)
+2026-07-21 10:31:02,842 [INFO] user=charlie module=payment_gateway - Order #6255 created
+2026-07-21 10:43:32,730 [INFO] user=grace module=inventory_service - User logged out
+2026-07-21 10:57:13,851 [WARNING] user=grace module=api_gateway - Deprecated API endpoint called
+2026-07-21 11:06:14,751 [DEBUG] user=diana module=notification_service - Query executed in 6629ms
+2026-07-21 11:28:09,473 [INFO] user=alice module=order_service - Payment processed successfully
+2026-07-21 11:28:27,408 [WARNING] user=erin module=api_gateway - Deprecated API endpoint called
+2026-07-21 12:02:19,373 [DEBUG] user=frank module=notification_service - Query executed in 2427ms
+2026-07-21 12:07:44,530 [DEBUG] user=frank module=inventory_service - Query executed in 2864ms
+2026-07-21 12:16:28,476 [INFO] user=frank module=inventory_service - Payment processed successfully
+2026-07-21 12:25:27,323 [DEBUG] user=diana module=order_service - Entering function process_request
+2026-07-21 12:25:27,323 [DEBUG] user=diana module=order_service - Entering function process_request
+2026-07-21 12:35:17,845 [INFO] user=erin module=auth_service - Health check passed
+2026-07-21 12:41:29,754 [INFO] user=erin module=order_service - Health check passed
+2026-07-21 12:46:05,441 [INFO] user=alice module=payment_gateway - User logged out
+2026-07-21 12:46:50,360 [INFO] user=frank module=order_service - Health check passed
+2026-07-21 13:49:15,775 [WARNING] user=erin module=api_gateway - Slow query detected (6179ms)
+2026-07-21 13:55:57,114 [INFO] user=heidi module=order_service - User logged out
+2026-07-21 14:11:50,185 [INFO] user=heidi module=inventory_service - User logged out
+2026-07-21 14:23:10,400 [WARNING] user=erin module=api_gateway - Retrying failed request (attempt 7754)
+2026-07-21 14:24:33,329 [DEBUG] user=diana module=api_gateway - Query executed in 3645ms
+2026-07-21 14:34:12,843 [DEBUG] user=erin module=order_service - Entering function process_request
+2026-07-21 14:38:02,894 [WARNING] user=diana module=auth_service - Deprecated API endpoint called
+2026-07-21 14:40:56,577 [INFO] user=charlie module=notification_service - User logged out
+2026-07-21 14:54:07,099 [WARNING] user=diana module=inventory_service - Retrying failed request (attempt 6201)
+2026-07-21 15:01:18,193 [ERROR] user=heidi module=order_service - Timeout while calling external API
+2026-07-21 15:08:16,955 [INFO] user=charlie module=auth_service - User logged out
+2026-07-21 15:11:34,671 [INFO] user=bob module=payment_gateway - Health check passed
+2026-07-21 15:15:50,591 [INFO] user=diana module=payment_gateway - Payment processed successfully
+2026-07-21 15:22:46,137 [WARNING] user=frank module=inventory_service - Retrying failed request (attempt 350)
+2026-07-21 15:35:48,934 [INFO] user=bob module=inventory_service - Order #4238 created
+2026-07-21 15:42:01,385 [INFO] user=erin module=notification_service - Health check passed
+2026-07-21 15:57:01,657 [INFO] user=grace module=api_gateway - User login successful
+2026-07-21 16:20:54,175 [WARNING] user=charlie module=payment_gateway - Retrying failed request (attempt 4025)
+2026-07-21 16:25:25,841 [ERROR] user=alice module=order_service - Null pointer exception encountered
+2026-07-21 16:58:44,479 [DEBUG] user=heidi module=notification_service - Cache lookup for key session_1523
+2026-07-21 17:19:44,722 [DEBUG] user=charlie module=notification_service - Query executed in 3315ms
+2026-07-21 17:21:22,631 [INFO] user=grace module=order_service - Order #8190 created
+2026-07-21 17:42:42,675 [WARNING] user=bob module=auth_service - Slow query detected (900ms)
+2026-07-21 17:42:42,675 [WARNING] user=bob module=auth_service - Slow query detected (900ms)
+2026-07-21 17:46:03,991 [INFO] user=bob module=inventory_service - Payment processed successfully
+2026-07-21 17:47:41,574 [DEBUG] user=heidi module=auth_service - Query executed in 9206ms
+2026-07-21 18:00:50,717 [INFO] user=frank module=order_service - User logged out
+2026-07-21 18:16:08,330 [INFO] user=alice module=order_service - Health check passed
+2026-07-21 18:22:38,551 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-07-21 18:37:46,877 [INFO] user=charlie module=order_service - Health check passed
+2026-07-21 18:49:17,149 [INFO] user=frank module=api_gateway - User login successful
+2026-07-21 19:05:49,306 [INFO] user=heidi module=api_gateway - User logged out
+2026-07-21 19:45:37,264 [WARNING] user=bob module=payment_gateway - High memory usage detected (5524%)
+2026-07-21 19:49:35,299 [INFO] user=frank module=payment_gateway - Health check passed
+2026-07-21 20:20:55,322 [INFO] user=alice module=payment_gateway - User logged out
+2026-07-21 20:31:12,813 [DEBUG] user=diana module=order_service - Cache lookup for key session_3924
+2026-07-22 01:04:13,686 [DEBUG] user=bob module=payment_gateway - Query executed in 8737ms
+2026-07-22 01:40:58,279 [CRITICAL] user=bob module=notification_service - Out of memory - restarting worker
+2026-07-22 02:05:52,302 [WARNING] user=heidi module=api_gateway - Slow query detected (1994ms)
+2026-07-22 04:32:48,156 [WARNING] user=bob module=payment_gateway - High memory usage detected (8782%)
+2026-07-22 05:51:37,439 [CRITICAL] user=heidi module=notification_service - Service unavailable - shutting down
+2026-07-22 06:07:00,189 [ERROR] user=diana module=payment_gateway - Payment declined for order #1985
+2026-07-22 06:09:54,135 [WARNING] user=alice module=inventory_service - Retrying failed request (attempt 2737)
+2026-07-22 06:15:25,500 [INFO] user=grace module=payment_gateway - Health check passed
+2026-07-22 06:38:46,653 [INFO] user=alice module=auth_service - Payment processed successfully
+2026-07-22 07:33:34,095 [ERROR] user=bob module=payment_gateway - Failed to authenticate user
+2026-07-22 08:09:32,226 [INFO] user=heidi module=inventory_service - Payment processed successfully
+2026-07-22 08:16:12,177 [INFO] user=frank module=order_service - Order #3872 created
+2026-07-22 08:25:02,280 [INFO] user=diana module=notification_service - Order #3759 created
+2026-07-22 08:41:36,482 [WARNING] user=erin module=order_service - Slow query detected (3321ms)
+2026-07-22 09:44:32,531 [INFO] user=alice module=payment_gateway - User login successful
+2026-07-22 09:48:28,982 [INFO] user=frank module=inventory_service - User login successful
+2026-07-22 10:16:58,686 [INFO] user=bob module=inventory_service - Payment processed successfully
+2026-07-22 10:26:21,768 [INFO] user=diana module=auth_service - Payment processed successfully
+2026-07-22 10:31:25,762 [ERROR] user=alice module=auth_service - Payment declined for order #8674
+2026-07-22 11:03:48,666 [DEBUG] user=alice module=order_service - Entering function process_request
+2026-07-22 11:14:14,980 [ERROR] user=erin module=api_gateway - Database connection failed
+2026-07-22 11:40:34,519 [INFO] user=bob module=api_gateway - User login successful
+2026-07-22 11:50:43,320 [WARNING] user=erin module=api_gateway - High memory usage detected (6252%)
+2026-07-22 11:59:00,552 [WARNING] user=diana module=notification_service - Slow query detected (8305ms)
+2026-07-22 12:06:11,854 [ERROR] user=heidi module=order_service - Failed to authenticate user
+2026-07-22 12:09:55,171 [INFO] user=heidi module=auth_service - Health check passed
+2026-07-22 12:14:21,081 [DEBUG] user=heidi module=auth_service - Cache lookup for key session_883
+2026-07-22 12:32:09,850 [ERROR] user=erin module=auth_service - Payment declined for order #4470
+2026-07-22 12:39:13,727 [ERROR] user=diana module=auth_service - Timeout while calling external API
+2026-07-22 12:55:54,038 [DEBUG] user=charlie module=auth_service - Query executed in 6261ms
+2026-07-22 13:03:58,682 [INFO] user=heidi module=order_service - User logged out
+2026-07-22 13:06:28,515 [DEBUG] user=bob module=inventory_service - Entering function process_request
+2026-07-22 13:11:17,763 [INFO] user=heidi module=auth_service - Order #6324 created
+2026-07-22 13:20:00,401 [WARNING] user=diana module=auth_service - Deprecated API endpoint called
+2026-07-22 13:26:12,765 [DEBUG] user=diana module=api_gateway - Entering function process_request
+2026-07-22 13:29:20,148 [INFO] user=diana module=auth_service - Health check passed
+2026-07-22 13:32:09,474 [ERROR] user=erin module=payment_gateway - Failed to authenticate user
+2026-07-22 13:32:27,422 [INFO] user=alice module=notification_service - User login successful
+2026-07-22 13:37:33,526 [INFO] user=erin module=notification_service - Health check passed
+2026-07-22 13:37:48,987 [WARNING] user=bob module=inventory_service - Retrying failed request (attempt 2429)
+2026-07-22 14:22:11,242 [ERROR] user=heidi module=order_service - Payment declined for order #6099
+2026-07-22 14:22:41,736 [INFO] user=grace module=notification_service - User login successful
+2026-07-22 14:37:54,513 [WARNING] user=grace module=inventory_service - Retrying failed request (attempt 5640)
+2026-07-22 14:55:04,582 [INFO] user=charlie module=auth_service - Health check passed
+2026-07-22 14:59:28,867 [DEBUG] user=diana module=order_service - Cache lookup for key session_5412
+2026-07-22 15:03:12,298 [INFO] user=alice module=notification_service - Health check passed
+2026-07-22 15:06:21,417 [INFO] user=grace module=api_gateway - Payment processed successfully
+2026-07-22 15:11:26,942 [WARNING] user=diana module=notification_service - High memory usage detected (8619%)
+2026-07-22 15:16:58,585 [INFO] user=grace module=inventory_service - Health check passed
+2026-07-22 15:19:45,162 [INFO] user=diana module=order_service - User logged out
+2026-07-22 15:30:18,749 [INFO] user=diana module=api_gateway - Health check passed
+2026-07-22 15:35:00,158 [INFO] user=alice module=notification_service - User login successful
+2026-07-22 15:44:48,108 [INFO] user=grace module=payment_gateway - User logged out
+2026-07-22 15:45:31,485 [INFO] user=frank module=api_gateway - Payment processed successfully
+2026-07-22 15:51:09,825 [INFO] user=frank module=api_gateway - User login successful
+2026-07-22 16:15:02,467 [ERROR] user=alice module=payment_gateway - Payment declined for order #3289
+2026-07-22 16:17:50,406 [DEBUG] user=diana module=notification_service - Query executed in 4136ms
+2026-07-22 16:43:26,073 [DEBUG] user=diana module=order_service - Query executed in 6085ms
+2026-07-22 17:38:13,381 [INFO] user=alice module=inventory_service - User logged out
+2026-07-22 17:49:51,804 [WARNING] user=heidi module=inventory_service - Slow query detected (6618ms)
+2026-07-22 18:03:53,127 [INFO] user=charlie module=payment_gateway - Health check passed
+2026-07-22 18:40:24,969 [WARNING] user=bob module=payment_gateway - Deprecated API endpoint called
+2026-07-22 19:32:29,989 [INFO] user=erin module=inventory_service - User login successful
+2026-07-22 19:33:40,662 [INFO] user=heidi module=api_gateway - Order #2541 created
+2026-07-22 19:51:32,979 [DEBUG] user=bob module=notification_service - Entering function process_request
+2026-07-22 20:02:27,901 [INFO] user=frank module=notification_service - User logged out
+2026-07-22 21:01:46,856 [INFO] user=heidi module=payment_gateway - User login successful
+2026-07-22 22:27:44,135 [INFO] user=alice module=auth_service - Payment processed successfully
+2026-07-23 03:16:10,595 [CRITICAL] user=bob module=order_service - Data corruption detected in table orders
+2026-07-23 04:06:18,275 [INFO] user=alice module=payment_gateway - User login successful
+2026-07-23 06:01:46,607 [DEBUG] user=heidi module=api_gateway - Cache lookup for key session_2293
+2026-07-23 06:32:14,665 [ERROR] user=erin module=api_gateway - Database connection failed
+2026-07-23 07:45:35,684 [INFO] user=charlie module=api_gateway - Payment processed successfully
+2026-07-23 07:48:09,057 [CRITICAL] user=heidi module=api_gateway - Service unavailable - shutting down
+2026-07-23 08:15:04,012 [WARNING] user=charlie module=auth_service - Retrying failed request (attempt 5985)
+2026-07-23 08:16:38,551 [WARNING] user=heidi module=api_gateway - High memory usage detected (8451%)
+2026-07-23 08:18:07,547 [WARNING] user=charlie module=payment_gateway - High memory usage detected (9945%)
+2026-07-23 08:18:28,901 [INFO] user=alice module=payment_gateway - Payment processed successfully
+2026-07-23 08:20:08,186 [WARNING] user=bob module=notification_service - Slow query detected (4563ms)
+2026-07-23 08:33:51,433 [INFO] user=erin module=inventory_service - Order #9449 created
+2026-07-23 08:56:07,532 [INFO] user=diana module=auth_service - User login successful
+2026-07-23 08:56:11,745 [ERROR] user=heidi module=order_service - Payment declined for order #3877
+2026-07-23 08:59:29,594 [INFO] user=diana module=order_service - Health check passed
+2026-07-23 09:18:42,536 [DEBUG] user=diana module=auth_service - Entering function process_request
+2026-07-23 09:23:39,741 [ERROR] user=charlie module=inventory_service - Database connection failed
+2026-07-23 09:38:46,511 [INFO] user=erin module=notification_service - Payment processed successfully
+2026-07-23 09:41:04,367 [INFO] user=grace module=auth_service - Order #7237 created
+2026-07-23 09:42:30,464 [INFO] user=alice module=notification_service - Health check passed
+2026-07-23 10:06:51,500 [INFO] user=frank module=inventory_service - User logged out
+2026-07-23 10:06:54,164 [ERROR] user=heidi module=order_service - Timeout while calling external API
+2026-07-23 10:27:21,041 [INFO] user=charlie module=auth_service - Order #5024 created
+2026-07-23 10:44:20,602 [INFO] user=charlie module=notification_service - User logged out
+2026-07-23 10:44:43,311 [INFO] user=charlie module=inventory_service - Order #7408 created
+2026-07-23 10:56:16,627 [ERROR] user=erin module=api_gateway - Null pointer exception encountered
+2026-07-23 11:00:34,849 [WARNING] user=erin module=inventory_service - Retrying failed request (attempt 2911)
+2026-07-23 11:02:35,562 [INFO] user=bob module=inventory_service - User login successful
+2026-07-23 11:02:35,562 [INFO] user=bob module=inventory_service - User login successful
+2026-07-23 11:09:39,329 [INFO] user=alice module=order_service - User logged out
+2026-07-23 11:20:48,957 [INFO] user=heidi module=api_gateway - Order #1570 created
+2026-07-23 11:23:27,913 [DEBUG] user=erin module=payment_gateway - Entering function process_request
+2026-07-23 11:42:54,585 [INFO] user=charlie module=api_gateway - Health check passed
+2026-07-23 11:51:28,917 [INFO] user=grace module=payment_gateway - Payment processed successfully
+2026-07-23 12:03:25,881 [WARNING] user=grace module=inventory_service - High memory usage detected (7432%)
+2026-07-23 12:13:48,792 [INFO] user=charlie module=order_service - User login successful
+2026-07-23 12:15:18,249 [ERROR] user=grace module=notification_service - Payment declined for order #6641
+2026-07-23 12:27:32,624 [DEBUG] user=frank module=inventory_service - Entering function process_request
+2026-07-23 12:28:05,487 [INFO] user=alice module=order_service - User login successful
+2026-07-23 12:38:20,605 [INFO] user=erin module=inventory_service - User login successful
+2026-07-23 12:41:37,072 [INFO] user=grace module=inventory_service - Payment processed successfully
+2026-07-23 13:02:32,894 [WARNING] user=alice module=notification_service - Deprecated API endpoint called
+2026-07-23 13:16:55,259 [INFO] user=grace module=order_service - Order #321 created
+2026-07-23 13:23:51,323 [INFO] user=erin module=api_gateway - User logged out
+2026-07-23 13:25:16,506 [INFO] user=heidi module=inventory_service - User logged out
+2026-07-23 13:28:27,680 [ERROR] user=frank module=auth_service - Database connection failed
+2026-07-23 13:35:04,274 [INFO] user=alice module=notification_service - User login successful
+2026-07-23 13:39:22,949 [WARNING] user=erin module=inventory_service - Deprecated API endpoint called
+2026-07-23 13:50:48,225 [INFO] user=heidi module=inventory_service - Order #1355 created
+2026-07-23 13:56:22,454 [WARNING] user=charlie module=payment_gateway - High memory usage detected (2833%)
+2026-07-23 14:30:08,388 [INFO] user=erin module=api_gateway - Payment processed successfully
+2026-07-23 14:34:54,823 [INFO] user=bob module=payment_gateway - Health check passed
+2026-07-23 14:49:55,133 [INFO] user=erin module=auth_service - User login successful
+2026-07-23 14:57:05,019 [INFO] user=charlie module=api_gateway - Health check passed
+2026-07-23 15:08:06,396 [ERROR] user=charlie module=api_gateway - Failed to authenticate user
+2026-07-23 15:10:28,425 [INFO] user=grace module=order_service - Health check passed
+2026-07-23 15:21:34,529 [INFO] user=charlie module=inventory_service - Payment processed successfully
+2026-07-23 15:37:45,585 [CRITICAL] user=erin module=inventory_service - Out of memory - restarting worker
+2026-07-23 15:41:09,267 [DEBUG] user=frank module=api_gateway - Query executed in 463ms
+2026-07-23 15:41:48,558 [CRITICAL] user=heidi module=inventory_service - Service unavailable - shutting down
+2026-07-23 16:38:14,815 [ERROR] user=heidi module=order_service - Database connection failed
+2026-07-23 16:38:14,815 [ERROR] user=heidi module=order_service - Database connection failed
+2026-07-23 16:40:05,899 [INFO] user=charlie module=payment_gateway - User login successful
+2026-07-23 16:50:49,282 [INFO] user=erin module=auth_service - Health check passed
+2026-07-23 16:51:12,547 [INFO] user=diana module=auth_service - User login successful
+2026-07-23 18:31:48,250 [INFO] user=bob module=order_service - User login successful
+2026-07-23 18:35:26,991 [INFO] user=diana module=order_service - Order #7587 created
+2026-07-23 18:56:39,696 [INFO] user=erin module=notification_service - User login successful
+2026-07-23 20:17:50,210 [INFO] user=alice module=auth_service - User logged out
+2026-07-23 20:50:15,333 [INFO] user=grace module=order_service - Payment processed successfully
+2026-07-24 02:07:45,939 [INFO] user=grace module=payment_gateway - Health check passed
+2026-07-24 02:15:54,987 [INFO] user=bob module=inventory_service - Payment processed successfully
+2026-07-24 06:10:55,592 [DEBUG] user=erin module=order_service - Entering function process_request
+2026-07-24 06:19:35,795 [INFO] user=frank module=payment_gateway - User logged out
+2026-07-24 06:41:57,672 [DEBUG] user=grace module=auth_service - Query executed in 4961ms
+2026-07-24 07:26:22,661 [INFO] user=grace module=inventory_service - User login successful
+2026-07-24 07:41:02,618 [WARNING] user=alice module=order_service - High memory usage detected (2555%)
+2026-07-24 07:53:41,495 [WARNING] user=charlie module=order_service - Deprecated API endpoint called
+2026-07-24 08:02:19,504 [ERROR] user=erin module=api_gateway - Timeout while calling external API
+2026-07-24 08:14:46,743 [INFO] user=erin module=payment_gateway - User logged out
+2026-07-24 08:40:05,097 [INFO] user=bob module=api_gateway - Payment processed successfully
+2026-07-24 09:01:05,135 [WARNING] user=heidi module=inventory_service - High memory usage detected (9744%)
+2026-07-24 09:03:37,753 [INFO] user=heidi module=payment_gateway - Order #4862 created
+2026-07-24 09:03:37,961 [DEBUG] user=alice module=order_service - Entering function process_request
+2026-07-24 09:18:36,849 [ERROR] user=heidi module=auth_service - Timeout while calling external API
+2026-07-24 09:23:18,788 [INFO] user=charlie module=order_service - Order #4260 created
+2026-07-24 09:33:55,033 [INFO] user=charlie module=order_service - Order #7945 created
+2026-07-24 09:37:48,540 [WARNING] user=diana module=inventory_service - High memory usage detected (5578%)
+2026-07-24 09:39:47,862 [DEBUG] user=charlie module=order_service - Query executed in 5219ms
+2026-07-24 10:02:38,792 [DEBUG] user=charlie module=inventory_service - Cache lookup for key session_3498
+2026-07-24 10:06:52,297 [WARNING] user=bob module=auth_service - Deprecated API endpoint called
+2026-07-24 10:17:15,983 [WARNING] user=charlie module=notification_service - Deprecated API endpoint called
+2026-07-24 10:19:54,971 [INFO] user=frank module=order_service - User logged out
+2026-07-24 10:26:38,277 [WARNING] user=diana module=notification_service - Slow query detected (9ms)
+2026-07-24 10:27:33,964 [INFO] user=frank module=inventory_service - User logged out
+2026-07-24 10:29:00,847 [INFO] user=frank module=notification_service - Payment processed successfully
+2026-07-24 10:34:53,251 [INFO] user=frank module=payment_gateway - Order #3634 created
+2026-07-24 10:35:44,278 [INFO] user=heidi module=payment_gateway - Order #8825 created
+2026-07-24 10:51:49,370 [INFO] user=diana module=notification_service - Payment processed successfully
+2026-07-24 11:16:49,105 [INFO] user=alice module=inventory_service - User logged out
+2026-07-24 11:21:22,573 [INFO] user=bob module=api_gateway - Order #6794 created
+2026-07-24 11:31:27,741 [WARNING] user=alice module=inventory_service - Deprecated API endpoint called
+2026-07-24 11:37:06,759 [INFO] user=bob module=auth_service - Order #6469 created
+2026-07-24 11:40:26,296 [ERROR] user=frank module=notification_service - Timeout while calling external API
+2026-07-24 11:45:19,321 [INFO] user=charlie module=inventory_service - User login successful
+2026-07-24 11:48:20,627 [INFO] user=heidi module=api_gateway - Health check passed
+2026-07-24 11:54:49,420 [ERROR] user=diana module=api_gateway - Payment declined for order #9369
+2026-07-24 11:59:34,669 [DEBUG] user=charlie module=inventory_service - Entering function process_request
+2026-07-24 12:21:26,319 [WARNING] user=diana module=auth_service - Retrying failed request (attempt 242)
+2026-07-24 12:24:38,189 [INFO] user=erin module=api_gateway - User login successful
+2026-07-24 12:42:58,521 [INFO] user=bob module=auth_service - User login successful
+2026-07-24 12:48:01,769 [DEBUG] user=charlie module=notification_service - Entering function process_request
+2026-07-24 13:14:37,225 [DEBUG] user=diana module=auth_service - Entering function process_request
+2026-07-24 13:14:37,225 [DEBUG] user=diana module=auth_service - Entering function process_request
+2026-07-24 13:24:18,865 [INFO] user=charlie module=notification_service - User logged out
+2026-07-24 13:31:29,100 [INFO] user=frank module=order_service - Payment processed successfully
+2026-07-24 13:41:22,062 [INFO] user=diana module=order_service - User login successful
+2026-07-24 13:48:12,179 [INFO] user=charlie module=auth_service - Payment processed successfully
+2026-07-24 13:48:21,116 [INFO] user=frank module=order_service - User logged out
+2026-07-24 13:51:16,352 [WARNING] user=erin module=order_service - Deprecated API endpoint called
+2026-07-24 13:51:16,352 [WARNING] user=erin module=order_service - Deprecated API endpoint called
+2026-07-24 14:13:11,003 [WARNING] user=grace module=notification_service - Slow query detected (6568ms)
+2026-07-24 14:16:18,852 [WARNING] user=alice module=api_gateway - Retrying failed request (attempt 3418)
+2026-07-24 14:43:47,170 [INFO] user=grace module=payment_gateway - Order #4809 created
+2026-07-24 14:43:49,028 [INFO] user=grace module=auth_service - User login successful
+2026-07-24 14:48:57,453 [DEBUG] user=heidi module=api_gateway - Query executed in 9158ms
+2026-07-24 14:58:48,580 [DEBUG] user=frank module=api_gateway - Query executed in 6920ms
+2026-07-24 15:36:32,068 [WARNING] user=grace module=notification_service - High memory usage detected (8979%)
+2026-07-24 15:46:20,044 [INFO] user=alice module=api_gateway - User logged out
+2026-07-24 15:46:49,603 [WARNING] user=grace module=order_service - Slow query detected (2206ms)
+2026-07-24 16:17:21,975 [WARNING] user=grace module=payment_gateway - High memory usage detected (6064%)
+2026-07-24 16:19:52,721 [INFO] user=erin module=auth_service - User login successful
+2026-07-24 16:22:50,094 [INFO] user=heidi module=api_gateway - User logged out
+2026-07-24 16:37:36,731 [INFO] user=alice module=inventory_service - Payment processed successfully
+2026-07-24 17:15:16,491 [INFO] user=frank module=order_service - Payment processed successfully
+2026-07-24 17:19:28,446 [WARNING] user=bob module=notification_service - Deprecated API endpoint called
+2026-07-24 17:30:55,394 [WARNING] user=bob module=auth_service - High memory usage detected (6658%)
+2026-07-24 17:41:06,693 [INFO] user=erin module=auth_service - User login successful
+2026-07-24 18:40:09,613 [WARNING] user=charlie module=auth_service - Deprecated API endpoint called
+2026-07-24 19:28:17,389 [INFO] user=diana module=notification_service - Order #430 created
+2026-07-24 20:55:51,191 [WARNING] user=heidi module=notification_service - Deprecated API endpoint called
+2026-07-24 21:26:12,651 [INFO] user=bob module=inventory_service - User logged out
+2026-07-24 21:26:12,651 [INFO] user=bob module=inventory_service - User logged out
+2026-07-25 00:04:10,879 [WARNING] user=charlie module=inventory_service - Deprecated API endpoint called
+2026-07-25 07:26:38,746 [ERROR] user=bob module=payment_gateway - Null pointer exception encountered
+2026-07-25 07:41:36,347 [WARNING] user=heidi module=inventory_service - Retrying failed request (attempt 5414)
+2026-07-25 08:01:01,667 [WARNING] user=alice module=order_service - Deprecated API endpoint called
+2026-07-25 08:06:22,867 [INFO] user=charlie module=payment_gateway - Payment processed successfully
+2026-07-25 08:06:31,203 [WARNING] user=bob module=notification_service - High memory usage detected (4632%)
+2026-07-25 08:06:38,533 [WARNING] user=alice module=order_service - Slow query detected (1397ms)
+2026-07-25 08:08:31,728 [CRITICAL] user=heidi module=api_gateway - Out of memory - restarting worker
+2026-07-25 09:04:14,892 [INFO] user=charlie module=payment_gateway - Health check passed
+2026-07-25 10:07:06,554 [INFO] user=alice module=notification_service - Payment processed successfully
+2026-07-25 10:10:05,272 [WARNING] user=alice module=payment_gateway - Slow query detected (5593ms)
+2026-07-25 10:35:53,000 [INFO] user=grace module=api_gateway - Order #9325 created
+2026-07-25 10:38:31,531 [INFO] user=diana module=inventory_service - Order #9733 created
+2026-07-25 10:44:34,518 [DEBUG] user=grace module=notification_service - Entering function process_request
+2026-07-25 11:09:57,106 [INFO] user=alice module=notification_service - Order #5271 created
+2026-07-25 11:16:30,161 [DEBUG] user=erin module=order_service - Cache lookup for key session_4410
+2026-07-25 11:21:27,940 [INFO] user=bob module=inventory_service - User login successful
+2026-07-25 11:21:51,882 [INFO] user=alice module=api_gateway - User login successful
+2026-07-25 11:24:16,948 [INFO] user=diana module=inventory_service - User login successful
+2026-07-25 11:35:46,947 [INFO] user=bob module=order_service - Order #3113 created
+2026-07-25 11:38:23,467 [INFO] user=heidi module=payment_gateway - User login successful
+2026-07-25 12:01:24,344 [INFO] user=diana module=inventory_service - Order #4472 created
+2026-07-25 12:04:40,711 [INFO] user=erin module=payment_gateway - User logged out
+2026-07-25 12:05:22,702 [INFO] user=grace module=api_gateway - User logged out
+2026-07-25 12:15:03,440 [DEBUG] user=erin module=notification_service - Query executed in 3073ms
+2026-07-25 12:27:01,165 [ERROR] user=bob module=inventory_service - Failed to authenticate user
+2026-07-25 12:53:13,584 [INFO] user=bob module=order_service - Order #8654 created
+2026-07-25 13:03:57,355 [DEBUG] user=charlie module=auth_service - Query executed in 7348ms
+2026-07-25 13:07:10,202 [INFO] user=grace module=payment_gateway - User login successful
+2026-07-25 13:20:53,987 [INFO] user=grace module=order_service - User login successful
+2026-07-25 13:21:12,687 [INFO] user=heidi module=auth_service - Order #1975 created
+2026-07-25 13:22:24,124 [INFO] user=frank module=payment_gateway - Health check passed
+2026-07-25 13:23:08,635 [DEBUG] user=charlie module=notification_service - Entering function process_request
+2026-07-25 13:27:41,356 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-07-25 13:35:52,460 [ERROR] user=grace module=notification_service - Payment declined for order #7445
+2026-07-25 13:38:28,776 [DEBUG] user=heidi module=payment_gateway - Entering function process_request
+2026-07-25 13:40:36,909 [INFO] user=diana module=inventory_service - Order #8497 created
+2026-07-25 13:46:26,770 [INFO] user=erin module=notification_service - User logged out
+2026-07-25 13:51:55,549 [INFO] user=diana module=payment_gateway - Payment processed successfully
+2026-07-25 14:01:49,312 [INFO] user=frank module=payment_gateway - Payment processed successfully
+2026-07-25 14:27:35,507 [INFO] user=alice module=notification_service - User logged out
+2026-07-25 14:30:33,672 [INFO] user=grace module=api_gateway - User logged out
+2026-07-25 14:46:24,953 [DEBUG] user=erin module=payment_gateway - Entering function process_request
+2026-07-25 15:28:30,847 [ERROR] user=bob module=api_gateway - Failed to authenticate user
+2026-07-25 15:35:28,319 [INFO] user=diana module=api_gateway - User logged out
+2026-07-25 15:45:35,905 [DEBUG] user=diana module=api_gateway - Cache lookup for key session_4361
+2026-07-25 15:45:51,529 [ERROR] user=frank module=auth_service - Timeout while calling external API
+2026-07-25 16:24:57,788 [INFO] user=heidi module=inventory_service - User login successful
+2026-07-25 16:27:42,552 [INFO] user=bob module=api_gateway - Payment processed successfully
+2026-07-25 16:28:34,452 [INFO] user=frank module=notification_service - User logged out
+2026-07-25 16:30:53,737 [INFO] user=erin module=notification_service - Health check passed
+2026-07-25 16:51:01,600 [WARNING] user=alice module=auth_service - Retrying failed request (attempt 3420)
+2026-07-25 17:01:11,754 [CRITICAL] user=charlie module=payment_gateway - Service unavailable - shutting down
+2026-07-25 17:12:52,797 [INFO] user=grace module=inventory_service - Health check passed
+2026-07-25 17:21:59,367 [INFO] user=grace module=auth_service - User logged out
+2026-07-25 17:40:45,528 [INFO] user=heidi module=api_gateway - User logged out
+2026-07-25 18:27:21,986 [INFO] user=erin module=payment_gateway - User login successful
+2026-07-25 18:57:53,954 [ERROR] user=frank module=inventory_service - Failed to authenticate user
+2026-07-25 19:35:34,656 [INFO] user=erin module=order_service - User logged out
+2026-07-25 20:50:49,592 [INFO] user=alice module=notification_service - Health check passed
+2026-07-26 02:08:12,428 [INFO] user=diana module=auth_service - User login successful
+2026-07-26 04:45:44,424 [WARNING] user=grace module=auth_service - Deprecated API endpoint called
+2026-07-26 05:02:08,857 [INFO] user=frank module=order_service - Payment processed successfully
+2026-07-26 05:30:07,359 [INFO] user=frank module=order_service - Health check passed
+2026-07-26 05:35:42,881 [INFO] user=grace module=inventory_service - Health check passed
+2026-07-26 06:19:27,095 [ERROR] user=diana module=payment_gateway - Timeout while calling external API
+2026-07-26 06:22:14,730 [INFO] user=heidi module=api_gateway - User login successful
+2026-07-26 07:54:13,166 [DEBUG] user=erin module=payment_gateway - Cache lookup for key session_6536
+2026-07-26 07:55:11,735 [ERROR] user=diana module=api_gateway - Database connection failed
+2026-07-26 07:55:47,043 [INFO] user=diana module=notification_service - User logged out
+2026-07-26 08:07:33,139 [INFO] user=diana module=inventory_service - User login successful
+2026-07-26 08:49:44,427 [INFO] user=alice module=payment_gateway - Health check passed
+2026-07-26 09:10:32,504 [INFO] user=charlie module=notification_service - User login successful
+2026-07-26 09:15:26,937 [ERROR] user=charlie module=auth_service - Failed to authenticate user
+2026-07-26 09:18:07,344 [ERROR] user=frank module=payment_gateway - Timeout while calling external API
+2026-07-26 09:27:34,053 [INFO] user=alice module=payment_gateway - Order #6215 created
+2026-07-26 09:27:39,603 [DEBUG] user=erin module=order_service - Entering function process_request
+2026-07-26 09:39:48,918 [INFO] user=diana module=notification_service - User logged out
+2026-07-26 09:40:34,710 [INFO] user=charlie module=notification_service - Health check passed
+2026-07-26 09:43:31,447 [ERROR] user=grace module=auth_service - Failed to authenticate user
+2026-07-26 10:10:04,522 [INFO] user=grace module=order_service - Payment processed successfully
+2026-07-26 10:20:41,249 [WARNING] user=erin module=auth_service - Retrying failed request (attempt 9061)
+2026-07-26 10:20:51,675 [INFO] user=bob module=order_service - Payment processed successfully
+2026-07-26 11:03:41,391 [INFO] user=frank module=auth_service - Health check passed
+2026-07-26 11:05:00,965 [WARNING] user=charlie module=api_gateway - Slow query detected (5189ms)
+2026-07-26 11:08:58,394 [ERROR] user=charlie module=api_gateway - Null pointer exception encountered
+2026-07-26 11:12:33,370 [ERROR] user=alice module=api_gateway - Failed to authenticate user
+2026-07-26 11:24:44,128 [INFO] user=alice module=notification_service - Health check passed
+2026-07-26 11:38:36,735 [INFO] user=grace module=notification_service - Health check passed
+2026-07-26 11:57:40,807 [INFO] user=heidi module=payment_gateway - Health check passed
+2026-07-26 11:58:11,281 [INFO] user=grace module=api_gateway - Health check passed
+2026-07-26 11:59:59,240 [WARNING] user=frank module=order_service - Slow query detected (6066ms)
+2026-07-26 12:15:25,223 [INFO] user=alice module=payment_gateway - Order #3326 created
+2026-07-26 12:20:32,957 [WARNING] user=grace module=auth_service - Retrying failed request (attempt 8628)
+2026-07-26 12:27:06,688 [INFO] user=bob module=payment_gateway - User login successful
+2026-07-26 12:31:59,205 [INFO] user=alice module=order_service - Payment processed successfully
+2026-07-26 12:38:34,090 [INFO] user=grace module=notification_service - User login successful
+2026-07-26 12:57:42,399 [INFO] user=bob module=order_service - User login successful
+2026-07-26 13:00:37,317 [INFO] user=alice module=payment_gateway - Health check passed
+2026-07-26 13:05:52,212 [INFO] user=grace module=api_gateway - Health check passed
+2026-07-26 13:43:44,184 [INFO] user=diana module=api_gateway - User logged out
+2026-07-26 13:52:40,962 [DEBUG] user=bob module=inventory_service - Entering function process_request
+2026-07-26 13:54:50,224 [DEBUG] user=erin module=order_service - Cache lookup for key session_2425
+2026-07-26 14:28:02,129 [INFO] user=charlie module=auth_service - Order #9955 created
+2026-07-26 14:45:57,206 [INFO] user=heidi module=auth_service - Order #7434 created
+2026-07-26 14:51:34,813 [DEBUG] user=diana module=api_gateway - Query executed in 4083ms
+2026-07-26 14:51:34,813 [DEBUG] user=diana module=api_gateway - Query executed in 4083ms
+2026-07-26 14:53:50,243 [INFO] user=diana module=payment_gateway - User login successful
+2026-07-26 15:28:56,904 [ERROR] user=erin module=notification_service - Payment declined for order #2634
+2026-07-26 15:51:34,608 [INFO] user=grace module=notification_service - User login successful
+2026-07-26 16:10:06,219 [WARNING] user=bob module=api_gateway - Retrying failed request (attempt 7318)
+2026-07-26 16:12:05,314 [INFO] user=erin module=api_gateway - User login successful
+2026-07-26 16:13:04,614 [WARNING] user=grace module=payment_gateway - Slow query detected (2069ms)
+2026-07-26 16:14:47,929 [DEBUG] user=frank module=inventory_service - Entering function process_request
+2026-07-26 16:41:38,777 [WARNING] user=grace module=notification_service - Slow query detected (4857ms)
+2026-07-26 16:47:51,943 [INFO] user=charlie module=auth_service - Payment processed successfully
+2026-07-26 16:48:24,515 [ERROR] user=grace module=auth_service - Database connection failed
+2026-07-26 16:53:00,124 [DEBUG] user=heidi module=payment_gateway - Cache lookup for key session_4098
+2026-07-26 17:20:23,085 [INFO] user=charlie module=inventory_service - Payment processed successfully
+2026-07-26 17:22:30,777 [INFO] user=diana module=payment_gateway - Payment processed successfully
+2026-07-26 18:32:20,397 [WARNING] user=frank module=inventory_service - Slow query detected (5637ms)
+2026-07-26 20:01:02,347 [DEBUG] user=erin module=inventory_service - Query executed in 7362ms
+2026-07-26 20:06:37,812 [ERROR] user=erin module=payment_gateway - Payment declined for order #4606
+2026-07-26 21:15:59,397 [ERROR] user=alice module=payment_gateway - Database connection failed
+2026-07-26 22:10:09,350 [WARNING] user=erin module=api_gateway - High memory usage detected (1416%)
+2026-07-27 06:10:31,143 [WARNING] user=erin module=notification_service - Deprecated API endpoint called
+2026-07-27 06:52:14,204 [INFO] user=heidi module=notification_service - Order #7217 created
+2026-07-27 07:06:55,788 [INFO] user=heidi module=api_gateway - Health check passed
+2026-07-27 07:40:37,594 [INFO] user=erin module=inventory_service - User login successful
+2026-07-27 07:48:59,448 [ERROR] user=bob module=order_service - Null pointer exception encountered
+2026-07-27 08:18:29,614 [WARNING] user=alice module=auth_service - Deprecated API endpoint called
+2026-07-27 08:22:56,739 [DEBUG] user=heidi module=order_service - Entering function process_request
+2026-07-27 08:28:34,998 [INFO] user=alice module=api_gateway - Payment processed successfully
+2026-07-27 08:30:02,285 [WARNING] user=grace module=auth_service - Deprecated API endpoint called
+2026-07-27 08:30:44,081 [DEBUG] user=alice module=notification_service - Entering function process_request
+2026-07-27 08:33:05,679 [DEBUG] user=heidi module=api_gateway - Query executed in 9686ms
+2026-07-27 08:34:17,130 [WARNING] user=alice module=auth_service - High memory usage detected (4545%)
+2026-07-27 08:41:28,307 [INFO] user=diana module=inventory_service - Order #7705 created
+2026-07-27 09:04:51,866 [INFO] user=bob module=inventory_service - User logged out
+2026-07-27 09:06:04,216 [INFO] user=frank module=auth_service - Order #4624 created
+2026-07-27 09:14:32,132 [ERROR] user=bob module=inventory_service - Timeout while calling external API
+2026-07-27 09:38:34,770 [DEBUG] user=heidi module=auth_service - Entering function process_request
+2026-07-27 09:46:44,962 [DEBUG] user=diana module=auth_service - Entering function process_request
+2026-07-27 09:51:19,094 [INFO] user=erin module=order_service - User logged out
+2026-07-27 10:04:19,627 [INFO] user=erin module=payment_gateway - Payment processed successfully
+2026-07-27 10:04:51,126 [INFO] user=frank module=payment_gateway - User login successful
+2026-07-27 10:08:26,919 [INFO] user=frank module=order_service - User login successful
+2026-07-27 10:19:01,819 [DEBUG] user=alice module=notification_service - Cache lookup for key session_77
+2026-07-27 10:24:28,738 [ERROR] user=bob module=auth_service - Payment declined for order #2402
+2026-07-27 10:33:57,801 [ERROR] user=charlie module=inventory_service - Database connection failed
+2026-07-27 10:51:06,261 [ERROR] user=grace module=notification_service - Null pointer exception encountered
+2026-07-27 10:55:47,523 [INFO] user=bob module=order_service - Order #7832 created
+2026-07-27 11:07:15,422 [WARNING] user=erin module=notification_service - Retrying failed request (attempt 6639)
+2026-07-27 11:19:24,188 [ERROR] user=grace module=notification_service - Null pointer exception encountered
+2026-07-27 11:35:02,237 [INFO] user=heidi module=auth_service - Order #9538 created
+2026-07-27 11:55:53,933 [INFO] user=diana module=payment_gateway - Payment processed successfully
+2026-07-27 11:59:07,697 [WARNING] user=erin module=order_service - Slow query detected (8276ms)
+2026-07-27 12:06:01,211 [DEBUG] user=bob module=order_service - Query executed in 9834ms
+2026-07-27 12:29:27,418 [INFO] user=alice module=inventory_service - User logged out
+2026-07-27 12:30:57,388 [INFO] user=heidi module=api_gateway - Order #8606 created
+2026-07-27 12:30:57,388 [INFO] user=heidi module=api_gateway - Order #8606 created
+2026-07-27 12:35:35,524 [WARNING] user=bob module=payment_gateway - High memory usage detected (3071%)
+2026-07-27 12:43:04,191 [WARNING] user=diana module=api_gateway - Retrying failed request (attempt 4820)
+2026-07-27 12:58:35,027 [INFO] user=grace module=inventory_service - Health check passed
+2026-07-27 13:08:00,514 [INFO] user=diana module=api_gateway - Health check passed
+2026-07-27 13:22:10,857 [INFO] user=heidi module=payment_gateway - Health check passed
+2026-07-27 13:36:43,234 [INFO] user=grace module=order_service - Health check passed
+2026-07-27 13:57:09,420 [DEBUG] user=grace module=inventory_service - Cache lookup for key session_1389
+2026-07-27 13:58:40,762 [INFO] user=charlie module=inventory_service - Order #2495 created
+2026-07-27 14:20:22,844 [WARNING] user=alice module=inventory_service - Retrying failed request (attempt 3660)
+2026-07-27 14:23:23,179 [ERROR] user=bob module=inventory_service - Null pointer exception encountered
+2026-07-27 14:23:49,635 [INFO] user=grace module=api_gateway - Order #307 created
+2026-07-27 14:51:08,064 [INFO] user=charlie module=api_gateway - Health check passed
+2026-07-27 15:21:59,992 [WARNING] user=diana module=payment_gateway - Slow query detected (1498ms)
+2026-07-27 15:24:08,652 [INFO] user=alice module=payment_gateway - Payment processed successfully
+2026-07-27 15:41:24,848 [INFO] user=grace module=inventory_service - Order #2676 created
+2026-07-27 15:45:21,218 [INFO] user=frank module=auth_service - User login successful
+2026-07-27 15:51:52,108 [INFO] user=bob module=notification_service - Order #2833 created
+2026-07-27 16:07:44,511 [WARNING] user=alice module=order_service - Deprecated API endpoint called
+2026-07-27 16:12:04,284 [INFO] user=heidi module=notification_service - User logged out
+2026-07-27 16:20:38,246 [ERROR] user=frank module=order_service - Timeout while calling external API
+2026-07-27 16:21:08,821 [INFO] user=grace module=inventory_service - Health check passed
+2026-07-27 16:22:15,074 [INFO] user=bob module=payment_gateway - Payment processed successfully
+2026-07-27 16:26:39,784 [INFO] user=diana module=api_gateway - User login successful
+2026-07-27 16:37:08,098 [DEBUG] user=charlie module=order_service - Query executed in 4046ms
+2026-07-27 16:55:16,598 [INFO] user=grace module=notification_service - User logged out
+2026-07-27 16:57:32,032 [ERROR] user=frank module=api_gateway - Payment declined for order #2863
+2026-07-27 17:02:07,049 [WARNING] user=alice module=api_gateway - High memory usage detected (4255%)
+2026-07-27 17:10:14,098 [INFO] user=grace module=auth_service - User login successful
+2026-07-27 17:54:18,063 [CRITICAL] user=alice module=notification_service - Data corruption detected in table orders
+2026-07-27 18:05:07,851 [CRITICAL] user=heidi module=auth_service - Out of memory - restarting worker
+2026-07-27 19:12:53,020 [INFO] user=bob module=api_gateway - User login successful
+2026-07-27 19:35:51,934 [DEBUG] user=frank module=inventory_service - Cache lookup for key session_2243
+2026-07-27 19:36:22,906 [ERROR] user=charlie module=inventory_service - Database connection failed
+2026-07-27 19:46:16,565 [WARNING] user=grace module=inventory_service - Deprecated API endpoint called
+2026-07-27 20:32:41,506 [ERROR] user=heidi module=payment_gateway - Payment declined for order #6291
+2026-07-27 21:23:02,287 [INFO] user=erin module=api_gateway - Order #3839 created
+2026-07-27 21:39:23,883 [INFO] user=diana module=payment_gateway - User login successful
+2026-07-27 21:45:03,474 [INFO] user=charlie module=notification_service - User login successful
+2026-07-27 21:47:00,444 [INFO] user=diana module=auth_service - Payment processed successfully
+2026-07-27 23:32:17,831 [INFO] user=frank module=api_gateway - Payment processed successfully
+2026-07-28 05:36:26,411 [INFO] user=diana module=api_gateway - Payment processed successfully
+2026-07-28 07:39:40,442 [ERROR] user=bob module=payment_gateway - Database connection failed
+2026-07-28 08:09:08,711 [DEBUG] user=diana module=payment_gateway - Query executed in 152ms
+2026-07-28 08:18:54,807 [ERROR] user=heidi module=payment_gateway - Payment declined for order #2254
+2026-07-28 08:33:26,579 [WARNING] user=erin module=order_service - Deprecated API endpoint called
+2026-07-28 08:46:40,541 [INFO] user=diana module=api_gateway - Order #954 created
+2026-07-28 08:57:08,236 [INFO] user=grace module=notification_service - User login successful
+2026-07-28 09:01:34,673 [CRITICAL] user=alice module=order_service - Service unavailable - shutting down
+2026-07-28 09:26:55,204 [INFO] user=bob module=order_service - Order #1607 created
+2026-07-28 10:06:29,897 [ERROR] user=frank module=notification_service - Null pointer exception encountered
+2026-07-28 10:18:16,218 [ERROR] user=diana module=notification_service - Database connection failed
+2026-07-28 10:18:16,218 [ERROR] user=diana module=notification_service - Database connection failed
+2026-07-28 10:26:40,933 [INFO] user=charlie module=order_service - Order #867 created
+2026-07-28 10:45:27,001 [INFO] user=bob module=inventory_service - User logged out
+2026-07-28 10:48:59,074 [INFO] user=grace module=payment_gateway - Payment processed successfully
+2026-07-28 10:48:59,074 [INFO] user=grace module=payment_gateway - Payment processed successfully
+2026-07-28 11:06:17,938 [INFO] user=grace module=payment_gateway - Payment processed successfully
+2026-07-28 11:09:45,219 [ERROR] user=bob module=payment_gateway - Payment declined for order #3789
+2026-07-28 11:26:15,635 [INFO] user=bob module=order_service - User logged out
+2026-07-28 11:49:55,738 [ERROR] user=heidi module=notification_service - Null pointer exception encountered
+2026-07-28 11:51:33,599 [WARNING] user=heidi module=order_service - Deprecated API endpoint called
+2026-07-28 11:56:13,837 [WARNING] user=diana module=auth_service - Retrying failed request (attempt 2843)
+2026-07-28 11:57:40,839 [INFO] user=grace module=inventory_service - Order #9293 created
+2026-07-28 12:01:23,339 [INFO] user=heidi module=api_gateway - User logged out
+2026-07-28 12:21:50,363 [INFO] user=diana module=auth_service - User logged out
+2026-07-28 12:32:07,967 [INFO] user=diana module=auth_service - User logged out
+2026-07-28 12:52:32,206 [WARNING] user=frank module=order_service - High memory usage detected (1714%)
+2026-07-28 13:01:48,688 [INFO] user=alice module=auth_service - Order #9425 created
+2026-07-28 13:28:18,839 [WARNING] user=erin module=notification_service - Retrying failed request (attempt 1129)
+2026-07-28 13:36:50,339 [INFO] user=frank module=api_gateway - Health check passed
+2026-07-28 13:38:02,779 [INFO] user=heidi module=order_service - Health check passed
+2026-07-28 13:40:36,803 [INFO] user=grace module=payment_gateway - User login successful
+2026-07-28 13:40:56,791 [DEBUG] user=grace module=inventory_service - Query executed in 2432ms
+2026-07-28 13:44:39,097 [DEBUG] user=diana module=api_gateway - Entering function process_request
+2026-07-28 13:54:10,860 [WARNING] user=diana module=api_gateway - Slow query detected (5874ms)
+2026-07-28 13:57:26,273 [INFO] user=frank module=auth_service - Health check passed
+2026-07-28 13:57:26,273 [INFO] user=frank module=auth_service - Health check passed
+2026-07-28 14:06:23,116 [INFO] user=bob module=payment_gateway - User logged out
+2026-07-28 14:07:01,844 [INFO] user=diana module=auth_service - User logged out
+2026-07-28 14:22:14,947 [WARNING] user=alice module=auth_service - Slow query detected (5473ms)
+2026-07-28 14:22:55,338 [WARNING] user=frank module=api_gateway - Slow query detected (6201ms)
+2026-07-28 14:27:37,172 [ERROR] user=alice module=inventory_service - Null pointer exception encountered
+2026-07-28 14:34:08,096 [WARNING] user=erin module=auth_service - Deprecated API endpoint called
+2026-07-28 14:52:36,415 [DEBUG] user=heidi module=inventory_service - Entering function process_request
+2026-07-28 15:03:43,083 [WARNING] user=bob module=auth_service - Retrying failed request (attempt 2580)
+2026-07-28 15:08:49,788 [INFO] user=erin module=notification_service - User logged out
+2026-07-28 15:49:01,793 [INFO] user=erin module=order_service - User login successful
+2026-07-28 15:50:31,558 [INFO] user=grace module=auth_service - Payment processed successfully
+2026-07-28 15:51:13,632 [INFO] user=grace module=order_service - User logged out
+2026-07-28 15:56:26,370 [WARNING] user=bob module=api_gateway - Retrying failed request (attempt 7292)
+2026-07-28 16:25:00,068 [DEBUG] user=bob module=order_service - Cache lookup for key session_6170
+2026-07-28 16:29:42,098 [CRITICAL] user=charlie module=order_service - Out of memory - restarting worker
+2026-07-28 17:06:58,133 [WARNING] user=erin module=api_gateway - Slow query detected (2524ms)
+2026-07-28 17:13:08,822 [INFO] user=charlie module=auth_service - Health check passed
+2026-07-28 17:34:03,472 [INFO] user=frank module=api_gateway - User logged out
+2026-07-28 19:11:10,804 [INFO] user=heidi module=auth_service - User login successful
+2026-07-28 19:11:10,804 [INFO] user=heidi module=auth_service - User login successful
+2026-07-28 19:36:09,576 [WARNING] user=frank module=notification_service - High memory usage detected (5762%)
+2026-07-28 20:20:38,397 [INFO] user=bob module=order_service - Health check passed
+2026-07-28 20:56:46,269 [DEBUG] user=grace module=payment_gateway - Entering function process_request
+2026-07-28 22:39:59,626 [INFO] user=erin module=notification_service - Health check passed
+2026-07-29 00:30:04,135 [WARNING] user=diana module=inventory_service - High memory usage detected (1560%)
+2026-07-29 02:19:40,162 [DEBUG] user=heidi module=payment_gateway - Entering function process_request
+2026-07-29 04:13:47,550 [DEBUG] user=bob module=order_service - Entering function process_request
+2026-07-29 07:15:09,701 [INFO] user=charlie module=payment_gateway - Order #7153 created
+2026-07-29 07:38:42,915 [INFO] user=alice module=auth_service - User logged out
+2026-07-29 08:17:33,461 [INFO] user=heidi module=api_gateway - Order #3378 created
+2026-07-29 08:18:21,742 [INFO] user=grace module=notification_service - User login successful
+2026-07-29 08:20:48,810 [INFO] user=diana module=api_gateway - User logged out
+2026-07-29 08:23:02,559 [WARNING] user=bob module=order_service - Retrying failed request (attempt 1613)
+2026-07-29 08:29:18,940 [ERROR] user=grace module=api_gateway - Timeout while calling external API
+2026-07-29 08:45:38,936 [WARNING] user=charlie module=inventory_service - High memory usage detected (3255%)
+2026-07-29 08:47:28,792 [INFO] user=heidi module=api_gateway - User login successful
+2026-07-29 08:57:39,264 [INFO] user=heidi module=inventory_service - Order #3667 created
+2026-07-29 09:07:14,104 [INFO] user=grace module=api_gateway - User login successful
+2026-07-29 09:40:38,072 [INFO] user=diana module=inventory_service - Health check passed
+2026-07-29 09:42:05,536 [INFO] user=frank module=payment_gateway - User logged out
+2026-07-29 09:56:09,676 [INFO] user=frank module=notification_service - User logged out
+2026-07-29 10:07:27,967 [DEBUG] user=charlie module=api_gateway - Cache lookup for key session_1099
+2026-07-29 10:24:09,163 [INFO] user=heidi module=auth_service - Order #9189 created
+2026-07-29 10:42:27,118 [DEBUG] user=bob module=order_service - Entering function process_request
+2026-07-29 10:44:14,156 [INFO] user=frank module=notification_service - User logged out
+2026-07-29 10:53:11,780 [ERROR] user=heidi module=inventory_service - Failed to authenticate user
+2026-07-29 11:24:45,485 [INFO] user=bob module=payment_gateway - User logged out
+2026-07-29 11:42:16,801 [INFO] user=grace module=auth_service - User logged out
+2026-07-29 11:43:22,360 [ERROR] user=alice module=api_gateway - Timeout while calling external API
+2026-07-29 11:57:06,914 [INFO] user=heidi module=order_service - Order #6329 created
+2026-07-29 12:13:29,309 [WARNING] user=erin module=inventory_service - Slow query detected (5714ms)
+2026-07-29 12:18:57,667 [DEBUG] user=frank module=notification_service - Query executed in 7301ms
+2026-07-29 12:22:13,915 [DEBUG] user=frank module=auth_service - Query executed in 2925ms
+2026-07-29 12:44:19,925 [CRITICAL] user=bob module=inventory_service - Service unavailable - shutting down
+2026-07-29 12:44:19,925 [CRITICAL] user=bob module=inventory_service - Service unavailable - shutting down
+2026-07-29 12:49:11,883 [INFO] user=bob module=api_gateway - Payment processed successfully
+2026-07-29 12:57:42,271 [CRITICAL] user=heidi module=auth_service - Out of memory - restarting worker
+2026-07-29 13:00:07,537 [DEBUG] user=grace module=auth_service - Entering function process_request
+2026-07-29 13:02:44,361 [WARNING] user=frank module=notification_service - Retrying failed request (attempt 3738)
+2026-07-29 13:17:59,565 [INFO] user=diana module=payment_gateway - User logged out
+2026-07-29 13:18:02,654 [WARNING] user=bob module=payment_gateway - Retrying failed request (attempt 748)
+2026-07-29 13:35:09,126 [ERROR] user=charlie module=order_service - Null pointer exception encountered
+2026-07-29 13:49:53,664 [INFO] user=bob module=auth_service - Order #4090 created
+2026-07-29 14:06:57,413 [WARNING] user=bob module=api_gateway - Deprecated API endpoint called
+2026-07-29 14:09:47,681 [WARNING] user=heidi module=api_gateway - Slow query detected (2416ms)
+2026-07-29 14:16:00,469 [INFO] user=bob module=payment_gateway - Order #58 created
+2026-07-29 14:28:27,806 [WARNING] user=alice module=order_service - Slow query detected (8382ms)
+2026-07-29 15:11:15,287 [INFO] user=grace module=payment_gateway - User logged out
+2026-07-29 15:21:11,726 [INFO] user=charlie module=inventory_service - User logged out
+2026-07-29 15:36:15,660 [ERROR] user=grace module=notification_service - Timeout while calling external API
+2026-07-29 15:44:08,150 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-07-29 15:59:43,926 [DEBUG] user=grace module=inventory_service - Query executed in 9684ms
+2026-07-29 16:08:43,786 [INFO] user=charlie module=notification_service - Health check passed
+2026-07-29 16:09:50,603 [CRITICAL] user=erin module=order_service - Out of memory - restarting worker
+2026-07-29 16:37:51,641 [DEBUG] user=bob module=auth_service - Entering function process_request
+2026-07-29 16:59:56,058 [DEBUG] user=charlie module=notification_service - Entering function process_request
+2026-07-29 17:00:15,067 [INFO] user=bob module=auth_service - Order #1990 created
+2026-07-29 17:04:07,143 [INFO] user=frank module=api_gateway - Order #3225 created
+2026-07-29 17:22:54,569 [INFO] user=diana module=payment_gateway - Health check passed
+2026-07-29 17:23:51,693 [INFO] user=alice module=auth_service - Order #647 created
+2026-07-29 17:27:38,765 [INFO] user=diana module=api_gateway - Health check passed
+2026-07-29 17:28:11,920 [INFO] user=heidi module=payment_gateway - User login successful
+2026-07-29 17:39:03,877 [WARNING] user=diana module=auth_service - High memory usage detected (5%)
+2026-07-29 17:39:03,877 [WARNING] user=diana module=auth_service - High memory usage detected (5%)
+2026-07-29 17:42:05,357 [INFO] user=grace module=auth_service - Order #6361 created
+2026-07-29 17:57:07,023 [INFO] user=heidi module=api_gateway - User login successful
+2026-07-29 17:59:30,178 [DEBUG] user=heidi module=payment_gateway - Cache lookup for key session_498
+2026-07-29 17:59:30,178 [DEBUG] user=heidi module=payment_gateway - Cache lookup for key session_498
+2026-07-29 18:38:09,182 [INFO] user=frank module=auth_service - Payment processed successfully
+2026-07-29 19:33:57,290 [INFO] user=frank module=api_gateway - Order #5670 created
+2026-07-29 19:59:20,159 [DEBUG] user=alice module=inventory_service - Entering function process_request
+2026-07-29 19:59:20,159 [DEBUG] user=alice module=inventory_service - Entering function process_request
+2026-07-29 20:50:26,940 [INFO] user=erin module=notification_service - User login successful
+2026-07-29 21:43:57,307 [INFO] user=bob module=inventory_service - Payment processed successfully
+2026-07-30 00:01:20,786 [WARNING] user=charlie module=api_gateway - Slow query detected (8657ms)
+2026-07-30 02:04:56,707 [INFO] user=heidi module=notification_service - Health check passed
+2026-07-30 03:30:37,528 [INFO] user=grace module=auth_service - User login successful
+2026-07-30 06:38:41,666 [INFO] user=alice module=inventory_service - Health check passed
+2026-07-30 07:18:53,643 [WARNING] user=heidi module=notification_service - High memory usage detected (6202%)
+2026-07-30 08:20:53,253 [ERROR] user=charlie module=api_gateway - Payment declined for order #4091
+2026-07-30 08:41:10,606 [INFO] user=erin module=payment_gateway - Payment processed successfully
+2026-07-30 08:57:25,672 [ERROR] user=alice module=notification_service - Null pointer exception encountered
+2026-07-30 09:00:27,048 [DEBUG] user=diana module=auth_service - Cache lookup for key session_7361
+2026-07-30 09:09:58,272 [WARNING] user=diana module=inventory_service - High memory usage detected (8923%)
+2026-07-30 09:14:05,959 [DEBUG] user=erin module=auth_service - Cache lookup for key session_3252
+2026-07-30 09:22:52,834 [INFO] user=grace module=inventory_service - User logged out
+2026-07-30 09:27:13,429 [INFO] user=heidi module=notification_service - Payment processed successfully
+2026-07-30 09:28:22,601 [INFO] user=alice module=inventory_service - Payment processed successfully
+2026-07-30 09:33:02,976 [WARNING] user=frank module=auth_service - High memory usage detected (2939%)
+2026-07-30 09:50:00,384 [WARNING] user=alice module=api_gateway - High memory usage detected (1587%)
+2026-07-30 09:51:05,237 [WARNING] user=frank module=auth_service - Retrying failed request (attempt 9444)
+2026-07-30 09:57:08,017 [WARNING] user=grace module=order_service - Retrying failed request (attempt 7871)
+2026-07-30 10:03:11,041 [INFO] user=frank module=api_gateway - Health check passed
+2026-07-30 10:03:11,041 [INFO] user=frank module=api_gateway - Health check passed
+2026-07-30 10:10:50,590 [INFO] user=frank module=order_service - User login successful
+2026-07-30 10:12:20,919 [INFO] user=grace module=payment_gateway - Order #9956 created
+2026-07-30 10:20:12,201 [WARNING] user=bob module=notification_service - Slow query detected (7131ms)
+2026-07-30 10:47:34,828 [DEBUG] user=diana module=notification_service - Query executed in 4455ms
+2026-07-30 11:19:55,729 [INFO] user=bob module=payment_gateway - User login successful
+2026-07-30 11:30:34,008 [INFO] user=alice module=auth_service - User logged out
+2026-07-30 11:35:53,502 [INFO] user=erin module=payment_gateway - User login successful
+2026-07-30 12:02:03,377 [INFO] user=frank module=notification_service - User login successful
+2026-07-30 12:31:33,932 [INFO] user=charlie module=notification_service - User logged out
+2026-07-30 12:51:31,446 [INFO] user=bob module=order_service - User logged out
+2026-07-30 13:35:15,096 [WARNING] user=charlie module=auth_service - Slow query detected (7409ms)
+2026-07-30 13:44:30,704 [INFO] user=grace module=payment_gateway - User login successful
+2026-07-30 14:01:48,069 [INFO] user=grace module=auth_service - Payment processed successfully
+2026-07-30 14:21:02,296 [INFO] user=charlie module=inventory_service - User logged out
+2026-07-30 14:27:40,436 [INFO] user=grace module=auth_service - Health check passed
+2026-07-30 14:38:36,577 [INFO] user=erin module=notification_service - Order #6586 created
+2026-07-30 14:41:10,053 [DEBUG] user=frank module=order_service - Cache lookup for key session_6093
+2026-07-30 15:14:56,302 [DEBUG] user=heidi module=inventory_service - Entering function process_request
+2026-07-30 15:33:28,423 [INFO] user=grace module=order_service - Health check passed
+2026-07-30 15:40:04,744 [ERROR] user=charlie module=notification_service - Payment declined for order #4313
+2026-07-30 15:45:05,361 [INFO] user=heidi module=payment_gateway - User login successful
+2026-07-30 15:49:31,562 [INFO] user=erin module=payment_gateway - Health check passed
+2026-07-30 15:54:16,517 [INFO] user=diana module=api_gateway - Payment processed successfully
+2026-07-30 16:01:41,990 [ERROR] user=charlie module=order_service - Timeout while calling external API
+2026-07-30 16:01:57,509 [DEBUG] user=bob module=auth_service - Query executed in 4106ms
+2026-07-30 16:31:39,048 [INFO] user=frank module=inventory_service - User login successful
+2026-07-30 16:48:12,440 [WARNING] user=heidi module=auth_service - High memory usage detected (6018%)
+2026-07-30 16:55:21,211 [INFO] user=alice module=order_service - User login successful
+2026-07-30 17:02:18,615 [INFO] user=heidi module=payment_gateway - Health check passed
+2026-07-30 17:44:04,486 [INFO] user=alice module=notification_service - Order #8767 created
+2026-07-30 18:24:21,997 [DEBUG] user=frank module=inventory_service - Entering function process_request
+2026-07-30 18:26:47,496 [WARNING] user=bob module=payment_gateway - Slow query detected (3464ms)
+2026-07-30 18:40:20,900 [INFO] user=diana module=order_service - Order #2626 created
+2026-07-30 19:05:22,441 [DEBUG] user=heidi module=order_service - Entering function process_request
+2026-07-30 20:06:03,376 [ERROR] user=erin module=inventory_service - Timeout while calling external API
+2026-07-30 21:31:02,372 [WARNING] user=heidi module=api_gateway - Retrying failed request (attempt 2032)
+2026-07-30 22:25:48,208 [INFO] user=grace module=notification_service - Payment processed successfully
+2026-07-31 01:32:39,390 [INFO] user=frank module=notification_service - User logged out
+2026-07-31 05:27:16,312 [INFO] user=erin module=order_service - Payment processed successfully
+2026-07-31 06:14:57,865 [INFO] user=alice module=payment_gateway - Payment processed successfully
+2026-07-31 06:36:09,057 [DEBUG] user=charlie module=payment_gateway - Query executed in 8400ms
+2026-07-31 08:13:17,982 [CRITICAL] user=alice module=api_gateway - Service unavailable - shutting down
+2026-07-31 08:20:44,407 [INFO] user=heidi module=auth_service - User login successful
+2026-07-31 08:22:57,420 [INFO] user=erin module=order_service - User logged out
+2026-07-31 08:31:18,206 [WARNING] user=diana module=notification_service - High memory usage detected (982%)
+2026-07-31 08:38:36,024 [WARNING] user=bob module=auth_service - Retrying failed request (attempt 2281)
+2026-07-31 08:39:52,944 [CRITICAL] user=alice module=inventory_service - Data corruption detected in table orders
+2026-07-31 08:59:02,712 [INFO] user=frank module=order_service - Health check passed
+2026-07-31 09:39:01,977 [INFO] user=frank module=payment_gateway - Order #6280 created
+2026-07-31 09:39:29,182 [DEBUG] user=heidi module=auth_service - Entering function process_request
+2026-07-31 09:55:49,057 [WARNING] user=grace module=inventory_service - Retrying failed request (attempt 8844)
+2026-07-31 09:56:41,754 [INFO] user=erin module=inventory_service - User logged out
+2026-07-31 10:46:22,849 [ERROR] user=heidi module=order_service - Null pointer exception encountered
+2026-07-31 10:52:42,934 [WARNING] user=alice module=payment_gateway - Slow query detected (6420ms)
+2026-07-31 10:52:50,939 [CRITICAL] user=bob module=payment_gateway - Data corruption detected in table orders
+2026-07-31 11:01:27,824 [DEBUG] user=charlie module=inventory_service - Entering function process_request
+2026-07-31 11:05:20,300 [INFO] user=alice module=auth_service - Payment processed successfully
+2026-07-31 11:09:05,674 [ERROR] user=charlie module=auth_service - Null pointer exception encountered
+2026-07-31 11:14:08,521 [WARNING] user=erin module=api_gateway - Slow query detected (9561ms)
+2026-07-31 11:24:52,235 [WARNING] user=alice module=order_service - Slow query detected (8921ms)
+2026-07-31 11:47:25,429 [INFO] user=charlie module=auth_service - User logged out
+2026-07-31 11:49:00,646 [INFO] user=heidi module=order_service - Order #2958 created
+2026-07-31 12:04:56,772 [INFO] user=erin module=auth_service - User logged out
+2026-07-31 12:40:12,278 [INFO] user=diana module=order_service - Payment processed successfully
+2026-07-31 13:00:44,852 [INFO] user=diana module=order_service - Health check passed
+2026-07-31 13:06:09,999 [INFO] user=charlie module=notification_service - Order #3904 created
+2026-07-31 13:07:23,728 [INFO] user=charlie module=payment_gateway - User login successful
+2026-07-31 13:26:17,270 [INFO] user=frank module=order_service - Order #5489 created
+2026-07-31 13:28:43,687 [WARNING] user=erin module=payment_gateway - High memory usage detected (1370%)
+2026-07-31 13:51:00,894 [DEBUG] user=alice module=payment_gateway - Entering function process_request
+2026-07-31 13:57:07,596 [ERROR] user=erin module=inventory_service - Failed to authenticate user
+2026-07-31 14:04:44,743 [ERROR] user=charlie module=order_service - Failed to authenticate user
+2026-07-31 14:19:02,994 [INFO] user=frank module=notification_service - Payment processed successfully
+2026-07-31 14:20:34,468 [INFO] user=charlie module=order_service - Order #9575 created
+2026-07-31 14:31:00,117 [INFO] user=bob module=api_gateway - Health check passed
+2026-07-31 14:42:04,078 [CRITICAL] user=charlie module=notification_service - Out of memory - restarting worker
+2026-07-31 14:43:35,904 [ERROR] user=erin module=payment_gateway - Database connection failed
+2026-07-31 14:47:44,968 [ERROR] user=charlie module=inventory_service - Timeout while calling external API
+2026-07-31 15:04:58,577 [INFO] user=bob module=notification_service - Health check passed
+2026-07-31 15:10:13,571 [INFO] user=alice module=order_service - Health check passed
+2026-07-31 15:12:48,209 [DEBUG] user=alice module=order_service - Entering function process_request
+2026-07-31 15:17:26,948 [INFO] user=alice module=notification_service - Health check passed
+2026-07-31 15:17:57,556 [INFO] user=heidi module=order_service - User login successful
+2026-07-31 15:36:39,684 [WARNING] user=bob module=order_service - Slow query detected (3996ms)
+2026-07-31 15:37:43,155 [ERROR] user=erin module=payment_gateway - Timeout while calling external API
+2026-07-31 15:49:23,171 [DEBUG] user=bob module=notification_service - Cache lookup for key session_7620
+2026-07-31 16:18:52,003 [ERROR] user=charlie module=api_gateway - Failed to authenticate user
+2026-07-31 16:23:06,228 [ERROR] user=diana module=order_service - Failed to authenticate user
+2026-07-31 16:54:40,188 [ERROR] user=frank module=order_service - Timeout while calling external API
+2026-07-31 17:08:24,792 [INFO] user=bob module=auth_service - Payment processed successfully
+2026-07-31 17:57:32,844 [DEBUG] user=erin module=api_gateway - Query executed in 1966ms
+2026-07-31 18:09:29,549 [INFO] user=erin module=order_service - Health check passed
+2026-07-31 18:35:55,782 [INFO] user=diana module=notification_service - Order #5955 created
+2026-07-31 18:52:50,099 [WARNING] user=charlie module=auth_service - Retrying failed request (attempt 819)
+2026-07-31 19:19:31,996 [WARNING] user=grace module=inventory_service - Deprecated API endpoint called
+2026-07-31 19:20:39,255 [DEBUG] user=bob module=notification_service - Query executed in 6698ms
+2026-07-31 19:22:21,698 [DEBUG] user=heidi module=auth_service - Query executed in 8771ms
+2026-07-31 19:50:59,126 [INFO] user=bob module=inventory_service - Order #6204 created
+2026-07-31 20:25:37,029 [WARNING] user=bob module=inventory_service - Slow query detected (4414ms)
+2026-07-31 21:02:30,751 [ERROR] user=charlie module=notification_service - Database connection failed
+2026-08-01 05:01:21,029 [INFO] user=frank module=order_service - User logged out
+2026-08-01 06:12:46,791 [INFO] user=grace module=notification_service - Payment processed successfully
+2026-08-01 06:23:14,652 [ERROR] user=heidi module=api_gateway - Timeout while calling external API
+2026-08-01 07:06:32,784 [ERROR] user=grace module=notification_service - Database connection failed
+2026-08-01 07:07:19,414 [DEBUG] user=alice module=notification_service - Entering function process_request
+2026-08-01 08:24:55,965 [WARNING] user=alice module=api_gateway - High memory usage detected (4030%)
+2026-08-01 08:39:53,484 [ERROR] user=heidi module=notification_service - Payment declined for order #1375
+2026-08-01 08:41:26,437 [INFO] user=erin module=order_service - User logged out
+2026-08-01 08:41:42,086 [INFO] user=bob module=order_service - User logged out
+2026-08-01 08:42:15,135 [WARNING] user=charlie module=notification_service - Retrying failed request (attempt 9507)
+2026-08-01 08:48:50,288 [INFO] user=charlie module=inventory_service - Payment processed successfully
+2026-08-01 09:08:02,120 [INFO] user=erin module=inventory_service - User login successful
+2026-08-01 09:10:27,833 [INFO] user=heidi module=inventory_service - Payment processed successfully
+2026-08-01 09:50:40,850 [WARNING] user=charlie module=auth_service - Deprecated API endpoint called
+2026-08-01 09:59:45,943 [ERROR] user=charlie module=inventory_service - Null pointer exception encountered
+2026-08-01 10:12:40,896 [INFO] user=charlie module=inventory_service - Order #8139 created
+2026-08-01 10:13:35,048 [INFO] user=heidi module=auth_service - Health check passed
+2026-08-01 10:15:55,945 [INFO] user=heidi module=payment_gateway - Health check passed
+2026-08-01 11:12:43,590 [INFO] user=charlie module=notification_service - Health check passed
+2026-08-01 11:50:56,113 [DEBUG] user=erin module=auth_service - Cache lookup for key session_2249
+2026-08-01 12:32:26,467 [WARNING] user=heidi module=auth_service - Slow query detected (912ms)
+2026-08-01 12:40:54,808 [ERROR] user=diana module=inventory_service - Payment declined for order #3962
+2026-08-01 12:44:47,487 [INFO] user=bob module=order_service - Payment processed successfully
+2026-08-01 12:51:36,926 [INFO] user=frank module=api_gateway - User login successful
+2026-08-01 13:22:48,222 [CRITICAL] user=erin module=payment_gateway - Service unavailable - shutting down
+2026-08-01 13:25:10,397 [INFO] user=charlie module=inventory_service - User logged out
+2026-08-01 13:26:10,836 [INFO] user=heidi module=inventory_service - Payment processed successfully
+2026-08-01 13:32:18,254 [ERROR] user=bob module=order_service - Database connection failed
+2026-08-01 13:36:54,496 [INFO] user=frank module=order_service - Payment processed successfully
+2026-08-01 13:40:11,486 [INFO] user=heidi module=order_service - User login successful
+2026-08-01 13:43:21,943 [INFO] user=heidi module=payment_gateway - User logged out
+2026-08-01 13:49:19,870 [WARNING] user=grace module=notification_service - Retrying failed request (attempt 3943)
+2026-08-01 13:59:50,738 [INFO] user=heidi module=order_service - Health check passed
+2026-08-01 14:00:24,115 [WARNING] user=charlie module=api_gateway - High memory usage detected (1288%)
+2026-08-01 14:01:46,021 [WARNING] user=bob module=notification_service - Deprecated API endpoint called
+2026-08-01 14:07:09,549 [INFO] user=bob module=auth_service - Payment processed successfully
+2026-08-01 14:19:25,250 [INFO] user=charlie module=inventory_service - User logged out
+2026-08-01 14:19:49,035 [CRITICAL] user=frank module=auth_service - Out of memory - restarting worker
+2026-08-01 14:28:15,926 [ERROR] user=heidi module=notification_service - Database connection failed
+2026-08-01 14:32:30,812 [INFO] user=frank module=inventory_service - Health check passed
+2026-08-01 14:39:05,060 [WARNING] user=charlie module=payment_gateway - Retrying failed request (attempt 117)
+2026-08-01 14:39:28,278 [ERROR] user=charlie module=payment_gateway - Null pointer exception encountered
+2026-08-01 14:44:44,478 [CRITICAL] user=diana module=auth_service - Out of memory - restarting worker
+2026-08-01 15:08:54,770 [INFO] user=erin module=order_service - Payment processed successfully
+2026-08-01 15:15:25,244 [WARNING] user=erin module=order_service - Retrying failed request (attempt 4202)
+2026-08-01 15:21:08,284 [INFO] user=diana module=api_gateway - User logged out
+2026-08-01 15:33:16,310 [INFO] user=alice module=notification_service - Health check passed
+2026-08-01 15:35:33,125 [INFO] user=erin module=order_service - Order #692 created
+2026-08-01 15:35:58,596 [INFO] user=bob module=auth_service - User logged out
+2026-08-01 15:41:49,526 [INFO] user=erin module=notification_service - Health check passed
+2026-08-01 15:57:06,645 [INFO] user=alice module=inventory_service - Order #4897 created
+2026-08-01 16:09:49,892 [INFO] user=heidi module=api_gateway - User logged out
+2026-08-01 16:13:19,185 [WARNING] user=frank module=api_gateway - Retrying failed request (attempt 3095)
+2026-08-01 16:13:54,750 [INFO] user=grace module=auth_service - Payment processed successfully
+2026-08-01 16:19:19,518 [DEBUG] user=diana module=api_gateway - Entering function process_request
+2026-08-01 16:56:47,793 [ERROR] user=grace module=auth_service - Payment declined for order #8811
+2026-08-01 16:59:47,770 [WARNING] user=frank module=api_gateway - Slow query detected (7005ms)
+2026-08-01 17:02:41,331 [INFO] user=frank module=inventory_service - Health check passed
+2026-08-01 17:05:57,102 [INFO] user=charlie module=inventory_service - User logged out
+2026-08-01 17:43:22,457 [DEBUG] user=grace module=payment_gateway - Entering function process_request
+2026-08-01 17:44:50,302 [INFO] user=charlie module=order_service - Payment processed successfully
+2026-08-01 18:18:04,111 [ERROR] user=heidi module=auth_service - Database connection failed
+2026-08-01 18:34:18,657 [WARNING] user=grace module=notification_service - High memory usage detected (8160%)
+2026-08-01 18:59:27,735 [INFO] user=frank module=order_service - User logged out
+2026-08-01 19:51:39,902 [INFO] user=diana module=order_service - Payment processed successfully
+2026-08-01 20:00:46,035 [INFO] user=erin module=order_service - Health check passed
+2026-08-01 20:03:50,341 [ERROR] user=heidi module=auth_service - Payment declined for order #9784
+2026-08-01 21:08:48,379 [INFO] user=charlie module=order_service - Payment processed successfully
+2026-08-01 21:41:11,515 [INFO] user=erin module=api_gateway - Payment processed successfully
+2026-08-01 22:27:41,927 [DEBUG] user=erin module=inventory_service - Entering function process_request
+2026-08-01 22:41:23,448 [ERROR] user=diana module=api_gateway - Null pointer exception encountered
+2026-08-02 07:03:51,724 [DEBUG] user=heidi module=order_service - Query executed in 9628ms
+2026-08-02 07:23:10,969 [DEBUG] user=grace module=notification_service - Entering function process_request
+2026-08-02 08:05:50,755 [INFO] user=frank module=notification_service - Health check passed
+2026-08-02 08:05:50,755 [INFO] user=frank module=notification_service - Health check passed
+2026-08-02 09:05:45,667 [DEBUG] user=heidi module=auth_service - Cache lookup for key session_119
+2026-08-02 09:07:34,932 [INFO] user=bob module=notification_service - Order #2491 created
+2026-08-02 09:10:23,099 [INFO] user=erin module=inventory_service - Order #6987 created
+2026-08-02 09:19:27,593 [ERROR] user=diana module=order_service - Database connection failed
+2026-08-02 09:36:47,765 [DEBUG] user=grace module=auth_service - Query executed in 3369ms
+2026-08-02 09:41:06,934 [INFO] user=bob module=payment_gateway - User logged out
+2026-08-02 09:45:05,396 [DEBUG] user=bob module=auth_service - Entering function process_request
+2026-08-02 09:54:02,986 [INFO] user=alice module=order_service - Payment processed successfully
+2026-08-02 10:02:38,114 [INFO] user=grace module=auth_service - Health check passed
+2026-08-02 10:12:14,359 [WARNING] user=erin module=inventory_service - High memory usage detected (3024%)
+2026-08-02 10:23:08,695 [DEBUG] user=diana module=payment_gateway - Query executed in 7146ms
+2026-08-02 10:34:15,349 [INFO] user=heidi module=notification_service - Payment processed successfully
+2026-08-02 10:35:45,952 [ERROR] user=alice module=payment_gateway - Database connection failed
+2026-08-02 10:45:52,410 [INFO] user=heidi module=order_service - User logged out
+2026-08-02 11:09:17,345 [INFO] user=charlie module=payment_gateway - User login successful
+2026-08-02 11:24:10,382 [DEBUG] user=charlie module=notification_service - Entering function process_request
+2026-08-02 11:35:31,819 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-08-02 12:03:36,530 [INFO] user=erin module=auth_service - Order #4872 created
+2026-08-02 12:11:13,731 [DEBUG] user=alice module=api_gateway - Entering function process_request
+2026-08-02 12:13:18,845 [INFO] user=erin module=auth_service - Payment processed successfully
+2026-08-02 12:21:09,043 [DEBUG] user=charlie module=order_service - Entering function process_request
+2026-08-02 12:37:09,237 [INFO] user=bob module=notification_service - Health check passed
+2026-08-02 12:40:01,189 [WARNING] user=erin module=notification_service - Slow query detected (2019ms)
+2026-08-02 12:46:37,274 [WARNING] user=erin module=notification_service - Slow query detected (7617ms)
+2026-08-02 13:04:40,750 [INFO] user=bob module=order_service - Health check passed
+2026-08-02 13:06:59,343 [ERROR] user=erin module=auth_service - Database connection failed
+2026-08-02 13:27:46,408 [WARNING] user=heidi module=notification_service - Slow query detected (9726ms)
+2026-08-02 13:32:41,772 [INFO] user=alice module=auth_service - Order #5107 created
+2026-08-02 13:36:56,273 [WARNING] user=erin module=order_service - Slow query detected (9680ms)
+2026-08-02 13:51:30,926 [DEBUG] user=alice module=payment_gateway - Cache lookup for key session_7271
+2026-08-02 13:58:32,717 [ERROR] user=frank module=auth_service - Database connection failed
+2026-08-02 14:03:50,646 [INFO] user=erin module=inventory_service - Health check passed
+2026-08-02 14:36:54,055 [INFO] user=erin module=payment_gateway - User login successful
+2026-08-02 14:39:14,064 [WARNING] user=bob module=auth_service - High memory usage detected (8146%)
+2026-08-02 14:43:56,476 [DEBUG] user=alice module=order_service - Query executed in 8011ms
+2026-08-02 14:50:03,993 [ERROR] user=diana module=notification_service - Payment declined for order #2129
+2026-08-02 14:50:26,798 [INFO] user=charlie module=order_service - User logged out
+2026-08-02 14:53:38,305 [DEBUG] user=frank module=auth_service - Cache lookup for key session_532
+2026-08-02 14:56:41,973 [ERROR] user=erin module=notification_service - Timeout while calling external API
+2026-08-02 14:59:46,817 [INFO] user=heidi module=order_service - Payment processed successfully
+2026-08-02 15:06:25,715 [ERROR] user=grace module=inventory_service - Timeout while calling external API
+2026-08-02 15:10:44,447 [INFO] user=grace module=inventory_service - Health check passed
+2026-08-02 15:14:42,861 [DEBUG] user=alice module=order_service - Cache lookup for key session_9916
+2026-08-02 15:38:33,345 [DEBUG] user=alice module=order_service - Entering function process_request
+2026-08-02 15:55:16,211 [ERROR] user=diana module=inventory_service - Payment declined for order #3848
+2026-08-02 16:37:27,803 [CRITICAL] user=grace module=auth_service - Out of memory - restarting worker
+2026-08-02 16:45:04,084 [INFO] user=grace module=auth_service - User logged out
+2026-08-02 17:07:50,166 [ERROR] user=charlie module=api_gateway - Payment declined for order #5982
+2026-08-02 17:07:50,166 [ERROR] user=charlie module=api_gateway - Payment declined for order #5982
+2026-08-02 17:24:22,862 [DEBUG] user=heidi module=order_service - Query executed in 4111ms
+2026-08-02 17:25:07,238 [DEBUG] user=diana module=order_service - Cache lookup for key session_9748
+2026-08-02 17:25:11,808 [WARNING] user=alice module=inventory_service - Slow query detected (2272ms)
+2026-08-02 17:26:26,310 [INFO] user=charlie module=api_gateway - User login successful
+2026-08-02 17:42:21,339 [INFO] user=grace module=auth_service - Payment processed successfully
+2026-08-02 17:48:45,155 [INFO] user=bob module=api_gateway - Order #3708 created
+2026-08-02 17:50:25,850 [INFO] user=charlie module=api_gateway - User logged out
+2026-08-02 18:18:58,265 [DEBUG] user=erin module=inventory_service - Entering function process_request
+2026-08-02 19:17:18,840 [DEBUG] user=diana module=order_service - Query executed in 232ms
+2026-08-02 19:28:21,653 [DEBUG] user=grace module=api_gateway - Entering function process_request
+2026-08-02 21:42:09,931 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-08-02 22:43:55,675 [INFO] user=frank module=order_service - Order #1413 created
+2026-08-02 23:28:51,015 [INFO] user=erin module=notification_service - User logged out
+2026-08-03 02:00:50,108 [INFO] user=bob module=order_service - Order #9825 created
+2026-08-03 02:22:22,315 [WARNING] user=grace module=order_service - Slow query detected (6109ms)
+2026-08-03 06:27:53,476 [INFO] user=grace module=api_gateway - Health check passed
+2026-08-03 06:45:21,823 [INFO] user=grace module=notification_service - User login successful
+2026-08-03 07:41:49,590 [INFO] user=frank module=notification_service - User login successful
+2026-08-03 08:01:35,817 [WARNING] user=grace module=api_gateway - Retrying failed request (attempt 9770)
+2026-08-03 08:06:50,021 [INFO] user=grace module=notification_service - Health check passed
+2026-08-03 08:35:03,787 [WARNING] user=erin module=inventory_service - Slow query detected (45ms)
+2026-08-03 08:48:58,201 [ERROR] user=grace module=order_service - Timeout while calling external API
+2026-08-03 08:55:45,184 [CRITICAL] user=frank module=inventory_service - Data corruption detected in table orders
+2026-08-03 09:08:02,708 [INFO] user=diana module=api_gateway - Payment processed successfully
+2026-08-03 09:33:23,024 [WARNING] user=erin module=auth_service - High memory usage detected (8348%)
+2026-08-03 09:37:57,712 [INFO] user=heidi module=auth_service - User logged out
+2026-08-03 09:41:02,188 [INFO] user=charlie module=payment_gateway - User logged out
+2026-08-03 09:55:11,193 [ERROR] user=bob module=inventory_service - Payment declined for order #7527
+2026-08-03 09:55:14,336 [WARNING] user=diana module=auth_service - Retrying failed request (attempt 9608)
+2026-08-03 10:03:22,476 [INFO] user=alice module=payment_gateway - Order #1660 created
+2026-08-03 10:06:49,643 [INFO] user=frank module=auth_service - User login successful
+2026-08-03 10:30:02,519 [INFO] user=erin module=notification_service - User logged out
+2026-08-03 10:39:06,255 [INFO] user=bob module=api_gateway - User login successful
+2026-08-03 10:55:42,128 [INFO] user=grace module=order_service - Health check passed
+2026-08-03 10:59:40,472 [INFO] user=diana module=order_service - Payment processed successfully
+2026-08-03 11:05:25,513 [INFO] user=heidi module=notification_service - User login successful
+2026-08-03 11:08:30,219 [WARNING] user=grace module=auth_service - High memory usage detected (1019%)
+2026-08-03 11:21:09,934 [WARNING] user=bob module=api_gateway - Retrying failed request (attempt 6005)
+2026-08-03 11:21:10,378 [WARNING] user=alice module=auth_service - Retrying failed request (attempt 6164)
+2026-08-03 11:23:19,184 [INFO] user=bob module=api_gateway - Health check passed
+2026-08-03 12:18:03,242 [ERROR] user=erin module=notification_service - Database connection failed
+2026-08-03 12:30:06,448 [INFO] user=frank module=inventory_service - Order #8538 created
+2026-08-03 12:36:04,435 [CRITICAL] user=grace module=inventory_service - Service unavailable - shutting down
+2026-08-03 12:36:04,435 [CRITICAL] user=grace module=inventory_service - Service unavailable - shutting down
+2026-08-03 12:40:08,030 [WARNING] user=bob module=auth_service - Deprecated API endpoint called
+2026-08-03 12:43:38,454 [INFO] user=alice module=payment_gateway - User logged out
+2026-08-03 12:47:54,757 [ERROR] user=heidi module=auth_service - Timeout while calling external API
+2026-08-03 13:25:58,665 [ERROR] user=diana module=api_gateway - Failed to authenticate user
+2026-08-03 14:03:39,984 [INFO] user=bob module=payment_gateway - Payment processed successfully
+2026-08-03 14:05:50,563 [INFO] user=frank module=notification_service - Order #7114 created
+2026-08-03 14:30:29,215 [INFO] user=diana module=notification_service - Payment processed successfully
+2026-08-03 14:39:46,835 [ERROR] user=heidi module=order_service - Failed to authenticate user
+2026-08-03 14:43:08,738 [INFO] user=diana module=auth_service - User logged out
+2026-08-03 14:43:08,738 [INFO] user=diana module=auth_service - User logged out
+2026-08-03 14:48:31,105 [INFO] user=alice module=notification_service - Payment processed successfully
+2026-08-03 14:54:21,872 [DEBUG] user=erin module=order_service - Query executed in 6513ms
+2026-08-03 14:58:37,756 [INFO] user=erin module=order_service - User login successful
+2026-08-03 15:15:43,623 [DEBUG] user=erin module=auth_service - Query executed in 6065ms
+2026-08-03 15:18:11,996 [INFO] user=heidi module=payment_gateway - User logged out
+2026-08-03 15:36:06,694 [INFO] user=diana module=api_gateway - User login successful
+2026-08-03 15:46:55,055 [DEBUG] user=bob module=payment_gateway - Entering function process_request
+2026-08-03 15:51:42,845 [INFO] user=frank module=inventory_service - User logged out
+2026-08-03 15:54:02,765 [INFO] user=frank module=api_gateway - Order #9493 created
+2026-08-03 15:59:35,647 [INFO] user=erin module=api_gateway - User logged out
+2026-08-03 16:04:28,612 [INFO] user=diana module=order_service - Order #6933 created
+2026-08-03 16:14:15,896 [INFO] user=erin module=auth_service - Health check passed
+2026-08-03 16:50:28,966 [CRITICAL] user=frank module=inventory_service - Data corruption detected in table orders
+2026-08-03 17:02:05,127 [INFO] user=charlie module=auth_service - User logged out
+2026-08-03 17:20:05,819 [WARNING] user=heidi module=inventory_service - Slow query detected (2441ms)
+2026-08-03 17:31:30,140 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-08-03 17:37:12,717 [INFO] user=erin module=inventory_service - Order #281 created
+2026-08-03 17:51:43,669 [INFO] user=bob module=api_gateway - User login successful
+2026-08-03 19:59:09,889 [WARNING] user=bob module=auth_service - High memory usage detected (3983%)
+2026-08-04 00:59:35,680 [CRITICAL] user=alice module=notification_service - Service unavailable - shutting down
+2026-08-04 06:38:27,353 [ERROR] user=erin module=payment_gateway - Failed to authenticate user
+2026-08-04 06:39:46,032 [DEBUG] user=grace module=auth_service - Cache lookup for key session_2961
+2026-08-04 07:56:06,247 [INFO] user=erin module=api_gateway - Health check passed
+2026-08-04 08:20:10,956 [WARNING] user=charlie module=order_service - High memory usage detected (8175%)
+2026-08-04 08:30:29,425 [DEBUG] user=diana module=auth_service - Entering function process_request
+2026-08-04 08:53:46,384 [DEBUG] user=frank module=notification_service - Entering function process_request
+2026-08-04 09:18:11,854 [WARNING] user=charlie module=auth_service - Deprecated API endpoint called
+2026-08-04 09:30:17,741 [WARNING] user=frank module=auth_service - Retrying failed request (attempt 3139)
+2026-08-04 09:39:23,448 [INFO] user=grace module=payment_gateway - User login successful
+2026-08-04 09:43:04,170 [INFO] user=heidi module=api_gateway - Payment processed successfully
+2026-08-04 09:49:18,363 [INFO] user=diana module=notification_service - User logged out
+2026-08-04 09:50:45,745 [INFO] user=charlie module=auth_service - Health check passed
+2026-08-04 09:57:39,614 [DEBUG] user=grace module=payment_gateway - Query executed in 1578ms
+2026-08-04 10:06:03,297 [INFO] user=heidi module=auth_service - Payment processed successfully
+2026-08-04 10:10:34,614 [INFO] user=charlie module=notification_service - Health check passed
+2026-08-04 10:18:45,080 [INFO] user=grace module=inventory_service - Payment processed successfully
+2026-08-04 10:24:49,762 [INFO] user=bob module=payment_gateway - Health check passed
+2026-08-04 10:32:21,282 [ERROR] user=bob module=api_gateway - Payment declined for order #1219
+2026-08-04 10:45:57,667 [INFO] user=frank module=order_service - Payment processed successfully
+2026-08-04 10:47:16,978 [INFO] user=heidi module=auth_service - Order #8798 created
+2026-08-04 10:59:24,910 [INFO] user=charlie module=auth_service - Health check passed
+2026-08-04 11:10:46,199 [WARNING] user=bob module=notification_service - High memory usage detected (8680%)
+2026-08-04 11:11:47,263 [INFO] user=bob module=order_service - Payment processed successfully
+2026-08-04 11:24:06,152 [WARNING] user=grace module=notification_service - Deprecated API endpoint called
+2026-08-04 11:34:22,987 [INFO] user=charlie module=inventory_service - Health check passed
+2026-08-04 11:44:06,678 [ERROR] user=charlie module=inventory_service - Database connection failed
+2026-08-04 11:47:43,991 [ERROR] user=charlie module=order_service - Timeout while calling external API
+2026-08-04 12:27:55,264 [WARNING] user=heidi module=auth_service - Deprecated API endpoint called
+2026-08-04 12:43:48,103 [INFO] user=frank module=auth_service - User logged out
+2026-08-04 12:43:48,103 [INFO] user=frank module=auth_service - User logged out
+2026-08-04 12:47:55,560 [DEBUG] user=grace module=inventory_service - Cache lookup for key session_8595
+2026-08-04 13:03:36,534 [INFO] user=bob module=payment_gateway - User logged out
+2026-08-04 13:35:26,095 [DEBUG] user=diana module=api_gateway - Cache lookup for key session_5092
+2026-08-04 13:36:49,531 [INFO] user=erin module=notification_service - Health check passed
+2026-08-04 13:38:12,246 [WARNING] user=heidi module=notification_service - Slow query detected (2028ms)
+2026-08-04 14:04:08,281 [INFO] user=heidi module=auth_service - User login successful
+2026-08-04 14:12:48,074 [INFO] user=bob module=notification_service - Health check passed
+2026-08-04 14:33:18,638 [ERROR] user=heidi module=api_gateway - Payment declined for order #7641
+2026-08-04 14:33:39,718 [INFO] user=bob module=auth_service - User logged out
+2026-08-04 14:35:01,053 [WARNING] user=erin module=payment_gateway - Retrying failed request (attempt 926)
+2026-08-04 14:49:22,626 [INFO] user=heidi module=notification_service - Health check passed
+2026-08-04 14:49:22,626 [INFO] user=heidi module=notification_service - Health check passed
+2026-08-04 14:57:38,431 [INFO] user=bob module=payment_gateway - Payment processed successfully
+2026-08-04 15:10:44,454 [DEBUG] user=erin module=order_service - Entering function process_request
+2026-08-04 15:21:07,639 [INFO] user=heidi module=inventory_service - User logged out
+2026-08-04 15:25:08,446 [INFO] user=charlie module=order_service - User login successful
+2026-08-04 15:45:28,780 [INFO] user=bob module=payment_gateway - Payment processed successfully
+2026-08-04 15:48:17,696 [INFO] user=diana module=inventory_service - User login successful
+2026-08-04 16:15:17,660 [INFO] user=grace module=order_service - Health check passed
+2026-08-04 16:18:08,066 [INFO] user=erin module=notification_service - User logged out
+2026-08-04 16:24:28,930 [INFO] user=grace module=notification_service - User logged out
+2026-08-04 16:32:23,578 [INFO] user=heidi module=api_gateway - User login successful
+2026-08-04 19:00:56,040 [ERROR] user=grace module=order_service - Database connection failed
+2026-08-04 19:01:18,426 [INFO] user=heidi module=payment_gateway - Order #8531 created
+2026-08-04 19:50:14,519 [INFO] user=heidi module=inventory_service - Health check passed
+2026-08-04 20:35:32,104 [INFO] user=charlie module=order_service - User login successful
+2026-08-04 20:42:32,788 [INFO] user=heidi module=auth_service - Health check passed
+2026-08-04 20:43:59,485 [INFO] user=frank module=api_gateway - Payment processed successfully
+2026-08-04 20:51:35,374 [INFO] user=bob module=payment_gateway - Order #6512 created
+2026-08-04 20:56:26,504 [WARNING] user=alice module=inventory_service - Slow query detected (6876ms)
+2026-08-04 22:08:32,887 [DEBUG] user=alice module=inventory_service - Cache lookup for key session_2736
+2026-08-05 00:55:32,747 [INFO] user=heidi module=payment_gateway - Order #3107 created
+2026-08-05 04:10:57,156 [INFO] user=heidi module=payment_gateway - Health check passed
+2026-08-05 04:36:30,064 [WARNING] user=heidi module=notification_service - Deprecated API endpoint called
+2026-08-05 06:32:06,835 [INFO] user=bob module=api_gateway - Order #2737 created
+2026-08-05 07:47:13,102 [WARNING] user=alice module=inventory_service - Retrying failed request (attempt 7466)
+2026-08-05 08:28:40,371 [INFO] user=charlie module=api_gateway - User login successful
+2026-08-05 08:33:08,744 [DEBUG] user=grace module=payment_gateway - Entering function process_request
+2026-08-05 08:36:19,087 [INFO] user=bob module=notification_service - User login successful
+2026-08-05 09:17:19,274 [WARNING] user=diana module=notification_service - Retrying failed request (attempt 6238)
+2026-08-05 09:22:25,280 [INFO] user=grace module=payment_gateway - Health check passed
+2026-08-05 09:28:46,652 [ERROR] user=charlie module=inventory_service - Timeout while calling external API
+2026-08-05 09:36:06,129 [INFO] user=bob module=api_gateway - Order #4588 created
+2026-08-05 09:39:02,576 [DEBUG] user=diana module=api_gateway - Query executed in 5817ms
+2026-08-05 09:44:04,358 [WARNING] user=frank module=inventory_service - High memory usage detected (4346%)
+2026-08-05 09:49:29,264 [INFO] user=frank module=order_service - User login successful
+2026-08-05 10:12:35,090 [INFO] user=grace module=payment_gateway - Order #9664 created
+2026-08-05 10:12:45,146 [INFO] user=heidi module=api_gateway - User login successful
+2026-08-05 10:20:13,465 [INFO] user=charlie module=inventory_service - Order #824 created
+2026-08-05 10:26:30,742 [INFO] user=diana module=notification_service - Order #8338 created
+2026-08-05 10:39:24,460 [DEBUG] user=heidi module=notification_service - Query executed in 6326ms
+2026-08-05 10:48:47,143 [INFO] user=diana module=notification_service - Health check passed
+2026-08-05 10:57:22,207 [DEBUG] user=alice module=auth_service - Entering function process_request
+2026-08-05 11:02:42,944 [INFO] user=grace module=payment_gateway - Health check passed
+2026-08-05 11:03:39,663 [INFO] user=frank module=auth_service - User login successful
+2026-08-05 11:37:35,977 [INFO] user=bob module=notification_service - User logged out
+2026-08-05 11:56:36,252 [ERROR] user=bob module=notification_service - Database connection failed
+2026-08-05 12:01:26,075 [INFO] user=frank module=payment_gateway - Health check passed
+2026-08-05 12:25:50,726 [DEBUG] user=erin module=inventory_service - Cache lookup for key session_8153
+2026-08-05 12:51:37,304 [INFO] user=charlie module=auth_service - Payment processed successfully
+2026-08-05 13:00:25,119 [WARNING] user=erin module=api_gateway - High memory usage detected (7108%)
+2026-08-05 13:00:25,119 [WARNING] user=erin module=api_gateway - High memory usage detected (7108%)
+2026-08-05 13:07:08,326 [INFO] user=grace module=order_service - Order #2258 created
+2026-08-05 13:12:56,433 [INFO] user=grace module=inventory_service - User logged out
+2026-08-05 13:14:47,777 [DEBUG] user=bob module=payment_gateway - Cache lookup for key session_3341
+2026-08-05 13:18:57,307 [WARNING] user=frank module=api_gateway - Deprecated API endpoint called
+2026-08-05 13:20:03,114 [WARNING] user=erin module=notification_service - Retrying failed request (attempt 2349)
+2026-08-05 13:20:59,927 [INFO] user=erin module=order_service - Payment processed successfully
+2026-08-05 13:23:34,203 [WARNING] user=frank module=order_service - High memory usage detected (807%)
+2026-08-05 13:26:03,891 [INFO] user=diana module=notification_service - User login successful
+2026-08-05 14:23:16,765 [ERROR] user=alice module=inventory_service - Timeout while calling external API
+2026-08-05 14:23:16,765 [ERROR] user=alice module=inventory_service - Timeout while calling external API
+2026-08-05 14:35:52,845 [INFO] user=alice module=payment_gateway - User logged out
+2026-08-05 14:44:44,609 [DEBUG] user=grace module=payment_gateway - Cache lookup for key session_4660
+2026-08-05 14:53:34,339 [ERROR] user=erin module=order_service - Failed to authenticate user
+2026-08-05 14:58:09,113 [ERROR] user=bob module=payment_gateway - Payment declined for order #4917
+2026-08-05 15:14:46,263 [DEBUG] user=alice module=payment_gateway - Entering function process_request
+2026-08-05 15:15:23,002 [INFO] user=grace module=notification_service - User logged out
+2026-08-05 15:26:01,026 [CRITICAL] user=frank module=auth_service - Out of memory - restarting worker
+2026-08-05 15:28:16,596 [WARNING] user=erin module=notification_service - Retrying failed request (attempt 259)
+2026-08-05 15:28:40,129 [INFO] user=grace module=order_service - Order #4054 created
+2026-08-05 15:30:01,032 [INFO] user=bob module=notification_service - Order #2265 created
+2026-08-05 15:35:59,504 [WARNING] user=bob module=payment_gateway - High memory usage detected (1386%)
+2026-08-05 15:45:53,913 [DEBUG] user=grace module=order_service - Entering function process_request
+2026-08-05 16:08:02,293 [INFO] user=alice module=order_service - User login successful
+2026-08-05 16:23:16,966 [INFO] user=erin module=inventory_service - Payment processed successfully
+2026-08-05 16:24:20,657 [CRITICAL] user=diana module=api_gateway - Out of memory - restarting worker
+2026-08-05 16:38:09,813 [INFO] user=heidi module=inventory_service - Order #3595 created
+2026-08-05 16:43:53,174 [INFO] user=frank module=order_service - User logged out
+2026-08-05 16:49:54,563 [INFO] user=alice module=inventory_service - Payment processed successfully
+2026-08-05 17:21:05,596 [INFO] user=grace module=order_service - Payment processed successfully
+2026-08-05 17:41:29,146 [INFO] user=frank module=payment_gateway - Health check passed
+2026-08-05 17:43:34,920 [INFO] user=grace module=api_gateway - User login successful
+2026-08-05 18:28:07,479 [DEBUG] user=erin module=notification_service - Query executed in 9326ms
+2026-08-05 18:55:00,590 [INFO] user=grace module=api_gateway - User logged out
+2026-08-05 19:20:37,002 [INFO] user=erin module=api_gateway - Payment processed successfully
+2026-08-05 19:23:52,055 [WARNING] user=erin module=notification_service - Retrying failed request (attempt 7475)
+2026-08-05 19:28:09,300 [INFO] user=alice module=order_service - User login successful
+2026-08-05 20:58:15,201 [ERROR] user=alice module=api_gateway - Payment declined for order #6944
+2026-08-05 21:06:57,540 [INFO] user=grace module=api_gateway - Payment processed successfully
+2026-08-05 21:08:05,140 [INFO] user=charlie module=api_gateway - Health check passed
+2026-08-06 01:35:26,012 [INFO] user=heidi module=api_gateway - Health check passed
+2026-08-06 01:35:26,012 [INFO] user=heidi module=api_gateway - Health check passed
+2026-08-06 06:08:22,899 [INFO] user=alice module=inventory_service - Payment processed successfully
+2026-08-06 07:29:48,784 [INFO] user=bob module=order_service - User logged out
+2026-08-06 07:53:54,122 [INFO] user=charlie module=api_gateway - Order #2157 created
+2026-08-06 08:46:04,289 [INFO] user=bob module=payment_gateway - User login successful
+2026-08-06 08:52:45,840 [INFO] user=frank module=auth_service - Order #9618 created
+2026-08-06 09:25:26,904 [INFO] user=diana module=inventory_service - Order #5783 created
+2026-08-06 09:27:16,789 [CRITICAL] user=bob module=inventory_service - Data corruption detected in table orders
+2026-08-06 09:47:21,872 [DEBUG] user=bob module=payment_gateway - Entering function process_request
+2026-08-06 09:48:52,363 [CRITICAL] user=erin module=payment_gateway - Service unavailable - shutting down
+2026-08-06 10:10:22,512 [ERROR] user=frank module=payment_gateway - Timeout while calling external API
+2026-08-06 10:39:24,507 [INFO] user=grace module=order_service - User login successful
+2026-08-06 10:39:24,507 [INFO] user=grace module=order_service - User login successful
+2026-08-06 11:07:08,549 [INFO] user=alice module=payment_gateway - Payment processed successfully
+2026-08-06 11:15:26,616 [INFO] user=alice module=api_gateway - Health check passed
+2026-08-06 11:26:52,161 [DEBUG] user=diana module=api_gateway - Query executed in 4802ms
+2026-08-06 11:38:46,537 [WARNING] user=charlie module=inventory_service - High memory usage detected (8839%)
+2026-08-06 11:39:21,702 [INFO] user=alice module=api_gateway - Payment processed successfully
+2026-08-06 11:43:20,156 [WARNING] user=heidi module=api_gateway - High memory usage detected (2935%)
+2026-08-06 11:48:23,775 [WARNING] user=erin module=api_gateway - Slow query detected (2567ms)
+2026-08-06 12:05:35,771 [INFO] user=grace module=inventory_service - User login successful
+2026-08-06 12:05:35,771 [INFO] user=grace module=inventory_service - User login successful
+2026-08-06 12:13:15,492 [INFO] user=alice module=api_gateway - Order #3773 created
+2026-08-06 12:14:36,896 [INFO] user=diana module=order_service - User login successful
+2026-08-06 12:20:07,143 [CRITICAL] user=heidi module=notification_service - Service unavailable - shutting down
+2026-08-06 12:22:44,082 [INFO] user=alice module=payment_gateway - Order #9548 created
+2026-08-06 12:51:36,458 [INFO] user=grace module=inventory_service - Order #1292 created
+2026-08-06 12:53:51,425 [ERROR] user=alice module=order_service - Database connection failed
+2026-08-06 13:07:30,726 [DEBUG] user=frank module=inventory_service - Entering function process_request
+2026-08-06 13:08:46,148 [INFO] user=grace module=payment_gateway - Order #1378 created
+2026-08-06 13:19:40,981 [WARNING] user=alice module=api_gateway - Retrying failed request (attempt 4145)
+2026-08-06 13:46:04,854 [INFO] user=grace module=order_service - User login successful
+2026-08-06 13:59:16,209 [INFO] user=grace module=api_gateway - User logged out
+2026-08-06 14:03:42,110 [INFO] user=erin module=notification_service - User logged out
+2026-08-06 14:07:05,992 [INFO] user=grace module=payment_gateway - Order #6235 created
+2026-08-06 14:35:28,735 [INFO] user=grace module=notification_service - User login successful
+2026-08-06 14:43:40,811 [WARNING] user=frank module=api_gateway - High memory usage detected (6531%)
+2026-08-06 14:47:36,608 [INFO] user=grace module=api_gateway - Payment processed successfully
+2026-08-06 14:49:52,024 [ERROR] user=frank module=order_service - Timeout while calling external API
+2026-08-06 14:50:03,076 [WARNING] user=frank module=notification_service - Slow query detected (4499ms)
+2026-08-06 15:00:13,517 [WARNING] user=grace module=payment_gateway - Retrying failed request (attempt 1114)
+2026-08-06 15:08:04,096 [INFO] user=grace module=auth_service - Payment processed successfully
+2026-08-06 15:11:12,135 [INFO] user=charlie module=auth_service - Payment processed successfully
+2026-08-06 15:12:36,191 [INFO] user=heidi module=notification_service - Payment processed successfully
+2026-08-06 15:38:48,171 [INFO] user=bob module=notification_service - Order #3003 created
+2026-08-06 15:55:32,994 [WARNING] user=diana module=api_gateway - Slow query detected (8111ms)
+2026-08-06 16:06:19,823 [WARNING] user=erin module=payment_gateway - Retrying failed request (attempt 2402)
+2026-08-06 16:16:21,731 [WARNING] user=bob module=notification_service - Slow query detected (4046ms)
+2026-08-06 16:17:39,915 [INFO] user=diana module=order_service - User logged out
+2026-08-06 16:22:42,404 [INFO] user=alice module=payment_gateway - User login successful
+2026-08-06 16:51:43,956 [INFO] user=diana module=inventory_service - Health check passed
+2026-08-06 16:58:40,721 [DEBUG] user=erin module=payment_gateway - Query executed in 7260ms
+2026-08-06 17:47:37,610 [INFO] user=bob module=api_gateway - Health check passed
+2026-08-06 17:52:44,479 [INFO] user=charlie module=api_gateway - User logged out
+2026-08-06 18:02:01,766 [INFO] user=heidi module=api_gateway - Health check passed
+2026-08-06 18:13:46,083 [INFO] user=erin module=payment_gateway - User logged out
+2026-08-06 18:58:16,829 [INFO] user=frank module=auth_service - User logged out
+2026-08-06 19:07:30,137 [INFO] user=erin module=notification_service - Payment processed successfully
+2026-08-06 19:53:05,479 [INFO] user=bob module=auth_service - Order #8052 created
+2026-08-06 19:57:10,241 [INFO] user=charlie module=order_service - User logged out
+2026-08-06 19:57:10,241 [INFO] user=charlie module=order_service - User logged out
+2026-08-06 20:25:32,050 [INFO] user=frank module=payment_gateway - User login successful
+2026-08-06 20:52:01,883 [CRITICAL] user=erin module=order_service - Data corruption detected in table orders
+2026-08-06 21:49:12,350 [DEBUG] user=erin module=notification_service - Cache lookup for key session_8648
+2026-08-06 22:06:29,983 [WARNING] user=bob module=notification_service - Slow query detected (5365ms)
+2026-08-06 22:30:02,293 [INFO] user=bob module=notification_service - User login successful
+2026-08-07 00:46:06,946 [INFO] user=diana module=order_service - Order #8801 created
+2026-08-07 01:53:52,026 [INFO] user=alice module=notification_service - User logged out
+2026-08-07 03:16:03,129 [DEBUG] user=frank module=payment_gateway - Query executed in 5305ms
+2026-08-07 06:43:17,713 [INFO] user=diana module=inventory_service - Health check passed
+2026-08-07 07:54:06,249 [ERROR] user=charlie module=notification_service - Timeout while calling external API
+2026-08-07 08:13:28,147 [INFO] user=bob module=api_gateway - User login successful
+2026-08-07 08:16:30,718 [DEBUG] user=bob module=inventory_service - Entering function process_request
+2026-08-07 08:28:32,595 [INFO] user=grace module=auth_service - Health check passed
+2026-08-07 08:48:10,216 [INFO] user=alice module=notification_service - Order #6888 created
+2026-08-07 08:57:20,264 [WARNING] user=erin module=inventory_service - High memory usage detected (5244%)
+2026-08-07 08:58:54,515 [DEBUG] user=charlie module=order_service - Query executed in 1638ms
+2026-08-07 09:02:35,266 [WARNING] user=alice module=notification_service - Slow query detected (9668ms)
+2026-08-07 09:05:12,741 [DEBUG] user=frank module=api_gateway - Query executed in 7139ms
+2026-08-07 09:09:36,673 [INFO] user=erin module=order_service - Payment processed successfully
+2026-08-07 09:13:12,968 [WARNING] user=grace module=inventory_service - Slow query detected (1942ms)
+2026-08-07 09:22:19,166 [INFO] user=heidi module=order_service - Payment processed successfully
+2026-08-07 09:45:35,474 [ERROR] user=diana module=inventory_service - Null pointer exception encountered
+2026-08-07 10:00:00,000 [NOTALEVEL] user=bob module=api_gateway - bad level
+2026-08-07 10:00:00,000 [NOTALEVEL] user=erin module=api_gateway - bad level
+2026-08-07 10:00:00,000 [NOTALEVEL] user=charlie module=api_gateway - bad level
+2026-08-07 10:00:00,000 [NOTALEVEL] user=charlie module=api_gateway - bad level
+2026-08-07 10:00:00,000 [NOTALEVEL] user=alice module=api_gateway - bad level
+2026-08-07 10:00:00,000 [NOTALEVEL] user=diana module=api_gateway - bad level
+2026-08-07 10:00:00,000 [NOTALEVEL] user=charlie module=api_gateway - bad level
+2026-08-07 10:00:00,000 [NOTALEVEL] user=grace module=api_gateway - bad level
+2026-08-07 10:00:00,000 [NOTALEVEL] user=erin module=api_gateway - bad level
+2026-08-07 10:01:21,384 [INFO] user=frank module=order_service - User login successful
+2026-08-07 10:24:36,853 [INFO] user=grace module=order_service - Order #3215 created
+2026-08-07 10:38:41,199 [INFO] user=diana module=inventory_service - Payment processed successfully
+2026-08-07 10:56:23,577 [INFO] user=grace module=order_service - Payment processed successfully
+2026-08-07 11:03:45,965 [ERROR] user=heidi module=inventory_service - Failed to authenticate user
+2026-08-07 11:16:21,286 [INFO] user=frank module=payment_gateway - Health check passed
+2026-08-07 11:19:53,066 [INFO] user=grace module=inventory_service - User login successful
+2026-08-07 11:27:50,837 [ERROR] user=frank module=inventory_service - Payment declined for order #6545
+2026-08-07 11:31:02,160 [DEBUG] user=alice module=notification_service - Cache lookup for key session_8217
+2026-08-07 11:34:43,176 [CRITICAL] user=frank module=payment_gateway - Out of memory - restarting worker
+2026-08-07 11:51:18,296 [INFO] user=heidi module=notification_service - Payment processed successfully
+2026-08-07 12:04:42,834 [INFO] user=frank module=auth_service - Health check passed
+2026-08-07 12:06:03,639 [INFO] user=diana module=payment_gateway - User login successful
+2026-08-07 12:32:43,693 [ERROR] user=grace module=api_gateway - Failed to authenticate user
+2026-08-07 12:36:01,406 [CRITICAL] user=grace module=order_service - Data corruption detected in table orders
+2026-08-07 13:06:25,340 [INFO] user=diana module=auth_service - Payment processed successfully
+2026-08-07 13:43:28,359 [INFO] user=bob module=auth_service - Health check passed
+2026-08-07 13:44:14,629 [INFO] user=erin module=payment_gateway - User login successful
+2026-08-07 14:05:04,316 [INFO] user=frank module=inventory_service - User logged out
+2026-08-07 14:29:19,163 [INFO] user=frank module=api_gateway - Order #1018 created
+2026-08-07 14:49:59,640 [INFO] user=charlie module=auth_service - Order #5286 created
+2026-08-07 14:55:33,286 [INFO] user=grace module=api_gateway - Order #421 created
+2026-08-07 14:56:34,639 [WARNING] user=charlie module=api_gateway - Slow query detected (7311ms)
+2026-08-07 14:58:48,368 [INFO] user=charlie module=order_service - Health check passed
+2026-08-07 15:01:47,099 [INFO] user=frank module=order_service - Health check passed
+2026-08-07 15:21:54,567 [INFO] user=erin module=payment_gateway - Order #4293 created
+2026-08-07 15:23:02,410 [WARNING] user=grace module=payment_gateway - Deprecated API endpoint called
+2026-08-07 15:25:04,540 [INFO] user=frank module=inventory_service - Health check passed
+2026-08-07 15:46:30,207 [INFO] user=alice module=api_gateway - User login successful
+2026-08-07 15:50:31,307 [INFO] user=heidi module=payment_gateway - User logged out
+2026-08-07 15:51:40,599 [ERROR] user=alice module=auth_service - Null pointer exception encountered
+2026-08-07 16:21:45,181 [INFO] user=alice module=order_service - User logged out
+2026-08-07 16:24:41,410 [INFO] user=diana module=auth_service - Payment processed successfully
+2026-08-07 16:30:33,366 [INFO] user=diana module=auth_service - Payment processed successfully
+2026-08-07 16:37:26,650 [WARNING] user=diana module=auth_service - Deprecated API endpoint called
+2026-08-07 16:48:53,659 [INFO] user=grace module=inventory_service - User login successful
+2026-08-07 17:00:18,423 [DEBUG] user=bob module=notification_service - Query executed in 5316ms
+2026-08-07 17:19:10,895 [CRITICAL] user=grace module=payment_gateway - Data corruption detected in table orders
+2026-08-07 17:48:40,036 [INFO] user=alice module=inventory_service - User logged out
+2026-08-07 18:10:46,076 [INFO] user=bob module=auth_service - Payment processed successfully
+2026-08-07 18:22:45,012 [INFO] user=grace module=api_gateway - Order #1193 created
+2026-08-07 18:24:22,651 [DEBUG] user=alice module=auth_service - Query executed in 4281ms
+2026-08-07 18:38:36,236 [INFO] user=bob module=inventory_service - Health check passed
+2026-08-07 18:48:53,543 [DEBUG] user=diana module=api_gateway - Entering function process_request
+2026-08-07 19:55:37,118 [INFO] user=erin module=inventory_service - User logged out
+2026-08-07 23:02:55,576 [INFO] user=diana module=payment_gateway - Health check passed
+2026-13-40 25:99:99,999 [INFO] user=frank module=api_gateway - invalid timestamp values
+2026-13-40 25:99:99,999 [INFO] user=bob module=api_gateway - invalid timestamp values
+2026-13-40 25:99:99,999 [INFO] user=bob module=api_gateway - invalid timestamp values
+2026-13-40 25:99:99,999 [INFO] user=charlie module=api_gateway - invalid timestamp values
+2026-13-40 25:99:99,999 [INFO] user=heidi module=api_gateway - invalid timestamp values
+2026-13-40 25:99:99,999 [INFO] user=diana module=api_gateway - invalid timestamp values
+2026-13-40 25:99:99,999 [INFO] user=erin module=api_gateway - invalid timestamp values
+2026-13-40 25:99:99,999 [INFO] user=alice module=api_gateway - invalid timestamp values
+2026-13-40 25:99:99,999 [INFO] user=heidi module=api_gateway - invalid timestamp values
+[INFO] user=alice module=api_gateway - missing timestamp
+[INFO] user=bob module=api_gateway - missing timestamp
+[INFO] user=bob module=api_gateway - missing timestamp
+[INFO] user=charlie module=api_gateway - missing timestamp
+[INFO] user=charlie module=api_gateway - missing timestamp
+[INFO] user=erin module=api_gateway - missing timestamp
+[INFO] user=frank module=api_gateway - missing timestamp
+[INFO] user=frank module=api_gateway - missing timestamp
+this line has no structure at all
+this line has no structure at all
+this line has no structure at all
+this line has no structure at all
+this line has no structure at all
