@@ -15,7 +15,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
 PYTHON_BIN="${PYTHON_BIN:-python}"
 
-echo "==> Log File Analyzer setup"
+echo "==> LogSX — Log Files Analyzer setup"
 
 if ! command -v "$PYTHON_BIN" >/dev/null 2>&1; then
     echo "Error: '$PYTHON_BIN' not found on PATH. Install Python 3.13+ first, or set PYTHON_BIN." >&2

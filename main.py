@@ -1,4 +1,4 @@
-"""CLI entry point for the Log File Analyzer.
+"""CLI entry point for LogSX — Log Files Analyzer.
 
 How to use
 ----------
@@ -43,7 +43,7 @@ logger = logging.getLogger(__name__)
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="log-analyzer",
+        prog="logsx",
         description="Parse, store, and analyze application log files backed by PostgreSQL.",
     )
     parser.add_argument(

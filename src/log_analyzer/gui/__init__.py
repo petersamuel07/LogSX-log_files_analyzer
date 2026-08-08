@@ -1,5 +1,5 @@
-"""Simple Tkinter desktop GUI for the Log File Analyzer."""
+"""Tkinter desktop GUI for LogSX — Log Files Analyzer."""
 
-from log_analyzer.gui.app import LogAnalyzerGUI
+from log_analyzer.gui.app import LogAnalyzerGUI, LogSXGUI
 
-__all__ = ["LogAnalyzerGUI"]
+__all__ = ["LogSXGUI", "LogAnalyzerGUI"]

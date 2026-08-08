@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "log-analyzer"
+name = "logsx-log-files-analyzer"
 version = "0.1.0"
 description = "ETL and analytics pipeline for application log files, backed by PostgreSQL."
 requires-python = ">=3.11"
