@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LFA — Log File Analyzer</title>
+<meta name="description" content="LFA is a regex-to-PostgreSQL log analytics pipeline with a CLI, a Tkinter GUI, and a standalone Windows build.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --paper: #f5f2ea;
+    --paper-raised: #fbf9f4;
+    --ink: #15181d;
+    --muted: #5c6570;
+    --line: #ddd7c8;
+    --accent: #a86a1c;
+    --accent-strong: #8f5714;
+    --on-accent: #fbf9f4;
+    --info: #35578f;
+    --warn: #a86a1c;
+    --err: #a83f39;
+    --crit: #7a3f88;
+    --ok: #4c7f4c;
+    --font-mono: ui-monospace, "Cascadia Code", "Cascadia Mono", "Segoe UI Mono", Consolas, "Liberation Mono", Menlo, monospace;
+    --font-body: -apple-system, "Segoe UI", system-ui, Roboto, Helvetica, Arial, sans-serif;
+    --shadow: 0 1px 2px rgba(21,24,29,0.04), 0 8px 24px -12px rgba(21,24,29,0.18);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #14171b;
+      --paper-raised: #1b1f24;
+      --ink: #ece8dd;
+      --muted: #99a0aa;
+      --line: #2b2f36;
+      --accent: #d99a3f;
+      --accent-strong: #e8b567;
+      --on-accent: #14171b;
+      --info: #7098d6;
+      --warn: #d99a3f;
+      --err: #d5716c;
+      --crit: #b183c0;
+      --ok: #7fb98a;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px -12px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14171b;
+    --paper-raised: #1b1f24;
+    --ink: #ece8dd;
+    --muted: #99a0aa;
+    --line: #2b2f36;
+    --accent: #d99a3f;
+    --accent-strong: #e8b567;
+    --on-accent: #14171b;
+    --info: #7098d6;
+    --warn: #d99a3f;
+    --err: #d5716c;
+    --crit: #b183c0;
+    --ok: #7fb98a;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px -12px rgba(0,0,0,0.55);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  h1, h2, h3 {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  p { margin: 0; }
+
+  a { color: inherit; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.4em;
+    height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  /* ---------- topbar ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem clamp(1.25rem, 4vw, 2.5rem);
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .brand-mark { color: var(--accent); }
+  .brand-sub {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .topbar a.gh {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .topbar a.gh:hover, .topbar a.gh:focus-visible { border-color: var(--accent); color: var(--accent-strong); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+    display: grid;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+  .hero-copy { max-width: 46rem; }
+  .hero h1 {
+    font-size: clamp(2.1rem, 3.4vw + 1rem, 3.4rem);
+    line-height: 1.08;
+    margin-top: 0.9rem;
+  }
+  .hero h1 .accentline { color: var(--accent-strong); }
+  .hero-sub {
+    margin-top: 1.15rem;
+    font-size: clamp(1rem, 0.4vw + 0.95rem, 1.15rem);
+    color: var(--muted);
+    max-width: 42rem;
+  }
+  .cta-row {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 0.75rem 1.3rem;
+    border-radius: 7px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: var(--on-accent); }
+  .btn-primary:hover, .btn-primary:focus-visible { background: var(--accent-strong); }
+  .btn-ghost { border-color: var(--line); color: var(--ink); background: transparent; }
+  .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--accent); color: var(--accent-strong); }
+
+  /* ---------- terminal mock ---------- */
+  .terminal {
+    background: #14171b;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid #2a2e34;
+  }
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 0.9rem;
+    background: #1a1e23;
+    border-bottom: 1px solid #2a2e34;
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.r { background: #d5716c; }
+  .dot.y { background: #d9b23f; }
+  .dot.g { background: #6fb87f; }
+  .terminal-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #8891a0;
+    margin-left: 0.35rem;
+  }
+  .terminal-body {
+    padding: 1.1rem 1.15rem 1.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.85;
+    color: #d7d3c6;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .terminal-body .ln { display: block; }
+  .tk-ts { color: #8891a0; }
+  .tk-lvl-info { color: #7098d6; font-weight: 700; }
+  .tk-lvl-err { color: #d5716c; font-weight: 700; }
+  .tk-key { color: #7a828f; }
+  .tk-val { color: #e8b567; }
+  .tk-msg { color: #ece8dd; }
+  .tk-ok { color: #7fb98a; font-weight: 600; }
+  .tk-bad { color: #d5716c; font-weight: 600; }
+  .tk-trace { color: #9a8fb0; }
+  .cursor {
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    background: #d99a3f;
+    vertical-align: text-bottom;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .field-chips {
+    margin-top: 1.1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.32rem 0.65rem;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--muted);
+  }
+
+  /* ---------- generic section ---------- */
+  section { padding: clamp(2.75rem, 6vw, 4.5rem) 0; }
+  .section-head { max-width: 40rem; margin-bottom: clamp(1.75rem, 4vw, 2.5rem); }
+  .section-head h2 { font-size: clamp(1.5rem, 1.4vw + 1rem, 2.1rem); margin-top: 0.6rem; }
+  .section-head p { margin-top: 0.85rem; color: var(--muted); }
+  .divider { border: none; border-top: 1px solid var(--line); margin: 0; }
+
+  /* ---------- pipeline ---------- */
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--paper-raised);
+  }
+  @media (max-width: 900px) {
+    .pipeline { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .pipeline { grid-template-columns: 1fr; }
+  }
+  .stage {
+    padding: 1.3rem 1.1rem;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+  .pipeline > .stage:nth-child(6) { border-right: none; }
+  @media (max-width: 900px) {
+    .stage:nth-child(even) { border-right: none; }
+    .stage { border-bottom: 1px solid var(--line); }
+    .stage:nth-child(5), .stage:nth-child(6) { border-bottom: none; }
+  }
+  @media (max-width: 560px) {
+    .stage { border-right: none !important; border-bottom: 1px solid var(--line); }
+    .stage:last-child { border-bottom: none; }
+  }
+  .stage-num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent-strong);
+    letter-spacing: 0.06em;
+  }
+  .stage h3 { font-size: 0.92rem; margin-top: 0.5rem; }
+  .stage p { margin-top: 0.5rem; font-size: 0.82rem; color: var(--muted); }
+  .stage .tech {
+    margin-top: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    border-top: 1px dashed var(--line);
+    padding-top: 0.55rem;
+  }
+
+  /* ---------- features ---------- */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+  @media (max-width: 860px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .grid-3 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.4rem 1.3rem;
+  }
+  .card .eyebrow { font-size: 0.66rem; }
+  .card h3 { font-size: 1rem; margin-top: 0.55rem; }
+  .card p { margin-top: 0.6rem; font-size: 0.88rem; color: var(--muted); }
+
+  /* ---------- example run ---------- */
+  .run-panel {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  @media (max-width: 860px) { .run-panel { grid-template-columns: 1fr; } }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .stat {
+    background: var(--paper-raised);
+    padding: 1.1rem 1.2rem;
+  }
+  .stat .num {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.6rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat .lbl { margin-top: 0.3rem; font-size: 0.76rem; color: var(--muted); }
+
+  .code-block {
+    background: #14171b;
+    color: #d7d3c6;
+    border-radius: 10px;
+    padding: 1.1rem 1.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.75;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .code-block .c-mut { color: #8891a0; }
+  .code-block .c-acc { color: #d99a3f; }
+
+  /* ---------- gallery ---------- */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 900px) { .gallery { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .gallery { grid-template-columns: 1fr; } }
+  .chart-card {
+    background: #fdfdfb;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .chart-card img { width: 100%; height: auto; }
+  .chart-cap {
+    padding: 0.6rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    background: var(--paper-raised);
+  }
+
+  /* ---------- stack trace ---------- */
+  .stacktrace {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.3rem 1.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 2;
+    overflow-x: auto;
+  }
+  .stacktrace .role { color: var(--muted); }
+  .stacktrace .pkg { color: var(--ink); font-weight: 600; }
+  .stacktrace .ver { color: var(--accent-strong); }
+
+  /* ---------- run it tabs ---------- */
+  .tabs { display: flex; gap: 0.4rem; margin-bottom: 1rem; border-bottom: 1px solid var(--line); }
+  .tab-btn {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background: none;
+    border: none;
+    padding: 0.6rem 0.2rem;
+    margin-right: 1rem;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transform: translateY(1px);
+  }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tab-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .gui-desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 1rem; max-width: 46rem; }
+  .btn-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .mock-btn {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: var(--paper-raised);
+    color: var(--ink);
+  }
+  .callout {
+    margin-top: 1.1rem;
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 1rem;
+    background: var(--paper-raised);
+    font-size: 0.85rem;
+    color: var(--muted);
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2.5rem 0 3rem;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-note { max-width: 34rem; font-size: 0.85rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 1.4rem; font-family: var(--font-mono); font-size: 0.82rem; }
+  .footer-links a { text-decoration: none; color: var(--muted); }
+  .footer-links a:hover { color: var(--accent-strong); }
+
+  .reveal { opacity: 1; transform: none; }
+  body.js-ready .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  body.js-ready .reveal.in-view { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-mark">LFA</span><span class="brand-sub">Log File Analyzer</span></div>
+    <a class="gh" href="https://github.com/petersamuel07/log-files-analyzer" target="_blank" rel="noopener">Source on GitHub ↗</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <div class="eyebrow">PORTFOLIO BUILD · DATA ENGINEERING</div>
+      <h1>Unstructured logs in.<br><span class="accentline">Structured answers out.</span></h1>
+      <p class="hero-sub">LFA is an ETL and analytics pipeline for application log files: a streaming regex parser turns raw text into typed rows, PostgreSQL stores them with automatic de-duplication, and Pandas/NumPy/SciPy turn the result into percentiles, trends, and outliers &mdash; from a CLI, a desktop GUI, or a single portable .exe.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/petersamuel07/log-files-analyzer" target="_blank" rel="noopener">View source on GitHub</a>
+        <a class="btn btn-ghost" href="#pipeline">See how it works ↓</a>
+      </div>
+    </div>
+
+    <div class="terminal reveal">
+      <div class="terminal-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="terminal-title">data/logs/app.log</span>
+      </div>
+      <div class="terminal-body"><span class="ln"><span class="tk-ts">2026-08-07 14:32:10,512</span> <span class="tk-lvl-info">[INFO]</span> <span class="tk-key">logger=</span><span class="tk-val">auth_controller</span> <span class="tk-key">trace_id=</span><span class="tk-val">7f3c1a92e1b4</span> <span class="tk-key">user_id=</span><span class="tk-val">1042</span> <span class="tk-key">ip=</span><span class="tk-val">203.0.113.42</span> <span class="tk-key">method=</span><span class="tk-val">POST</span> <span class="tk-key">endpoint=</span><span class="tk-val">/api/v1/login</span> <span class="tk-key">status=</span><span class="tk-ok">200</span> <span class="tk-key">response_time_ms=</span><span class="tk-val">142</span> - <span class="tk-msg">User login successful</span></span>
+<span class="ln"><span class="tk-ts">2026-08-07 14:35:02,004</span> <span class="tk-lvl-err">[ERROR]</span> <span class="tk-key">logger=</span><span class="tk-val">auth_controller</span> <span class="tk-key">trace_id=</span><span class="tk-val">9d2b7e10ab3</span> <span class="tk-key">user_id=</span><span class="tk-val">1042</span> <span class="tk-key">status=</span><span class="tk-bad">500</span> <span class="tk-key">response_time_ms=</span><span class="tk-val">980</span> - <span class="tk-msg">Unhandled exception during authentication</span></span>
+<span class="ln"><span class="tk-trace">Traceback (most recent call last):</span></span>
+<span class="ln"><span class="tk-trace">  File "auth_controller.py", line 44, in authenticate</span></span>
+<span class="ln"><span class="tk-trace">ValueError: invalid credentials</span><span class="cursor"></span></span></div>
+    </div>
+    <div class="field-chips">
+      <span class="chip">timestamp</span><span class="chip">level</span><span class="chip">logger / module / func</span><span class="chip">trace_id</span><span class="chip">user_id</span><span class="chip">session_id</span><span class="chip">ip</span><span class="chip">method / endpoint</span><span class="chip">status</span><span class="chip">response_time_ms</span><span class="chip">exception + stack trace</span>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ================= PIPELINE ================= -->
+  <section id="pipeline">
+    <div class="section-head reveal">
+      <div class="eyebrow">ARCHITECTURE</div>
+      <h2>Six stages, one command.</h2>
+      <p>Every log file moves through the same fixed pipeline &mdash; run stage by stage, or as one shot via <code>python main.py pipeline &lt;file&gt;</code>.</p>
+    </div>
+    <div class="pipeline reveal">
+      <div class="stage">
+        <div class="stage-num">01</div>
+        <h3>Parse</h3>
+        <p>Streamed line-by-line against one regex &mdash; constant memory no matter the file size. Non-matching lines under an ERROR/CRITICAL entry are captured as its exception + stack trace.</p>
+        <div class="tech">re · validation</div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">02</div>
+        <h3>Ingest</h3>
+        <p>Batched writes with a SHA-256 content hash per line, so re-ingesting the same file twice is always a safe no-op.</p>
+        <div class="tech">SHA-256 · batching</div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">03</div>
+        <h3>Store</h3>
+        <p>Normalized schema &mdash; users/modules/loggers/levels lookups, a log_entries fact table with nullable FKs, an ingestion_runs audit log.</p>
+        <div class="tech">PostgreSQL 17 · SQLAlchemy</div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">04</div>
+        <h3>Analyze</h3>
+        <p>One joined DataFrame drives error rates, trends, percentiles, HTTP breakdowns, and z-score outlier detection.</p>
+        <div class="tech">Pandas · NumPy · SciPy</div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">05</div>
+        <h3>Visualize</h3>
+        <p>Eight chart figures regenerated on demand from whatever is currently in the database.</p>
+        <div class="tech">Matplotlib</div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">06</div>
+        <h3>Export</h3>
+        <p>The same summary as structured files, ready to hand off or diff between runs.</p>
+        <div class="tech">CSV · JSON</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ================= FEATURES ================= -->
+  <section id="features">
+    <div class="section-head reveal">
+      <div class="eyebrow">CAPABILITIES</div>
+      <h2>What it actually does.</h2>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="card">
+        <div class="eyebrow">PARSE</div>
+        <h3>Streaming regex parser</h3>
+        <p>Timestamp, level, PID, thread, logger/module/function, trace/user/session IDs, IP, HTTP method/endpoint/status/response time, message, and multi-line exceptions. Malformed lines are logged and counted &mdash; never fatal.</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">DEDUPE</div>
+        <h3>Content-hash de-duplication</h3>
+        <p>Every line gets a SHA-256 fingerprint before it reaches PostgreSQL. Ingesting the same file twice, by accident or on purpose, changes nothing.</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">SCHEMA</div>
+        <h3>Normalized relational design</h3>
+        <p>Lookup tables for users, modules, loggers, and levels feed one fact table with nullable foreign keys &mdash; because not every line has an authenticated user or an HTTP context.</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">ANALYZE</div>
+        <h3>Statistics, not just counts</h3>
+        <p>Response-time p90/p95/p99, HTTP status breakdowns, top/slowest endpoints, exception-type frequency, and z-score outlier-day detection on daily volume.</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">VISUALIZE</div>
+        <h3>Eight generated charts</h3>
+        <p>Level distribution, daily trend, status codes, response-time histogram, peak hours, top errors, top endpoints, top users &mdash; regenerated from the current database state.</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">RUN</div>
+        <h3>Three ways to run it</h3>
+        <p>A full argparse CLI for scripting, a Tkinter desktop GUI for point-and-click, and a portable LFA.exe for a machine with no Python installed. Same services underneath &mdash; no duplicated logic.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ================= EXAMPLE RUN ================= -->
+  <section id="example">
+    <div class="section-head reveal">
+      <div class="eyebrow">EXAMPLE RUN</div>
+      <h2>What comes out the other end.</h2>
+      <p>A synthetic 5,000-line run (<code>python main.py generate-sample --seed 42</code>) through the full pipeline. Numbers shown are from that one run, not a live claim.</p>
+    </div>
+    <div class="run-panel reveal">
+      <div class="code-block"><span class="c-mut">=== Log Analytics Summary ===</span>
+Total logs:        <span class="c-acc">5000</span>
+Error percentage:  <span class="c-acc">12.44%</span>
+Avg logs/hour:     <span class="c-acc">6.73</span>
+
+<span class="c-mut">Top error messages:</span>
+    159  Database connection failed
+    113  Null pointer exception encountered
+    112  Failed to authenticate user
+    111  Timeout while calling external API
+
+<span class="c-mut">Statistical summary (daily volume):</span>
+  mean=161.29  median=161.0  std=15.27
+  skew=-0.025  kurtosis=-0.92
+  outlier days: 2026-07-31
+
+<span class="c-mut">Duplicates skipped (all runs):</span>  162
+<span class="c-mut">Malformed lines (all runs):</span>     100 (1.46%)</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="num">3,259</div><div class="lbl">HTTP requests sampled for response-time stats</div></div>
+        <div class="stat"><div class="num">4,568&nbsp;ms</div><div class="lbl">p99 response time</div></div>
+        <div class="stat"><div class="num">30.38%</div><div class="lbl">HTTP error rate (4xx/5xx)</div></div>
+        <div class="stat"><div class="num">8</div><div class="lbl">charts generated per run</div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ================= GALLERY ================= -->
+  <section id="charts">
+    <div class="section-head reveal">
+      <div class="eyebrow">OUTPUT</div>
+      <h2>Every chart, generated by the pipeline itself.</h2>
+      <p>Actual Matplotlib exports from a sample run &mdash; not mockups.</p>
+    </div>
+    <div class="gallery reveal">
+      <div class="chart-card"><img src="images/level_distribution.png" alt="Bar chart of log level distribution" loading="lazy"><div class="chart-cap">level_distribution.png</div></div>
+      <div class="chart-card"><img src="images/daily_trend.png" alt="Line chart of daily log volume trend" loading="lazy"><div class="chart-cap">daily_trend.png</div></div>
+      <div class="chart-card"><img src="images/status_code_distribution.png" alt="Pie or bar chart of HTTP status code distribution" loading="lazy"><div class="chart-cap">status_code_distribution.png</div></div>
+      <div class="chart-card"><img src="images/response_time_distribution.png" alt="Histogram of HTTP response times" loading="lazy"><div class="chart-cap">response_time_distribution.png</div></div>
+      <div class="chart-card"><img src="images/hourly_activity.png" alt="Chart of logging activity by hour of day" loading="lazy"><div class="chart-cap">hourly_activity.png</div></div>
+      <div class="chart-card"><img src="images/top_errors.png" alt="Bar chart of most frequent error messages" loading="lazy"><div class="chart-cap">top_errors.png</div></div>
+      <div class="chart-card"><img src="images/top_endpoints.png" alt="Bar chart of most-hit and slowest API endpoints" loading="lazy"><div class="chart-cap">top_endpoints.png</div></div>
+      <div class="chart-card"><img src="images/top_users.png" alt="Bar chart of most active users" loading="lazy"><div class="chart-cap">top_users.png</div></div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ================= TECH STACK ================= -->
+  <section id="stack">
+    <div class="section-head reveal">
+      <div class="eyebrow">TECH STACK</div>
+      <h2>What it's built with.</h2>
+    </div>
+    <div class="stacktrace reveal">
+<span class="role">language</span>      <span class="pkg">python</span>           <span class="ver">3.13</span>
+<span class="role">database</span>      <span class="pkg">postgresql</span>       <span class="ver">17</span>
+<span class="role">orm/driver</span>    <span class="pkg">sqlalchemy</span>       <span class="ver">2.0</span>
+<span class="role">orm/driver</span>    <span class="pkg">psycopg2-binary</span>
+<span class="role">analytics</span>     <span class="pkg">pandas</span>           <span class="ver">&gt;=2.2</span>
+<span class="role">analytics</span>     <span class="pkg">numpy</span>            <span class="ver">&gt;=1.26</span>
+<span class="role">analytics</span>     <span class="pkg">scipy</span>            <span class="ver">&gt;=1.13</span>
+<span class="role">visualization</span> <span class="pkg">matplotlib</span>       <span class="ver">&gt;=3.9</span>
+<span class="role">gui</span>           <span class="pkg">tkinter</span>          <span class="ver">stdlib</span>
+<span class="role">packaging</span>     <span class="pkg">pyinstaller</span>      <span class="ver">dev-only</span>
+<span class="role">config</span>        <span class="pkg">python-dotenv</span>   <span class="ver">&gt;=1.0</span>
+<span class="role">cli/ux</span>        <span class="pkg">tqdm</span>             <span class="ver">&gt;=4.66</span>
+<span class="role">testing</span>       <span class="pkg">pytest</span>           <span class="ver">&gt;=8.0</span>
+<span class="role">testing</span>       <span class="pkg">pytest-cov</span>       <span class="ver">&gt;=5.0</span></div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ================= RUN IT ================= -->
+  <section id="run-it">
+    <div class="section-head reveal">
+      <div class="eyebrow">RUN IT</div>
+      <h2>CLI, GUI, or a standalone .exe.</h2>
+      <p>Same ingestion/analytics/chart/report services underneath all three &mdash; pick whichever fits.</p>
+    </div>
+    <div class="reveal">
+      <div class="tabs" role="tablist" aria-label="Ways to run LFA">
+        <button class="tab-btn" role="tab" aria-selected="true" aria-controls="panel-cli" id="tab-cli">CLI</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-gui" id="tab-gui">Desktop GUI</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-exe" id="tab-exe">Standalone .exe</button>
+      </div>
+
+      <div class="tab-panel active" id="panel-cli" role="tabpanel" aria-labelledby="tab-cli">
+        <div class="code-block"><span class="c-mut"># generate a synthetic log file, then run the whole pipeline</span>
+python main.py generate-sample --num-lines 5000 --seed 42
+python main.py pipeline data/sample/sample_5000.log
+
+<span class="c-mut"># or run each stage independently</span>
+python main.py ingest data/logs      <span class="c-mut"># file or directory</span>
+python main.py analyze --top-n 10
+python main.py report                <span class="c-mut"># -&gt; outputs/reports/</span>
+python main.py charts                <span class="c-mut"># -&gt; outputs/charts/</span></div>
+      </div>
+
+      <div class="tab-panel" id="panel-gui" role="tabpanel" aria-labelledby="tab-gui">
+        <p class="gui-desc">A Tkinter desktop app wraps the same services the CLI uses, for anyone who'd rather click buttons than type commands. Long-running actions run on a background thread with live output streamed into the panel, so the window never freezes.</p>
+        <div class="btn-list">
+          <span class="mock-btn">Browse&hellip;</span>
+          <span class="mock-btn">Initialize Database</span>
+          <span class="mock-btn">Generate Sample Log</span>
+          <span class="mock-btn">Ingest Selected File</span>
+          <span class="mock-btn">Run Analytics</span>
+          <span class="mock-btn">Generate Charts</span>
+          <span class="mock-btn">Export Reports</span>
+          <span class="mock-btn">Open Charts Folder</span>
+          <span class="mock-btn">Open Reports Folder</span>
+        </div>
+        <div class="code-block" style="margin-top:1rem;">python gui.py</div>
+      </div>
+
+      <div class="tab-panel" id="panel-exe" role="tabpanel" aria-labelledby="tab-exe">
+        <p class="gui-desc">The GUI packages into a single portable <code>LFA.exe</code> via PyInstaller &mdash; no Python install needed on the machine that runs it. Pandas/NumPy/SciPy/Matplotlib are bundled in, which puts it around 85&nbsp;MB.</p>
+        <div class="code-block">./build_exe.sh<span class="c-mut">   # -&gt; dist/LFA.exe</span></div>
+        <div class="callout">The exe still needs a reachable PostgreSQL server &mdash; it bundles the pipeline, not a database. Copy <code>.env</code> next to <code>LFA.exe</code> before running it; a frozen build resolves its config directory relative to itself, not the source tree.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <p class="footer-note">Built as a portfolio project to demonstrate ETL pipeline design, SQL/PostgreSQL schema design, statistical analysis, and testing practices for Data Engineering / Python Developer roles. No license file yet.</p>
+    <div class="footer-links">
+      <a href="https://github.com/petersamuel07/log-files-analyzer" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://github.com/petersamuel07/log-files-analyzer/blob/main/docs/architecture.md" target="_blank" rel="noopener">Architecture ↗</a>
+      <a href="https://github.com/petersamuel07/log-files-analyzer/blob/main/docs/database_schema.md" target="_blank" rel="noopener">DB Schema ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        tabs.forEach(function (b) { b.setAttribute('aria-selected', 'false'); });
+        document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+        btn.setAttribute('aria-selected', 'true');
+        document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
+      });
+    });
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      document.body.classList.add('js-ready');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    }
+  })();
+</script>
+
+</body>
+</html>
