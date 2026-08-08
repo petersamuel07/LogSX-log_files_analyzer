@@ -4,12 +4,14 @@
 # PostgreSQL reachable and a .env file placed next to the .exe.
 #
 # Usage:
-#   ./build_exe.sh
+#   ./scripts/build_exe.sh
 
 set -euo pipefail
 
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
 if [ ! -f "venv/Scripts/python.exe" ] && [ ! -f "venv/bin/python" ]; then
-    echo "Error: venv/ not found. Run ./setup.sh first." >&2
+    echo "Error: venv/ not found. Run ./scripts/setup.sh first." >&2
     exit 1
 fi
 
@@ -20,7 +22,7 @@ echo "==> Installing build tooling (PyInstaller)"
 "$VENV_PYTHON" -m pip install -r requirements-dev.txt --quiet
 
 echo "==> Building LFA.exe from gui.py"
-"$VENV_PYTHON" -m PyInstaller --onefile --windowed --name LFA gui.py
+"$VENV_PYTHON" -m PyInstaller --onefile --windowed --name LFA --specpath packaging gui.py
 
 echo ""
 echo "==> Build complete: dist/LFA.exe"

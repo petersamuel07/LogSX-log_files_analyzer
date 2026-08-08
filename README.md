@@ -81,6 +81,8 @@ outputs/reports/     generated CSV/JSON reports
 outputs/charts/       generated PNG charts
 main.py             CLI entry point
 gui.py              Tkinter GUI entry point
+scripts/            setup.sh, build_exe.sh — dev/build automation
+packaging/          LFA.spec — PyInstaller build spec
 ```
 
 ## Installation
@@ -89,14 +91,14 @@ gui.py              Tkinter GUI entry point
 
 ### Quick setup (Git Bash / macOS / Linux)
 
-[setup.sh](setup.sh) automates everything below in one step — creates the
+[scripts/setup.sh](scripts/setup.sh) automates everything below in one step — creates the
 venv, installs dependencies + the package in editable mode, and creates
 `.env` from the template if it doesn't exist yet. Safe to re-run.
 
 ```bash
 git clone <your-fork-url>
 cd log-files-analyzer
-./setup.sh
+./scripts/setup.sh
 # then edit .env with your real PostgreSQL credentials
 ```
 
@@ -196,11 +198,11 @@ never freezes. No extra dependencies — Tkinter ships with Python.
 
 ### Building a standalone .exe
 
-[build_exe.sh](build_exe.sh) packages the GUI into a single `LFA.exe` via
+[scripts/build_exe.sh](scripts/build_exe.sh) packages the GUI into a single `LFA.exe` via
 PyInstaller — no Python install needed to run it on another Windows machine:
 
 ```bash
-./build_exe.sh
+./scripts/build_exe.sh
 ```
 
 This installs PyInstaller (from [requirements-dev.txt](requirements-dev.txt),

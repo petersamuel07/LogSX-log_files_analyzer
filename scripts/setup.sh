@@ -4,12 +4,14 @@
 # if it doesn't already exist. Safe to re-run — every step is idempotent.
 #
 # Usage:
-#   ./setup.sh
+#   ./scripts/setup.sh
 #
 # Override the Python interpreter if "python" doesn't point to Python 3.13+:
-#   PYTHON_BIN=python3.13 ./setup.sh
+#   PYTHON_BIN=python3.13 ./scripts/setup.sh
 
 set -euo pipefail
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
 PYTHON_BIN="${PYTHON_BIN:-python}"
 

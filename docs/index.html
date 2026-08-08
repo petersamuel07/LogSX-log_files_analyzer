@@ -753,7 +753,7 @@ python main.py charts                <span class="c-mut"># -&gt; outputs/charts/
 
       <div class="tab-panel" id="panel-exe" role="tabpanel" aria-labelledby="tab-exe">
         <p class="gui-desc">The GUI packages into a single portable <code>LFA.exe</code> via PyInstaller &mdash; no Python install needed on the machine that runs it. Pandas/NumPy/SciPy/Matplotlib are bundled in, which puts it around 85&nbsp;MB.</p>
-        <div class="code-block">./build_exe.sh<span class="c-mut">   # -&gt; dist/LFA.exe</span></div>
+        <div class="code-block">./scripts/build_exe.sh<span class="c-mut">   # -&gt; dist/LFA.exe</span></div>
         <div class="callout">The exe still needs a reachable PostgreSQL server &mdash; it bundles the pipeline, not a database. Copy <code>.env</code> next to <code>LFA.exe</code> before running it; a frozen build resolves its config directory relative to itself, not the source tree.</div>
       </div>
     </div>
