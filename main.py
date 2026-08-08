@@ -53,7 +53,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Override LOG_LEVEL from .env for this run.",
     )
 
-    subparsers = parser.add_subparsers(dest="command", required=True)
+    subparsers = parser.add_subparsers(dest="command")
 
     subparsers.add_parser("init-db", help="Create the database, tables, indexes, and seed log levels.")
 
@@ -204,6 +204,10 @@ _COMMAND_HANDLERS = {
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+
+    if args.command is None:
+        parser.print_help()
+        return 0
 
     settings = get_settings()
     setup_logging(args.log_level or settings.log_level)
