@@ -55,6 +55,20 @@ ICO_SIZES = (16, 24, 32, 48, 64, 128, 256)
 FAVICON_SIZES = (16, 32, 48)
 ALPHA_FLOOR = 8               # treat near-transparent pixels as empty
 
+# Fraction of the icon's width taken up by the motion lines streaming off its
+# left side. Every place the standalone mark appears is small — a 16px favicon,
+# the ~30px GUI header, the 28px site nav — and at those sizes the lines are
+# sub-pixel: they blur into a grey smear and shrink the document and magnifier
+# to fit a box a third of which is smear. Cropping them leaves a near-square
+# mark that still reads at 16px. The full artwork keeps its lines everywhere it
+# appears large, since the README and social card use the whole lockup.
+#
+# Unlike the icon/wordmark split this can't be auto-detected — the lines run
+# right up to the document's edge, leaving no blank column to find — so it's a
+# measured constant. If the logo is redrawn, re-measure where the document's
+# left edge sits as a fraction of the icon's width.
+MARK_CROP_LEFT = 0.30
+
 # Social cards are a fixed 1200x630; the logo is inset so no platform's
 # rounded-corner crop can clip it.
 OG_SIZE = (1200, 630)
@@ -118,6 +132,11 @@ def split_lockup(logo: Image.Image) -> tuple[Image.Image, Image.Image]:
     return trim(logo.crop((0, 0, width, cut))), trim(logo.crop((0, cut, width, logo.height)))
 
 
+def drop_motion_lines(icon: Image.Image) -> Image.Image:
+    """Trim the speed lines off the icon's left edge (see MARK_CROP_LEFT)."""
+    return trim(icon.crop((round(icon.width * MARK_CROP_LEFT), 0, icon.width, icon.height)))
+
+
 def recolour(img: Image.Image, rgb: tuple[int, int, int]) -> Image.Image:
     """Repaint the artwork in `rgb`, keeping its original alpha (anti-aliasing included)."""
     solid = Image.new("RGBA", img.size, (*rgb, 255))
@@ -173,7 +192,8 @@ def main() -> None:
 
     logo_light_bg = recolour(master, INK_DARK)
     logo_dark_bg = recolour(master, INK_LIGHT)
-    mark, _wordmark = split_lockup(master)
+    icon, _wordmark = split_lockup(master)
+    mark = drop_motion_lines(icon)
     mark_light_bg = recolour(mark, INK_DARK)
     mark_dark_bg = recolour(mark, INK_LIGHT)
 

@@ -29,6 +29,17 @@ committed, so nobody needs to run the script just to build or read the project.
 "a dark-coloured logo". The plain name is the dark-ink version for light
 backgrounds.
 
+## Why the standalone mark drops the motion lines
+
+The full icon has speed lines streaming off its left side, and the generated
+`mark*.png` files crop them away. Every surface that uses the mark alone is
+small — a 16px favicon, the ~30px GUI header, the 28px site nav — and at those
+sizes the lines go sub-pixel: they blur into a grey smear while squeezing the
+document and magnifier into two-thirds of the tile. Cropping leaves a
+near-square mark that still reads at 16px. The lines survive everywhere the
+artwork appears large, because the README header and social card use the whole
+lockup rather than the mark.
+
 ## Regenerating
 
 ```bash
