@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Builds a standalone Windows LFA.exe from gui.py via PyInstaller.
-# The resulting dist/LFA.exe needs no Python install to run — just
+# Builds a standalone Windows LogSX.exe from gui.py via PyInstaller.
+# The resulting dist/LogSX.exe needs no Python install to run — just
 # PostgreSQL reachable and a .env file placed next to the .exe.
 #
 # Usage:
@@ -21,15 +21,15 @@ VENV_PYTHON="venv/Scripts/python.exe"
 echo "==> Installing build tooling (PyInstaller)"
 "$VENV_PYTHON" -m pip install -r requirements-dev.txt --quiet
 
-echo "==> Building LFA.exe from gui.py"
-"$VENV_PYTHON" -m PyInstaller --onefile --windowed --name LFA --specpath packaging gui.py
+echo "==> Building LogSX.exe from gui.py"
+"$VENV_PYTHON" -m PyInstaller --onefile --windowed --name LogSX --specpath packaging gui.py
 
 echo ""
-echo "==> Build complete: dist/LFA.exe"
+echo "==> Build complete: dist/LogSX.exe"
 echo ""
 echo "Before running it:"
-echo "  1. Copy .env next to dist/LFA.exe (frozen mode looks for it beside the .exe, not in the source tree)."
+echo "  1. Copy .env next to dist/LogSX.exe (frozen mode looks for it beside the .exe, not in the source tree)."
 echo "  2. Make sure PostgreSQL is reachable with the credentials in that .env."
-echo "  3. Double-click dist/LFA.exe, or run it from a terminal: ./dist/LFA.exe"
+echo "  3. Double-click dist/LogSX.exe, or run it from a terminal: ./dist/LogSX.exe"
 echo ""
 echo "data/, outputs/, and logs/ will be created next to the .exe on first run."

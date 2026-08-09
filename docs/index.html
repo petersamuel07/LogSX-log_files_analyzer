@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LFA — Log File Analyzer</title>
-<meta name="description" content="LFA is a regex-to-PostgreSQL log analytics pipeline with a CLI, a Tkinter GUI, and a standalone Windows build.">
+<title>LogSX — Log Files Analyzer</title>
+<meta name="description" content="LogSX is a regex-to-PostgreSQL log analytics pipeline with a CLI, a Tkinter GUI, and a standalone Windows build.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
   :root {
@@ -498,7 +498,7 @@
 <body>
 <header class="topbar">
   <div class="topbar-inner">
-    <div class="brand"><span class="brand-mark">LFA</span><span class="brand-sub">Log File Analyzer</span></div>
+    <div class="brand"><span class="brand-mark">LogSX</span><span class="brand-sub">Log Files Analyzer</span></div>
     <a class="gh" href="https://github.com/petersamuel07/log-files-analyzer" target="_blank" rel="noopener">Source on GitHub ↗</a>
   </div>
 </header>
@@ -510,7 +510,7 @@
     <div class="hero-copy">
       <div class="eyebrow">PORTFOLIO BUILD · DATA ENGINEERING</div>
       <h1>Unstructured logs in.<br><span class="accentline">Structured answers out.</span></h1>
-      <p class="hero-sub">LFA is an ETL and analytics pipeline for application log files: a streaming regex parser turns raw text into typed rows, PostgreSQL stores them with automatic de-duplication, and Pandas/NumPy/SciPy turn the result into percentiles, trends, and outliers &mdash; from a CLI, a desktop GUI, or a single portable .exe.</p>
+      <p class="hero-sub">LogSX is an ETL and analytics pipeline for application log files: a streaming regex parser turns raw text into typed rows, PostgreSQL stores them with automatic de-duplication, and Pandas/NumPy/SciPy turn the result into percentiles, trends, and outliers &mdash; from a CLI, a desktop GUI, or a single portable .exe.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://github.com/petersamuel07/log-files-analyzer" target="_blank" rel="noopener">View source on GitHub</a>
         <a class="btn btn-ghost" href="#pipeline">See how it works ↓</a>
@@ -619,7 +619,7 @@
       <div class="card">
         <div class="eyebrow">RUN</div>
         <h3>Three ways to run it</h3>
-        <p>A full argparse CLI for scripting, a Tkinter desktop GUI for point-and-click, and a portable LFA.exe for a machine with no Python installed. Same services underneath &mdash; no duplicated logic.</p>
+        <p>A full argparse CLI for scripting, a Tkinter desktop GUI for point-and-click, and a portable LogSX.exe for a machine with no Python installed. Same services underneath &mdash; no duplicated logic.</p>
       </div>
     </div>
   </section>
@@ -717,7 +717,7 @@ Avg logs/hour:     <span class="c-acc">6.73</span>
       <p>Same ingestion/analytics/chart/report services underneath all three &mdash; pick whichever fits.</p>
     </div>
     <div class="reveal">
-      <div class="tabs" role="tablist" aria-label="Ways to run LFA">
+      <div class="tabs" role="tablist" aria-label="Ways to run LogSX">
         <button class="tab-btn" role="tab" aria-selected="true" aria-controls="panel-cli" id="tab-cli">CLI</button>
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-gui" id="tab-gui">Desktop GUI</button>
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-exe" id="tab-exe">Standalone .exe</button>
@@ -752,9 +752,9 @@ python main.py charts                <span class="c-mut"># -&gt; outputs/charts/
       </div>
 
       <div class="tab-panel" id="panel-exe" role="tabpanel" aria-labelledby="tab-exe">
-        <p class="gui-desc">The GUI packages into a single portable <code>LFA.exe</code> via PyInstaller &mdash; no Python install needed on the machine that runs it. Pandas/NumPy/SciPy/Matplotlib are bundled in, which puts it around 85&nbsp;MB.</p>
-        <div class="code-block">./scripts/build_exe.sh<span class="c-mut">   # -&gt; dist/LFA.exe</span></div>
-        <div class="callout">The exe still needs a reachable PostgreSQL server &mdash; it bundles the pipeline, not a database. Copy <code>.env</code> next to <code>LFA.exe</code> before running it; a frozen build resolves its config directory relative to itself, not the source tree.</div>
+        <p class="gui-desc">The GUI packages into a single portable <code>LogSX.exe</code> via PyInstaller &mdash; no Python install needed on the machine that runs it. Pandas/NumPy/SciPy/Matplotlib are bundled in, which puts it around 85&nbsp;MB.</p>
+        <div class="code-block">./scripts/build_exe.sh<span class="c-mut">   # -&gt; dist/LogSX.exe</span></div>
+        <div class="callout">The exe still needs a reachable PostgreSQL server &mdash; it bundles the pipeline, not a database. Copy <code>.env</code> next to <code>LogSX.exe</code> before running it; a frozen build resolves its config directory relative to itself, not the source tree.</div>
       </div>
     </div>
   </section>

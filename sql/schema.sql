@@ -1,4 +1,4 @@
--- Log File Analyzer — PostgreSQL schema
+-- LogSX — Log Files Analyzer — PostgreSQL schema
 -- Mirrors src/log_analyzer/models/*.py exactly. The Python application creates
 -- this schema automatically via SQLAlchemy (see database/init_db.py); this file
 -- exists so the schema can be reviewed, run manually in pgAdmin, or version

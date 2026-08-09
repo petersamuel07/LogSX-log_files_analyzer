@@ -1,4 +1,4 @@
-"""Desktop GUI entry point for the Log File Analyzer.
+"""Desktop GUI entry point for LogSX — Log Files Analyzer.
 
 Run with:
     python gui.py
@@ -23,7 +23,7 @@ if sys.stdout is None:
 if sys.stderr is None:
     sys.stderr = open(os.devnull, "w")
 
-from log_analyzer.gui import LogAnalyzerGUI  # noqa: E402 - must follow the stdout/stderr patch above
+from log_analyzer.gui import LogSXGUI  # noqa: E402 - must follow the stdout/stderr patch above
 
 if __name__ == "__main__":
-    LogAnalyzerGUI().run()
+    LogSXGUI().run()

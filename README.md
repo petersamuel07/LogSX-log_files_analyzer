@@ -1,4 +1,4 @@
-# Log File Analyzer :
+# LogSX — Log Files Analyzer
 
 A production-style ETL and analytics pipeline for application log files: parses
 raw `.log` files with regex, loads them into a normalized PostgreSQL schema
@@ -82,7 +82,7 @@ outputs/charts/       generated PNG charts
 main.py             CLI entry point
 gui.py              Tkinter GUI entry point
 scripts/            setup.sh, build_exe.sh — dev/build automation
-packaging/          LFA.spec — PyInstaller build spec
+packaging/          LogSX.spec — PyInstaller build spec
 ```
 
 ## Installation
@@ -97,7 +97,7 @@ venv, installs dependencies + the package in editable mode, and creates
 
 ```bash
 git clone <your-fork-url>
-cd log-files-analyzer
+cd LogSX-log-files-analyzer
 ./scripts/setup.sh
 # then edit .env with your real PostgreSQL credentials
 ```
@@ -107,7 +107,7 @@ cd log-files-analyzer
 ```powershell
 # 1. Clone and enter the project
 git clone <your-fork-url>
-cd "Log Files Analyzer"
+cd LogSX-log-files-analyzer
 
 # 2. Create and activate a virtual environment
 python -m venv venv
@@ -182,23 +182,33 @@ Run `python main.py -h` or `python main.py <command> -h` for the full option lis
 
 ## GUI
 
-A simple Tkinter desktop app wraps the same services the CLI uses, for
+A dark-themed Tkinter desktop app wraps the same services the CLI uses, for
 anyone who'd rather click buttons than type commands:
 
 ```powershell
 python gui.py
 ```
 
-Buttons: **Browse** to pick a `.log` file (or **Generate Sample Log** to
-create one), **Initialize Database**, **Ingest Selected File**, **Run
-Analytics**, **Generate Charts**, **Export Reports**, and shortcuts to open
-the charts/reports output folders. All long-running actions run on a
-background thread with live output streamed into the panel, so the window
-never freezes. No extra dependencies — Tkinter ships with Python.
+Layout: a branded header showing the PostgreSQL target the app is pointed at,
+a left sidebar grouping the actions into **Input File** (Browse / Generate
+Sample Log), **Pipeline** (Initialize Database, Ingest Selected File, Run
+Analytics), and **Outputs** (Generate Charts, Export Reports, plus shortcuts
+to open the charts/reports folders), and a timestamped console on the right
+that colour-codes headings, successes, warnings, and errors. A status bar with
+an indeterminate progress bar shows what is currently running.
+
+There is also a menu bar (File / Run / View / Help) and keyboard shortcuts:
+`Ctrl+O` open a log file, `Ctrl+G` generate a sample, `Ctrl+I` ingest,
+`Ctrl+R` run analytics, `Ctrl+L` clear the console.
+
+All long-running actions run on a background thread with live output streamed
+into the console, so the window never freezes, and every action button is
+disabled while a job is in flight. No extra dependencies — Tkinter ships with
+Python.
 
 ### Building a standalone .exe
 
-[scripts/build_exe.sh](scripts/build_exe.sh) packages the GUI into a single `LFA.exe` via
+[scripts/build_exe.sh](scripts/build_exe.sh) packages the GUI into a single `LogSX.exe` via
 PyInstaller — no Python install needed to run it on another Windows machine:
 
 ```bash
@@ -207,16 +217,16 @@ PyInstaller — no Python install needed to run it on another Windows machine:
 
 This installs PyInstaller (from [requirements-dev.txt](requirements-dev.txt),
 kept separate from `requirements.txt` since it's a build-time tool, not a
-runtime dependency) and produces `dist/LFA.exe` (~85 MB — pandas/numpy/scipy/
+runtime dependency) and produces `dist/LogSX.exe` (~85 MB — pandas/numpy/scipy/
 matplotlib bundled in). Before running the built exe:
 
-1. Copy `.env` next to `dist/LFA.exe` — a frozen exe resolves its config
+1. Copy `.env` next to `dist/LogSX.exe` — a frozen exe resolves its config
    directory relative to the executable's own location, not the source tree
    (`log_analyzer/config/settings.py` detects `sys.frozen` and adjusts
    `PROJECT_ROOT` accordingly), so `.env`/`data/`/`outputs/` all need to live
    beside the `.exe`, not beside `gui.py`.
 2. Make sure PostgreSQL is reachable with the credentials in that `.env`.
-3. Double-click `LFA.exe`, or run it from a terminal.
+3. Double-click `LogSX.exe`, or run it from a terminal.
 
 ### Example output
 
