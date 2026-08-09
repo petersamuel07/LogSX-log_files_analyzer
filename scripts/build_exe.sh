@@ -21,8 +21,32 @@ VENV_PYTHON="venv/Scripts/python.exe"
 echo "==> Installing build tooling (PyInstaller)"
 "$VENV_PYTHON" -m pip install -r requirements-dev.txt --quiet
 
+# The exe icon and the GUI's header mark come out of assets/. They're committed,
+# but regenerate them if only the master logo is present so a fresh clone that
+# ran build_assets.py's inputs — but not the script — still gets a branded exe.
+if [ ! -f "assets/icon.ico" ] && [ -f "assets/logo.png" ]; then
+    echo "==> Generating brand assets from assets/logo.png"
+    "$VENV_PYTHON" scripts/build_assets.py
+fi
+
+# --add-data uses the platform's path separator, not a fixed character.
+DATA_SEP=";"
+case "$(uname -s)" in
+    Linux* | Darwin*) DATA_SEP=":" ;;
+esac
+
+BRAND_ARGS=()
+if [ -f "assets/icon.ico" ]; then
+    # Bundled read-only, so the GUI reads them from sys._MEIPASS at runtime
+    # (see src/log_analyzer/utils/assets.py) rather than from beside the .exe.
+    BRAND_ARGS+=(--icon "assets/icon.ico" --add-data "assets${DATA_SEP}assets")
+else
+    echo "Warning: assets/icon.ico not found — building with PyInstaller's default icon." >&2
+fi
+
 echo "==> Building LogSX.exe from gui.py"
-"$VENV_PYTHON" -m PyInstaller --onefile --windowed --name LogSX --specpath packaging gui.py
+"$VENV_PYTHON" -m PyInstaller --onefile --windowed --name LogSX --specpath packaging \
+    "${BRAND_ARGS[@]}" gui.py
 
 echo ""
 echo "==> Build complete: dist/LogSX.exe"
