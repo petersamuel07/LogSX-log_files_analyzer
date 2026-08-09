@@ -21,12 +21,28 @@ import threading
 import traceback
 from datetime import datetime
 from pathlib import Path
-from tkinter import BOTH, DISABLED, END, LEFT, NORMAL, RIGHT, X, Y, Menu, StringVar, Tk, filedialog, messagebox, ttk
+from tkinter import (
+    BOTH,
+    DISABLED,
+    END,
+    LEFT,
+    NORMAL,
+    RIGHT,
+    X,
+    Y,
+    Menu,
+    StringVar,
+    TclError,
+    Tk,
+    filedialog,
+    messagebox,
+    ttk,
+)
 from tkinter.scrolledtext import ScrolledText
-from typing import Callable
+from typing import Any, Callable
 
 from log_analyzer.config import get_settings, setup_logging
-from log_analyzer.utils import format_analytics_summary, format_ingestion_summary
+from log_analyzer.utils import asset_path, format_analytics_summary, format_ingestion_summary
 
 logger = logging.getLogger(__name__)
 
@@ -55,6 +71,52 @@ def _enable_dpi_awareness() -> float:
         return ctypes.windll.user32.GetDpiForSystem() / 96.0
     except (AttributeError, OSError):
         return 1.0
+
+
+def _claim_taskbar_identity() -> None:
+    """Tell Windows this process is LogSX, not its Python host.
+
+    Without an explicit AppUserModelID, a Tk app launched from `python gui.py`
+    inherits the interpreter's identity, so the taskbar shows the Python icon
+    and groups LogSX windows under it — the window icon set below is ignored
+    there. Frozen builds get this from the exe itself, but setting it costs
+    nothing and makes running from source look the same.
+    """
+    if sys.platform != "win32":
+        return
+    try:
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("logsx.log-files-analyzer")
+    except (AttributeError, OSError):
+        pass
+
+
+def _load_brand_image(filename: str, height: int) -> Any | None:
+    """Load a brand PNG scaled to `height` pixels, or None when unavailable.
+
+    The caller must hold a reference to the returned image: Tkinter keeps only
+    a weak association, and a garbage-collected image renders as a blank gap.
+
+    Artwork is treated as optional throughout — a checkout without `assets/`,
+    a build that forgot to bundle it, or a Pillow-less environment all still
+    get a fully working window, just an unbranded one.
+    """
+    path = asset_path(filename)
+    if path is None:
+        logger.debug("Brand asset %s not found; rendering without it.", filename)
+        return None
+    try:
+        from PIL import Image, ImageTk
+    except ImportError:
+        logger.debug("Pillow unavailable; rendering without brand artwork.")
+        return None
+    try:
+        with Image.open(path) as raw:
+            art = raw.convert("RGBA")
+        width = max(1, round(art.width * height / art.height))
+        return ImageTk.PhotoImage(art.resize((width, height), Image.LANCZOS))
+    except (OSError, ValueError) as exc:
+        logger.debug("Could not load brand asset %s: %s", path, exc)
+        return None
 
 
 class Palette:
@@ -87,6 +149,7 @@ class LogSXGUI:
         setup_logging(get_settings().log_level)
 
         scale = _enable_dpi_awareness()
+        _claim_taskbar_identity()
 
         self.root = Tk()
         self.root.tk.call("tk", "scaling", scale * 96.0 / 72.0)
@@ -99,7 +162,10 @@ class LogSXGUI:
         self._action_buttons: list[ttk.Button] = []
         self._busy = False
         self._scale = scale
+        # Tk images must outlive the widgets showing them (see _load_brand_image).
+        self._brand_images: list[Any] = []
 
+        self._apply_window_icon()
         self._init_styles()
         self._build_menu()
         self._build_widgets()
@@ -107,6 +173,32 @@ class LogSXGUI:
 
         self._log(f"{APP_NAME} ready.", tag="heading")
         self._log("Select a .log file with Browse (Ctrl+O), or generate a sample to get started.")
+
+    # ------------------------------------------------------------------
+    # Branding
+    # ------------------------------------------------------------------
+
+    def _apply_window_icon(self) -> None:
+        """Put the LogSX mark on the title bar, taskbar, and Alt-Tab switcher.
+
+        Prefers the multi-resolution .ico so Windows picks a crisp size for each
+        of those surfaces instead of rescaling one bitmap. Tk builds on Linux
+        and macOS reject .ico outright, so those fall back to the PNG mark.
+        """
+        icon = asset_path("icon.ico")
+        if icon is not None:
+            try:
+                self.root.iconbitmap(default=str(icon))
+                return
+            except TclError:
+                logger.debug("This Tk build rejected the .ico; falling back to PNG.")
+
+        # The dark-ink mark would vanish against a dark title bar, so use the
+        # light-ink one — it reads on both, unlike black on black.
+        image = _load_brand_image("mark-on-dark-128.png", 128)
+        if image is not None:
+            self._brand_images.append(image)
+            self.root.iconphoto(True, image)
 
     # ------------------------------------------------------------------
     # Theme
@@ -124,6 +216,7 @@ class LogSXGUI:
         style.configure("TLabel", background=Palette.bg, foreground=Palette.text, font=("Segoe UI", 10))
         style.configure("Brand.TLabel", background=Palette.header, foreground=Palette.text,
                         font=("Segoe UI Semibold", 19))
+        style.configure("BrandMark.TLabel", background=Palette.header)
         style.configure("BrandSub.TLabel", background=Palette.header, foreground=Palette.text_muted,
                         font=("Segoe UI", 10))
         style.configure("HeaderMeta.TLabel", background=Palette.header, foreground=Palette.text_dim,
@@ -259,6 +352,14 @@ class LogSXGUI:
 
         brand = ttk.Frame(inner, style="Header.TFrame")
         brand.pack(side=LEFT)
+
+        # Icon only, not the full lockup: the lockup carries its own "LogSX /
+        # LOG FILES ANALYZER" wordmark, which the two labels beside it already say.
+        mark = _load_brand_image("mark-on-dark-128.png", round(30 * self._scale))
+        if mark is not None:
+            self._brand_images.append(mark)
+            ttk.Label(brand, image=mark, style="BrandMark.TLabel").pack(side=LEFT, padx=(0, 10))
+
         ttk.Label(brand, text=APP_NAME, style="Brand.TLabel").pack(side=LEFT)
         ttk.Label(brand, text=f"  {APP_TAGLINE}", style="BrandSub.TLabel").pack(side=LEFT, pady=(6, 0))
 
