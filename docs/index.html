@@ -5,7 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LogSX — Log Files Analyzer</title>
 <meta name="description" content="LogSX is a regex-to-PostgreSQL log analytics pipeline with a CLI, a Tkinter GUI, and a standalone Windows build.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<!-- Multi-size .ico for the tab and bookmarks; browsers that support a
+     media-queried icon get the light-ink mark on a dark tab strip instead. -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon-on-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="assets/mark.png">
+
+<!-- Link previews. og:image must be absolute — a relative path resolves
+     against the scraper's host, not this page, and silently shows nothing. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="LogSX — Log Files Analyzer">
+<meta property="og:description" content="An ETL and analytics pipeline for application log files: streaming regex parser, de-duplicating PostgreSQL schema, and Pandas/NumPy/SciPy analysis from a CLI, a desktop GUI, or a portable .exe.">
+<meta property="og:url" content="https://petersamuel07.github.io/log-files-analyzer/">
+<meta property="og:image" content="https://petersamuel07.github.io/log-files-analyzer/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root {
     --paper: #f5f2ea;
@@ -142,6 +158,17 @@
     font-size: 1.05rem;
   }
   .brand-mark { color: var(--accent); }
+  /* The mark is one-colour line art, so it needs an ink swap rather than a
+     filter. Two <img>s toggled by the same selectors that drive the palette —
+     a <picture> would only see the media query and miss the theme attribute. */
+  .brand-logo { width: 1.75rem; height: auto; align-self: center; display: block; }
+  .brand-logo.on-dark { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .brand-logo.on-light { display: none; }
+    :root:not([data-theme="light"]) .brand-logo.on-dark { display: block; }
+  }
+  :root[data-theme="dark"] .brand-logo.on-light { display: none; }
+  :root[data-theme="dark"] .brand-logo.on-dark { display: block; }
   .brand-sub {
     font-family: var(--font-body);
     font-weight: 400;
@@ -498,7 +525,11 @@
 <body>
 <header class="topbar">
   <div class="topbar-inner">
-    <div class="brand"><span class="brand-mark">LogSX</span><span class="brand-sub">Log Files Analyzer</span></div>
+    <div class="brand">
+      <img class="brand-logo on-light" src="assets/mark.png" alt="">
+      <img class="brand-logo on-dark" src="assets/mark-on-dark.png" alt="">
+      <span class="brand-mark">LogSX</span><span class="brand-sub">Log Files Analyzer</span>
+    </div>
     <a class="gh" href="https://github.com/petersamuel07/log-files-analyzer" target="_blank" rel="noopener">Source on GitHub ↗</a>
   </div>
 </header>

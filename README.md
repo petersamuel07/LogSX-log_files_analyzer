@@ -1,4 +1,11 @@
-# LogSX — Log Files Analyzer
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-on-dark.png">
+    <img src="assets/logo.png" alt="LogSX — Log Files Analyzer" width="340">
+  </picture>
+</p>
+
+<p align="center"><em>Unstructured logs in. Structured answers out.</em></p>
 
 A production-style ETL and analytics pipeline for application log files: parses
 raw `.log` files with regex, loads them into a normalized PostgreSQL schema
@@ -81,7 +88,8 @@ outputs/reports/     generated CSV/JSON reports
 outputs/charts/       generated PNG charts
 main.py             CLI entry point
 gui.py              Tkinter GUI entry point
-scripts/            setup.sh, build_exe.sh — dev/build automation
+assets/             logo masters + generated marks/icon (see assets/README.md)
+scripts/            setup.sh, build_exe.sh, build_assets.py — dev/build automation
 packaging/          LogSX.spec — PyInstaller build spec
 ```
 
