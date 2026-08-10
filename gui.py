@@ -1,29 +1,13 @@
-"""Desktop GUI entry point for LogSX — Log Files Analyzer.
+"""Repo-root shim for the LogSX desktop GUI — see src/log_analyzer/gui/ for the real thing.
 
-Run with:
-    python gui.py
-
-A simple Tkinter window wrapping the same services the CLI (main.py) uses:
-initialize the database, generate a sample log, ingest a file, run
-analytics, generate charts, and export reports — all with live output in
-a scrollable panel. See main.py for the CLI equivalent.
+Kept so `python gui.py` works out of a fresh clone, and because this is the
+script PyInstaller builds LogSX.exe from (see packaging/LogSX.spec). Once the
+package is installed, `logsx-gui` is the equivalent entry point.
 """
 
-import os
 import sys
 
-# A PyInstaller --windowed build has no console, so sys.stdout/stderr are
-# None rather than a real stream. Anything that writes to them directly
-# (tqdm's progress bar; our own console log handler) crashes with
-# "AttributeError: 'NoneType' object has no attribute 'write'" the first
-# time it tries. Redirecting to a discard sink makes those writes harmless
-# no-ops instead — there's no console for a progress bar to show up in anyway.
-if sys.stdout is None:
-    sys.stdout = open(os.devnull, "w")
-if sys.stderr is None:
-    sys.stderr = open(os.devnull, "w")
-
-from log_analyzer.gui import LogSXGUI  # noqa: E402 - must follow the stdout/stderr patch above
+from log_analyzer.gui.launcher import main
 
 if __name__ == "__main__":
-    LogSXGUI().run()
+    sys.exit(main())

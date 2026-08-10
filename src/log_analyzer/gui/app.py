@@ -1,7 +1,7 @@
 """Tkinter desktop GUI for LogSX — Log Files Analyzer.
 
 Wraps the same services/analytics/visualization/reports classes the CLI
-(main.py) uses — this is a thin presentation layer, not a second copy of any
+(log_analyzer.cli) uses — this is a thin presentation layer, not a second copy of any
 business logic. Long-running operations (DB init, ingestion, analytics) run
 on a background thread so the window never freezes, with output streamed
 into a scrollable console via a thread-safe `root.after()` callback.
@@ -646,7 +646,7 @@ class LogSXGUI:
             f"About {APP_NAME}",
             f"{APP_NAME} — {APP_TAGLINE}\nVersion {__version__}\n\n"
             "ETL and analytics pipeline for application log files, backed by PostgreSQL.\n"
-            "This window drives the same services as the command line (main.py).",
+            "This window drives the same services as the command line (logsx).",
         )
 
     def run(self) -> None:

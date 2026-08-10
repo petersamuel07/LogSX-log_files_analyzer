@@ -93,7 +93,7 @@ here since the project's whole premise is a PostgreSQL-backed pipeline.
 
 ## CLI orchestration
 
-`main.py` is a thin argparse layer over the packages above — it contains no
+`log_analyzer/cli.py` is a thin argparse layer over the packages above — it contains no
 business logic itself, only wiring: parse args -> call the right service ->
 print/format the result. Every subcommand (`init-db`, `generate-sample`,
 `ingest`, `analyze`, `report`, `charts`, `pipeline`) maps 1:1 to a method on

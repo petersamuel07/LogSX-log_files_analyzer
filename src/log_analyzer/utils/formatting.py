@@ -1,6 +1,6 @@
 """Human-readable text formatting for ingestion/analytics summaries.
 
-Shared by the CLI (main.py) and the Tkinter GUI so both present identical
+Shared by the CLI (log_analyzer.cli) and the Tkinter GUI so both present identical
 output built from the same summary dicts, instead of each re-implementing
 its own formatting.
 """
