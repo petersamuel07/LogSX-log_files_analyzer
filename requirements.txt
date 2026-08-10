@@ -1,19 +1,6 @@
-# Core data stack
-pandas>=2.2
-numpy>=1.26
-scipy>=1.13
-matplotlib>=3.9
-
-# Database
-SQLAlchemy>=2.0
-psycopg2-binary>=2.9
-
-# Configuration
-python-dotenv>=1.0
-
-# CLI / UX
-tqdm>=4.66
-
-# Testing
-pytest>=8.0
-pytest-cov>=5.0
+# Runtime dependencies are declared in pyproject.toml ([project.dependencies]).
+# This file installs the project itself in editable mode, which pulls them in —
+# so there is only one dependency list to keep up to date, not two.
+#
+#   pip install -r requirements.txt
+-e .

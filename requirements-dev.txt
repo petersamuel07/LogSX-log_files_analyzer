@@ -1,5 +1,6 @@
-# Extra tooling only needed to build a standalone .exe — not required to
-# run the app from source. Install with: pip install -r requirements-dev.txt
--r requirements.txt
-
-pyinstaller>=6.0
+# Runtime dependencies plus the tooling needed to test, lint, and package the
+# app (pytest, ruff, PyInstaller) — declared in pyproject.toml under
+# [project.optional-dependencies] dev. Not required to run the app from source.
+#
+#   pip install -r requirements-dev.txt
+-e .[dev]

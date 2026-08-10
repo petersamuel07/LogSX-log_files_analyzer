@@ -9,6 +9,9 @@ __pycache__/
 build/
 dist/
 
+# --- PyInstaller intermediates (the committed spec in packaging/ is kept) ---
+packaging/build/
+
 # --- Virtual environments ---
 venv/
 .venv/
@@ -17,9 +20,12 @@ env/
 # --- Application runtime log output ---
 logs/
 
-# --- Testing / coverage ---
+# --- Testing / linting / type-checking caches ---
 .pytest_cache/
+.ruff_cache/
+.mypy_cache/
 .coverage
+coverage.xml
 htmlcov/
 
 # --- Generated data (keep folders, ignore contents) ---
