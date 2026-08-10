@@ -64,10 +64,10 @@ class LogEntry(Base):
     module_id: Mapped[int] = mapped_column(ForeignKey("modules.id"), nullable=False, index=True)
     logger_id: Mapped[int] = mapped_column(ForeignKey("loggers.id"), nullable=False, index=True)
 
-    user: Mapped["User | None"] = relationship(back_populates="log_entries")
-    level: Mapped["LogLevel"] = relationship(back_populates="log_entries")
-    module: Mapped["Module"] = relationship(back_populates="log_entries")
-    logger: Mapped["Logger"] = relationship(back_populates="log_entries")
+    user: Mapped[User | None] = relationship(back_populates="log_entries")
+    level: Mapped[LogLevel] = relationship(back_populates="log_entries")
+    module: Mapped[Module] = relationship(back_populates="log_entries")
+    logger: Mapped[Logger] = relationship(back_populates="log_entries")
 
     __table_args__ = (
         # Composite index accelerates the most common analytics query shape:

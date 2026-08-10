@@ -13,12 +13,14 @@ below applies consistently on Windows, macOS, and Linux.
 
 from __future__ import annotations
 
+import contextlib
 import ctypes
 import logging
 import os
 import sys
 import threading
 import traceback
+from collections.abc import Callable
 from datetime import datetime
 from pathlib import Path
 from tkinter import (
@@ -28,18 +30,18 @@ from tkinter import (
     LEFT,
     NORMAL,
     RIGHT,
-    X,
-    Y,
     Menu,
     StringVar,
     TclError,
     Tk,
+    X,
+    Y,
     filedialog,
     messagebox,
     ttk,
 )
 from tkinter.scrolledtext import ScrolledText
-from typing import Any, Callable
+from typing import Any
 
 from log_analyzer.config import get_settings, setup_logging
 from log_analyzer.utils import asset_path, format_analytics_summary, format_ingestion_summary
@@ -61,12 +63,10 @@ def _enable_dpi_awareness() -> float:
     """
     if sys.platform != "win32":
         return 1.0
-    try:
-        # 2 = PROCESS_PER_MONITOR_DPI_AWARE. Raises OSError if awareness was
-        # already set (e.g. via a manifest), which is fine — we still want the scale.
+    # 2 = PROCESS_PER_MONITOR_DPI_AWARE. Raises OSError if awareness was
+    # already set (e.g. via a manifest), which is fine — we still want the scale.
+    with contextlib.suppress(AttributeError, OSError):
         ctypes.windll.shcore.SetProcessDpiAwareness(2)
-    except (AttributeError, OSError):
-        pass
     try:
         return ctypes.windll.user32.GetDpiForSystem() / 96.0
     except (AttributeError, OSError):
@@ -84,10 +84,8 @@ def _claim_taskbar_identity() -> None:
     """
     if sys.platform != "win32":
         return
-    try:
+    with contextlib.suppress(AttributeError, OSError):
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("logsx.log-files-analyzer")
-    except (AttributeError, OSError):
-        pass
 
 
 def _load_brand_image(filename: str, height: int) -> Any | None:
@@ -265,7 +263,11 @@ class LogSXGUI:
         )
         style.map(
             "Primary.TButton",
-            background=[("disabled", Palette.border), ("pressed", Palette.accent_press), ("active", Palette.accent_hover)],
+            background=[
+                ("disabled", Palette.border),
+                ("pressed", Palette.accent_press),
+                ("active", Palette.accent_hover),
+            ],
             foreground=[("disabled", Palette.text_dim)],
         )
 
@@ -469,7 +471,8 @@ class LogSXGUI:
     def _add_button(
         self, parent: ttk.Frame, text: str, command: Callable[[], None], primary: bool = False
     ) -> ttk.Button:
-        button = ttk.Button(parent, text=text, command=command, style="Primary.TButton" if primary else "Action.TButton")
+        style = "Primary.TButton" if primary else "Action.TButton"
+        button = ttk.Button(parent, text=text, command=command, style=style)
         button.pack(fill=X, padx=14, pady=3)
         self._action_buttons.append(button)
         return button
