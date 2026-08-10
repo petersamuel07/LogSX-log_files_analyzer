@@ -19,7 +19,7 @@ class LogLevel(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(20), unique=True, nullable=False, index=True)
 
-    log_entries: Mapped[list["LogEntry"]] = relationship(back_populates="level")
+    log_entries: Mapped[list[LogEntry]] = relationship(back_populates="level")
 
     def __repr__(self) -> str:
         return f"LogLevel(id={self.id}, name={self.name!r})"

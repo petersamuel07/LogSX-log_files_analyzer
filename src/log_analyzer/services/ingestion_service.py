@@ -17,7 +17,7 @@ from sqlalchemy.orm import Session
 from tqdm import tqdm
 
 from log_analyzer.database.connection import session_scope
-from log_analyzer.models import IngestionRun, LogEntry, LogLevel, Logger, Module, User
+from log_analyzer.models import IngestionRun, LogEntry, Logger, LogLevel, Module, User
 from log_analyzer.parser.log_parser import LogParser, ParsedLogEntry
 
 logger = logging.getLogger(__name__)

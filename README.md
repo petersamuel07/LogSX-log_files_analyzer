@@ -70,6 +70,8 @@ Database design + ER diagram: [docs/database_schema.md](docs/database_schema.md)
 
 ```
 src/log_analyzer/
+├── cli.py          argparse CLI — commands, handlers, exit codes
+├── __main__.py     enables `python -m log_analyzer`
 ├── config/         .env settings + centralized logging setup
 ├── parser/         regex parsing, validation, dedup hash
 ├── models/         SQLAlchemy ORM models
@@ -78,20 +80,30 @@ src/log_analyzer/
 ├── analytics/      Pandas/NumPy/SciPy analysis
 ├── visualization/  Matplotlib chart generation
 ├── reports/        CSV/JSON exporters
-├── gui/            Tkinter desktop GUI
+├── gui/            Tkinter desktop GUI (app.py + launcher.py entry point)
 └── utils/          sample log generator, shared summary formatting
 tests/              pytest suite (mirrors src/log_analyzer/)
 sql/schema.sql      raw DDL (mirrors the ORM models)
 data/logs/          drop real .log files here for ingestion
-data/sample/         generated sample logs land here
-outputs/reports/     generated CSV/JSON reports
-outputs/charts/       generated PNG charts
-main.py             CLI entry point
-gui.py              Tkinter GUI entry point
+data/sample/        generated sample logs land here
+outputs/reports/    generated CSV/JSON reports
+outputs/charts/     generated PNG charts
+main.py             shim → log_analyzer.cli:main    (so `python main.py` works)
+gui.py              shim → log_analyzer.gui:main    (also the PyInstaller entry)
 assets/             logo masters + generated marks/icon (see assets/README.md)
 scripts/            setup.sh, build_exe.sh, build_assets.py — dev/build automation
 packaging/          LogSX.spec — PyInstaller build spec
+pyproject.toml      packaging, dependencies, entry points, pytest/ruff config
 ```
+
+All application code lives inside `src/log_analyzer/`; the two files at the
+repo root are three-line shims. Installing the package (`pip install -e .`)
+puts two console scripts on your PATH:
+
+| Entry point | Equivalent |
+| --- | --- |
+| `logsx <command>` | `python main.py <command>` · `python -m log_analyzer <command>` |
+| `logsx-gui` | `python gui.py` |
 
 ## Installation
 
@@ -121,16 +133,19 @@ cd LogSX-log-files-analyzer
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 
-# 3. Install dependencies + the package itself (editable)
+# 3. Install the package in editable mode with its dependencies
+#    (requirements.txt is "-e ."; dependencies are declared in pyproject.toml)
 pip install -r requirements.txt
-pip install -e .
+
+#    ...or, to also get the test/lint/packaging tooling:
+#    pip install -r requirements-dev.txt
 
 # 4. Configure credentials
 copy .env.example .env
 # edit .env with your real PostgreSQL host/port/user/password
 
 # 5. Create the database, tables, indexes, and seed data
-python main.py init-db
+logsx init-db
 ```
 
 ## Log Line Format
@@ -171,22 +186,24 @@ malformed-detection analytics.
 
 ```powershell
 # Generate a synthetic log file for testing (5000 lines, reproducible with --seed)
-python main.py generate-sample --num-lines 5000 --seed 42
+logsx generate-sample --num-lines 5000 --seed 42
 
 # Run the whole pipeline: ingest -> analyze -> export reports -> generate charts
-python main.py pipeline data/sample/sample_5000.log
+logsx pipeline data/sample/sample_5000.log
 
 # Or run each stage independently
-python main.py ingest data/logs               # a file OR a directory of .log files
-python main.py analyze --top-n 10              # print the summary to the console
-python main.py report                          # export CSV + JSON to outputs/reports/
-python main.py charts                          # export PNGs to outputs/charts/
+logsx ingest data/logs                # a file OR a directory of .log files
+logsx analyze --top-n 10              # print the summary to the console
+logsx report                          # export CSV + JSON to outputs/reports/
+logsx charts                          # export PNGs to outputs/charts/
 
 # Override the log level for one run
-python main.py --log-level DEBUG ingest data/logs/app.log
+logsx --log-level DEBUG ingest data/logs/app.log
 ```
 
-Run `python main.py -h` or `python main.py <command> -h` for the full option list.
+Run `logsx -h` or `logsx <command> -h` for the full option list.
+`python main.py <command>` does exactly the same thing if you'd rather not
+install the package first.
 
 ## GUI
 
@@ -194,7 +211,7 @@ A dark-themed Tkinter desktop app wraps the same services the CLI uses, for
 anyone who'd rather click buttons than type commands:
 
 ```powershell
-python gui.py
+logsx-gui        # or: python gui.py
 ```
 
 Layout: a branded header showing the PostgreSQL target the app is pointed at,
@@ -224,8 +241,8 @@ PyInstaller — no Python install needed to run it on another Windows machine:
 ```
 
 This installs PyInstaller (from [requirements-dev.txt](requirements-dev.txt),
-kept separate from `requirements.txt` since it's a build-time tool, not a
-runtime dependency) and produces `dist/LogSX.exe` (~85 MB — pandas/numpy/scipy/
+i.e. the `dev` extra — kept out of the runtime dependency list since it's a
+build-time tool) and produces `dist/LogSX.exe` (~85 MB — pandas/numpy/scipy/
 matplotlib bundled in). Before running the built exe:
 
 1. Copy `.env` next to `dist/LogSX.exe` — a frozen exe resolves its config
@@ -304,8 +321,13 @@ Raw SQL: [sql/schema.sql](sql/schema.sql).
 ## Testing
 
 ```powershell
-pytest -v
+pytest -v                                # the suite
+pytest --cov                             # with a coverage report
+ruff check .                             # lint (config in pyproject.toml)
 ```
+
+`pytest`, `pytest-cov`, and `ruff` come from the `dev` extra —
+`pip install -r requirements-dev.txt`.
 
 Parser, config, sample-generator, and analytics tests run against SQLite
 in-memory and need no external services. Ingestion-service tests are
@@ -315,5 +337,4 @@ database configured in `.env` isn't reachable.
 
 ## License
 
-No license file yet — add one (MIT is a common default for portfolio
-projects) before treating this as open source.
+Released under the MIT License — see [LICENSE](LICENSE).

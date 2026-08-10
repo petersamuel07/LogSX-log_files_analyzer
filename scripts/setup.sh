@@ -45,11 +45,10 @@ fi
 echo "==> Upgrading pip"
 "$VENV_PYTHON" -m pip install --upgrade pip --quiet
 
-echo "==> Installing dependencies from requirements.txt"
+# requirements.txt is "-e .", so this installs the package in editable mode
+# along with the runtime dependencies declared in pyproject.toml.
+echo "==> Installing the log_analyzer package and its dependencies"
 "$VENV_PYTHON" -m pip install -r requirements.txt
-
-echo "==> Installing the log_analyzer package in editable mode"
-"$VENV_PYTHON" -m pip install -e . --quiet
 
 if [ ! -f ".env" ]; then
     echo "==> Creating .env from .env.example"
@@ -68,10 +67,12 @@ Next steps:
   2. Activate the virtual environment:
        $ACTIVATE_HINT
   3. Initialize the database:
-       python main.py init-db
+       logsx init-db
   4. Try the pipeline end to end:
-       python main.py generate-sample --num-lines 5000 --seed 42
-       python main.py pipeline data/logs/sample_5000.log
+       logsx generate-sample --num-lines 5000 --seed 42
+       logsx pipeline data/sample/sample_5000.log
   5. Or launch the GUI instead of the CLI:
-       python gui.py
+       logsx-gui
+
+  (\`python main.py ...\` and \`python gui.py\` still work as before.)
 EOF

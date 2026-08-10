@@ -19,7 +19,7 @@ class Module(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(150), unique=True, nullable=False, index=True)
 
-    log_entries: Mapped[list["LogEntry"]] = relationship(back_populates="module")
+    log_entries: Mapped[list[LogEntry]] = relationship(back_populates="module")
 
     def __repr__(self) -> str:
         return f"Module(id={self.id}, name={self.name!r})"

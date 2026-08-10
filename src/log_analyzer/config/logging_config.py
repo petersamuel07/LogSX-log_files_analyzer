@@ -5,7 +5,6 @@ from __future__ import annotations
 import logging
 import sys
 from logging.handlers import RotatingFileHandler
-from pathlib import Path
 
 from log_analyzer.config.settings import PROJECT_ROOT
 

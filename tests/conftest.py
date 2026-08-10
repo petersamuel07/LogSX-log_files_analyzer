@@ -8,7 +8,7 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from log_analyzer.models import Base, IngestionRun, LogEntry, LogLevel, Logger, Module, User
+from log_analyzer.models import Base, IngestionRun, LogEntry, Logger, LogLevel, Module, User
 
 
 @pytest.fixture()
@@ -51,7 +51,9 @@ def sqlite_engine_with_data():
             ("INFO", None, "auth_service", "app.controllers.auth_controller",
              "Nightly cleanup job started", base_time + timedelta(days=1, hours=5), None, None, None, None),
         ]
-        for i, (level, user, module, logger_name, message, timestamp, status, resp_ms, exc_type, endpoint) in enumerate(rows):
+        for i, row in enumerate(rows):
+            (level, user, module, logger_name, message,
+             timestamp, status, resp_ms, exc_type, endpoint) = row
             session.add(
                 LogEntry(
                     log_hash=f"hash-{i}",

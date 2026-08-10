@@ -8,9 +8,88 @@ version = "0.1.0"
 description = "ETL and analytics pipeline for application log files, backed by PostgreSQL."
 requires-python = ">=3.11"
 readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Peter Samuel" }]
+keywords = ["logs", "log-analysis", "etl", "postgresql", "analytics"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Logging",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+# The single source of truth for runtime dependencies. requirements.txt just
+# points pip back here, so there is only ever one list to keep up to date.
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "scipy>=1.13",
+    "matplotlib>=3.9",
+    "SQLAlchemy>=2.0",
+    "psycopg2-binary>=2.9",
+    "python-dotenv>=1.0",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+# Everything needed to test, lint, and package the app — not needed to run it.
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "pyinstaller>=6.0",
+]
+
+[project.scripts]
+logsx = "log_analyzer.cli:main"
+logsx-gui = "log_analyzer.gui.launcher:main"
+
+[project.urls]
+Homepage = "https://github.com/petersamuel07/LogSX-log_files_analyzer"
+Repository = "https://github.com/petersamuel07/LogSX-log_files_analyzer"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "--strict-markers"
+markers = [
+    "db: test requires a reachable PostgreSQL instance",
+]
+
+[tool.coverage.run]
+source = ["log_analyzer"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["src", "tests"]
+extend-exclude = ["venv", "packaging"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # import sorting
+    "UP",  # pyupgrade
+    "B",   # bugbear
+    "SIM", # simplify
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Holds the literal .log line templates the parser is written against. They
+# have to stay on one line to match the real format they're mimicking.
+"src/log_analyzer/utils/sample_generator.py" = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["log_analyzer"]
