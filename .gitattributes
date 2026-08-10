@@ -1,0 +1,40 @@
+# Normalize line endings so the repo stays identical across Windows/macOS/Linux
+# clones. Without this, a Windows clone with core.autocrlf=true checks the shell
+# scripts out with CRLF, and bash then fails on them with "\r: command not found".
+
+# Let Git decide what's text and store it as LF in the repository.
+* text=auto
+
+# Must be LF in the working tree too — these are executed by bash.
+*.sh text eol=lf
+
+# Windows-native tooling; harmless either way, but keep it explicit.
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+
+# Source and config: LF everywhere.
+*.py    text eol=lf
+*.toml  text eol=lf
+*.cfg   text eol=lf
+*.md    text eol=lf
+*.sql   text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.spec  text eol=lf
+.env.example text eol=lf
+
+# Never touch binaries — a substituted byte corrupts them.
+*.png binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.exe binary
+
+# Keep generated docs/report output out of language stats and diffs.
+docs/index.html linguist-documentation
+*.log text eol=lf
