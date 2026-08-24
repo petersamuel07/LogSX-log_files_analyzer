@@ -642,8 +642,8 @@
       </div>
       <div class="card">
         <div class="eyebrow">VISUALIZE</div>
-        <h3>Eight generated charts</h3>
-        <p>Level distribution, daily trend, status codes, response-time histogram, peak hours, top errors, top endpoints, top users &mdash; regenerated from the current database state.</p>
+        <h3>A dashboard in the app</h3>
+        <p>KPI tiles, ten charts, and the full summary as tables &mdash; rendered live in the desktop window, not exported to files you have to go and open. Level mix, daily trend, status codes, response-time histogram, peak hours, top errors, busiest and slowest endpoints, top users, exception types. PNG and CSV/JSON export are still one menu click away.</p>
       </div>
       <div class="card">
         <div class="eyebrow">RUN</div>
@@ -765,17 +765,15 @@ python main.py charts                <span class="c-mut"># -&gt; outputs/charts/
       </div>
 
       <div class="tab-panel" id="panel-gui" role="tabpanel" aria-labelledby="tab-gui">
-        <p class="gui-desc">A Tkinter desktop app wraps the same services the CLI uses, for anyone who'd rather click buttons than type commands. Long-running actions run on a background thread with live output streamed into the panel, so the window never freezes.</p>
+        <p class="gui-desc">A Tkinter desktop app wraps the same services the CLI uses, for anyone who'd rather click buttons than type commands. Results land in the window itself: a <strong>Dashboard</strong> tab of KPI tiles and live Matplotlib charts, a <strong>Summary Report</strong> tab with the whole analytics breakdown as tables, and a <strong>Console</strong> tab for the activity log. Analytics and chart-building run on a background thread, so the window never freezes.</p>
         <div class="btn-list">
           <span class="mock-btn">Browse&hellip;</span>
-          <span class="mock-btn">Initialize Database</span>
           <span class="mock-btn">Generate Sample Log</span>
+          <span class="mock-btn">Initialize Database</span>
           <span class="mock-btn">Ingest Selected File</span>
-          <span class="mock-btn">Run Analytics</span>
-          <span class="mock-btn">Generate Charts</span>
-          <span class="mock-btn">Export Reports</span>
-          <span class="mock-btn">Open Charts Folder</span>
-          <span class="mock-btn">Open Reports Folder</span>
+          <span class="mock-btn">Refresh Dashboard</span>
+          <span class="mock-btn">Export PNGs</span>
+          <span class="mock-btn">Export CSV/JSON</span>
         </div>
         <div class="code-block" style="margin-top:1rem;">python gui.py</div>
       </div>
