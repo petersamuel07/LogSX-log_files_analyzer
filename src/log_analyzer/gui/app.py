@@ -1,14 +1,21 @@
 """Tkinter desktop GUI for LogSX — Log Files Analyzer.
 
-Wraps the same services/analytics/visualization/reports classes the CLI
+Wraps the same services/analytics/visualization classes the CLI
 (log_analyzer.cli) uses — this is a thin presentation layer, not a second copy of any
 business logic. Long-running operations (DB init, ingestion, analytics) run
 on a background thread so the window never freezes, with output streamed
 into a scrollable console via a thread-safe `root.after()` callback.
 
+Results are presented in the window itself rather than as files the user has
+to go and open: the Dashboard tab shows KPI tiles and every Matplotlib chart
+live, and the Summary Report tab shows the whole analytics breakdown as
+tables (both built in log_analyzer.gui.dashboard). Writing PNGs and CSV/JSON
+to disk is still available from the Run menu, but it is an export step now,
+not the way to see your results.
+
 The look is built on ttk's "clam" theme, which (unlike the native "vista"
 theme) honours explicit colour configuration on every widget, so the palette
-below applies consistently on Windows, macOS, and Linux.
+in log_analyzer.gui.palette applies consistently on Windows, macOS, and Linux.
 """
 
 from __future__ import annotations
@@ -44,6 +51,14 @@ from tkinter.scrolledtext import ScrolledText
 from typing import Any
 
 from log_analyzer.config import get_settings, setup_logging
+from log_analyzer.gui.dashboard import (
+    DashboardData,
+    DashboardView,
+    ReportView,
+    build_dashboard_data,
+    init_dashboard_styles,
+)
+from log_analyzer.gui.palette import Palette
 from log_analyzer.utils import asset_path, format_analytics_summary, format_ingestion_summary
 
 logger = logging.getLogger(__name__)
@@ -117,29 +132,6 @@ def _load_brand_image(filename: str, height: int) -> Any | None:
         return None
 
 
-class Palette:
-    """Single source of truth for every colour used in the window."""
-
-    bg = "#12141a"          # window background
-    surface = "#1a1d26"     # cards / panels
-    border = "#2b3040"
-    header = "#0d0f14"
-
-    text = "#e8eaf0"
-    text_muted = "#8b93a7"
-    text_dim = "#5f6779"
-
-    accent = "#4f8cff"
-    accent_hover = "#6b9dff"
-    accent_press = "#3c73dd"
-
-    success = "#3ecf8e"
-    warning = "#f5a623"
-    error = "#ff6b6b"
-
-    console_bg = "#0e1015"
-
-
 class LogSXGUI:
     """Main application window."""
 
@@ -152,14 +144,15 @@ class LogSXGUI:
         self.root = Tk()
         self.root.tk.call("tk", "scaling", scale * 96.0 / 72.0)
         self.root.title(f"{APP_NAME} — {APP_TAGLINE}")
-        self.root.geometry(f"{round(1060 * scale)}x{round(680 * scale)}")
-        self.root.minsize(round(880 * scale), round(560 * scale))
+        self.root.geometry(f"{round(1320 * scale)}x{round(820 * scale)}")
+        self.root.minsize(round(940 * scale), round(600 * scale))
         self.root.configure(bg=Palette.bg)
 
         self.selected_file: Path | None = None
         self._action_buttons: list[ttk.Button] = []
         self._busy = False
         self._scale = scale
+        self._data: DashboardData | None = None
         # Tk images must outlive the widgets showing them (see _load_brand_image).
         self._brand_images: list[Any] = []
 
@@ -171,6 +164,7 @@ class LogSXGUI:
 
         self._log(f"{APP_NAME} ready.", tag="heading")
         self._log("Select a .log file with Browse (Ctrl+O), or generate a sample to get started.")
+        self._log("Already have data ingested? Refresh the dashboard (Ctrl+R) to fill the tabs above.")
 
     # ------------------------------------------------------------------
     # Branding
@@ -300,6 +294,9 @@ class LogSXGUI:
 
         style.configure("Sep.TSeparator", background=Palette.border)
 
+        # Tiles, cards, tables, and the tab strip used by the dashboard views.
+        init_dashboard_styles(style)
+
     # ------------------------------------------------------------------
     # Widget construction
     # ------------------------------------------------------------------
@@ -317,12 +314,17 @@ class LogSXGUI:
         run_menu = Menu(menubar, tearoff=0)
         run_menu.add_command(label="Initialize Database", command=self._on_init_db)
         run_menu.add_command(label="Ingest Selected File", accelerator="Ctrl+I", command=self._on_ingest)
-        run_menu.add_command(label="Run Analytics", accelerator="Ctrl+R", command=self._on_analyze)
-        run_menu.add_command(label="Generate Charts", command=self._on_charts)
-        run_menu.add_command(label="Export Reports", command=self._on_report)
+        run_menu.add_command(label="Refresh Dashboard", accelerator="Ctrl+R", command=self._on_refresh)
+        run_menu.add_separator()
+        run_menu.add_command(label="Export Charts as PNG...", command=self._on_export_charts)
+        run_menu.add_command(label="Export CSV/JSON Reports...", command=self._on_export_reports)
         menubar.add_cascade(label="Run", menu=run_menu)
 
         view_menu = Menu(menubar, tearoff=0)
+        view_menu.add_command(label="Dashboard", accelerator="Ctrl+1", command=lambda: self._show_tab(0))
+        view_menu.add_command(label="Summary Report", accelerator="Ctrl+2", command=lambda: self._show_tab(1))
+        view_menu.add_command(label="Console", accelerator="Ctrl+3", command=lambda: self._show_tab(2))
+        view_menu.add_separator()
         view_menu.add_command(label="Open Charts Folder", command=self._on_open_charts_folder)
         view_menu.add_command(label="Open Reports Folder", command=self._on_open_reports_folder)
         view_menu.add_separator()
@@ -342,7 +344,7 @@ class LogSXGUI:
         body.pack(fill=BOTH, expand=True, padx=14, pady=12)
 
         self._build_sidebar(body)
-        self._build_console(body)
+        self._build_tabs(body)
         self._build_statusbar()
 
     def _build_header(self) -> None:
@@ -385,34 +387,52 @@ class LogSXGUI:
                                     wraplength=round(250 * self._scale), justify=LEFT)
         self.file_label.pack(fill=X, anchor="w")
 
-        self._add_button(sidebar, "Browse for a .log file", self._on_browse, primary=True)
+        self._add_button(sidebar, "Browse for a .log file", self._on_browse)
         self._add_button(sidebar, "Generate Sample Log", self._on_generate_sample)
 
         # --- Pipeline --------------------------------------------------
         self._section_label(sidebar, "PIPELINE")
         self._add_button(sidebar, "Initialize Database", self._on_init_db)
         self._add_button(sidebar, "Ingest Selected File", self._on_ingest)
-        self._add_button(sidebar, "Run Analytics", self._on_analyze)
 
-        # --- Outputs ---------------------------------------------------
-        self._section_label(sidebar, "OUTPUTS")
-        self._add_button(sidebar, "Generate Charts", self._on_charts)
-        self._add_button(sidebar, "Export Reports", self._on_report)
+        # --- Dashboard -------------------------------------------------
+        # The primary action: everything the app computes is shown in the
+        # tabs beside this sidebar, so there is one button to (re)fill them.
+        self._section_label(sidebar, "DASHBOARD")
+        self._add_button(sidebar, "Refresh Dashboard", self._on_refresh, primary=True)
 
-        folders = ttk.Frame(sidebar, style="Card.TFrame")
-        folders.pack(fill=X, padx=14, pady=(6, 14))
-        ttk.Button(folders, text="Charts folder", style="Ghost.TButton",
-                   command=self._on_open_charts_folder).pack(side=LEFT, expand=True, fill=X, padx=(0, 3))
-        ttk.Button(folders, text="Reports folder", style="Ghost.TButton",
-                   command=self._on_open_reports_folder).pack(side=LEFT, expand=True, fill=X, padx=(3, 0))
+        exports = ttk.Frame(sidebar, style="Card.TFrame")
+        exports.pack(fill=X, padx=14, pady=(10, 14))
+        ttk.Button(exports, text="Export PNGs", style="Ghost.TButton",
+                   command=self._on_export_charts).pack(side=LEFT, expand=True, fill=X, padx=(0, 3))
+        ttk.Button(exports, text="Export CSV/JSON", style="Ghost.TButton",
+                   command=self._on_export_reports).pack(side=LEFT, expand=True, fill=X, padx=(3, 0))
+
+    def _build_tabs(self, parent: ttk.Frame) -> None:
+        """The result surface: dashboard, full report, and the activity console."""
+        self.tabs = ttk.Notebook(parent, style="Dash.TNotebook")
+        self.tabs.pack(side=LEFT, fill=BOTH, expand=True)
+
+        self.dashboard = DashboardView(self.tabs, scale=self._scale)
+        self.tabs.add(self.dashboard, text="Dashboard")
+
+        self.report = ReportView(self.tabs, scale=self._scale)
+        self.tabs.add(self.report, text="Summary Report")
+
+        console = ttk.Frame(self.tabs, style="TFrame")
+        self.tabs.add(console, text="Console")
+        self._build_console(console)
+
+    def _show_tab(self, index: int) -> None:
+        self.tabs.select(index)
 
     def _build_console(self, parent: ttk.Frame) -> None:
         card = ttk.Frame(parent, style="Card.TFrame")
-        card.pack(side=LEFT, fill=BOTH, expand=True)
+        card.pack(fill=BOTH, expand=True)
 
         bar = ttk.Frame(card, style="Card.TFrame")
         bar.pack(fill=X, padx=14, pady=(12, 6))
-        ttk.Label(bar, text="CONSOLE", style="Section.TLabel").pack(side=LEFT)
+        ttk.Label(bar, text="ACTIVITY LOG", style="Section.TLabel").pack(side=LEFT)
         ttk.Button(bar, text="Clear", style="Ghost.TButton", command=self._on_clear_output).pack(side=RIGHT)
 
         self.output = ScrolledText(
@@ -460,7 +480,7 @@ class LogSXGUI:
         self.status_var = StringVar(value="Idle")
         ttk.Label(bar, textvariable=self.status_var, style="Status.TLabel").pack(side=LEFT, padx=14, pady=6)
 
-        self.hint_var = StringVar(value="Ctrl+O open · Ctrl+I ingest · Ctrl+R analytics · Ctrl+L clear")
+        self.hint_var = StringVar(value="Ctrl+O open · Ctrl+I ingest · Ctrl+R refresh dashboard · Ctrl+L clear")
         ttk.Label(bar, textvariable=self.hint_var, style="Status.TLabel").pack(side=RIGHT, padx=14, pady=6)
 
     def _section_label(self, parent: ttk.Frame, text: str, first: bool = False) -> None:
@@ -481,8 +501,11 @@ class LogSXGUI:
         self.root.bind("<Control-o>", lambda _e: self._guarded(self._on_browse))
         self.root.bind("<Control-g>", lambda _e: self._guarded(self._on_generate_sample))
         self.root.bind("<Control-i>", lambda _e: self._guarded(self._on_ingest))
-        self.root.bind("<Control-r>", lambda _e: self._guarded(self._on_analyze))
+        self.root.bind("<Control-r>", lambda _e: self._guarded(self._on_refresh))
         self.root.bind("<Control-l>", lambda _e: self._on_clear_output())
+        self.root.bind("<Control-Key-1>", lambda _e: self._show_tab(0))
+        self.root.bind("<Control-Key-2>", lambda _e: self._show_tab(1))
+        self.root.bind("<Control-Key-3>", lambda _e: self._show_tab(2))
 
     def _guarded(self, action: Callable[[], None]) -> None:
         """Ignore a shortcut while a background job is running."""
@@ -588,37 +611,65 @@ class LogSXGUI:
 
             summary = IngestionService().ingest_file(self.selected_file)
             self._log(format_ingestion_summary(summary))
+            # Ingesting changes what the charts show, so re-draw them straight
+            # away rather than leaving a stale dashboard on screen.
+            self._rebuild_snapshot()
 
         self._run_async(f"Ingesting {self.selected_file.name}", task)
 
-    def _on_analyze(self) -> None:
-        def task() -> None:
-            from log_analyzer.analytics import LogAnalytics
+    # ------------------------------------------------------------------
+    # Dashboard
+    # ------------------------------------------------------------------
 
-            summary = LogAnalytics().generate_summary()
-            self._log(format_analytics_summary(summary))
+    def _on_refresh(self) -> None:
+        self._run_async("Refreshing dashboard", self._rebuild_snapshot)
 
-        self._run_async("Running analytics", task)
+    def _rebuild_snapshot(self) -> None:
+        """Recompute analytics + figures, then hand them to the views.
 
-    def _on_charts(self) -> None:
+        Runs on the worker thread: build_dashboard_data touches no widgets, and
+        the render call is marshalled back onto the main thread with `after`.
+        """
+        data = build_dashboard_data()
+        self.root.after(0, self._apply_snapshot, data)
+
+    def _apply_snapshot(self, data: DashboardData) -> None:
+        self._data = data
+        self.dashboard.render(data)
+        self.report.render(data)
+
+        if data.is_empty:
+            self._log("No log entries in the database yet — ingest a file to populate the dashboard.", tag="warning")
+            return
+
+        total = data.summary["total_log_count"]
+        self._log(f"Dashboard updated: {total:,} entries, {len(data.charts)} charts.", tag="success")
+        self._log(format_analytics_summary(data.summary), tag="muted")
+
+    # ------------------------------------------------------------------
+    # Optional file exports
+    # ------------------------------------------------------------------
+
+    def _on_export_charts(self) -> None:
         def task() -> None:
             from log_analyzer.analytics import LogAnalytics
             from log_analyzer.visualization import ChartGenerator
 
             settings = get_settings()
-            analytics = LogAnalytics()
-            paths = ChartGenerator(analytics, settings.charts_output_dir).generate_all()
+            paths = ChartGenerator(LogAnalytics(), settings.charts_output_dir).generate_all()
             self._log("Charts written:\n" + "\n".join(f"  {p}" for p in paths))
 
-        self._run_async("Generating charts", task)
+        self._run_async("Exporting charts as PNG", task)
 
-    def _on_report(self) -> None:
+    def _on_export_reports(self) -> None:
         def task() -> None:
             from log_analyzer.analytics import LogAnalytics
             from log_analyzer.reports import ReportExporter
 
             settings = get_settings()
-            summary = LogAnalytics().generate_summary()
+            # Reuse the on-screen snapshot when there is one, so the exported
+            # files match exactly what the dashboard is showing.
+            summary = self._data.summary if self._data is not None else LogAnalytics().generate_summary()
             outputs = ReportExporter(settings.reports_output_dir).export_all(summary)
             self._log("Reports written:\n" + "\n".join(f"  {name}: {path}" for name, path in outputs.items()))
 

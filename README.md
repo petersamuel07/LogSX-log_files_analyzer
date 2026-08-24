@@ -9,8 +9,9 @@
 
 A production-style ETL and analytics pipeline for application log files: parses
 raw `.log` files with regex, loads them into a normalized PostgreSQL schema
-with automatic de-duplication, and produces statistical analysis, Matplotlib
-charts, and CSV/JSON reports — all driven by a single CLI.
+with automatic de-duplication, and turns the result into statistical analysis
+and Matplotlib charts — shown on a live dashboard in the desktop app, or
+driven from a single CLI.
 
 Built to demonstrate Python, SQL/PostgreSQL, ETL pipeline design, statistical
 analysis, data visualization, OOP, and testing practices for Data Engineering
@@ -35,12 +36,20 @@ analysis, data visualization, OOP, and testing practices for Data Engineering
   (mean/median/std/skewness/kurtosis, z-score outlier-day detection),
   response-time percentiles (p90/p95/p99), HTTP status-code breakdown,
   top/slowest endpoints, and exception-type frequency
-- **Auto-generated Matplotlib charts** (8, including status-code breakdown
-  and a response-time histogram) and **CSV/JSON report export**
+- **In-app dashboard** — the desktop app renders the results in the window
+  itself: a row of KPI tiles (volume, error rate, throughput, peak hour, p95
+  latency, HTTP error rate, data-quality counts), all 10 Matplotlib charts
+  live on a responsive card grid, and the complete summary as tables on a
+  second tab. No file to open to see your results
+- **10 Matplotlib charts** (level mix, daily trend, peak hours, top errors,
+  top users, status-code breakdown, response-time histogram, busiest and
+  slowest endpoints, exception types), themed for the dark window and
+  exportable as PNGs
+- **CSV/JSON report export** for the summary, when you do want the files
 - **CLI** (argparse) with `init-db`, `generate-sample`, `ingest`, `analyze`,
   `report`, `charts`, and a one-shot `pipeline` command
-- **Simple desktop GUI** (Tkinter, no extra dependencies) — the same actions
-  as the CLI, driven by buttons instead of arguments
+- **Desktop GUI** (Tkinter, no extra dependencies) — the same actions as the
+  CLI, driven by buttons instead of arguments
 - **Sample log generator** — realistic synthetic logs (business-hours traffic
   curve, HTTP request context, intentional duplicates/malformed lines/
   exceptions with stack traces) for testing without real data
@@ -59,8 +68,10 @@ flowchart LR
     B --> C["Ingestion Service\n(batch + dedup)"]
     C --> D[("PostgreSQL")]
     D --> E["Analytics\n(Pandas/NumPy/SciPy)"]
-    E --> F["Charts (Matplotlib)"]
-    E --> G["Reports (CSV/JSON)"]
+    E --> F["Matplotlib figures"]
+    F --> G["GUI dashboard"]
+    F --> H["PNG export"]
+    E --> I["CSV/JSON export"]
 ```
 
 Full write-up: [docs/architecture.md](docs/architecture.md).
@@ -78,9 +89,9 @@ src/log_analyzer/
 ├── database/       engine/session, DB + schema bootstrap
 ├── services/       ingestion pipeline orchestration
 ├── analytics/      Pandas/NumPy/SciPy analysis
-├── visualization/  Matplotlib chart generation
+├── visualization/  Matplotlib figure builders, themes, PNG export
 ├── reports/        CSV/JSON exporters
-├── gui/            Tkinter desktop GUI (app.py + launcher.py entry point)
+├── gui/            Tkinter desktop GUI (window, dashboard views, launcher)
 └── utils/          sample log generator, shared summary formatting
 tests/              pytest suite (mirrors src/log_analyzer/)
 sql/schema.sql      raw DDL (mirrors the ORM models)
@@ -214,22 +225,52 @@ anyone who'd rather click buttons than type commands:
 logsx-gui        # or: python gui.py
 ```
 
-Layout: a branded header showing the PostgreSQL target the app is pointed at,
-a left sidebar grouping the actions into **Input File** (Browse / Generate
-Sample Log), **Pipeline** (Initialize Database, Ingest Selected File, Run
-Analytics), and **Outputs** (Generate Charts, Export Reports, plus shortcuts
-to open the charts/reports folders), and a timestamped console on the right
-that colour-codes headings, successes, warnings, and errors. A status bar with
-an indeterminate progress bar shows what is currently running.
+Everything the app computes is shown **in the window**. There is no
+export-then-go-find-the-file step: ingest a log file, hit **Refresh Dashboard**
+(`Ctrl+R`), and the charts and numbers appear in place.
+
+![LogSX dashboard](docs/images/gui_dashboard.png)
+
+**Dashboard tab** — a row of KPI tiles (total entries, error rate, throughput,
+peak hour, warnings, p95 latency, HTTP error rate, malformed lines, duplicates
+skipped) above every chart, live-rendered on a card grid that re-flows from
+one to four columns as you resize the window. Tiles for metrics the data
+can't support — HTTP latency in a log file with no requests — are left out
+rather than shown as a misleading zero, and the error-rate tiles colour-code
+themselves green/amber/red while still spelling the number out.
+
+![LogSX charts](docs/images/gui_dashboard_charts.png)
+
+**Summary Report tab** — the complete analytics breakdown as tables: level
+mix with percentage shares, top errors, most active users, frequent events,
+peak hours, daily and monthly volume, HTTP status classes, response-time
+percentiles, busiest and slowest endpoints, exception types, the NumPy/SciPy
+daily-volume statistics (including z-score outlier days), and ingestion data
+quality.
+
+![LogSX summary report](docs/images/gui_report.png)
+
+**Console tab** — the timestamped activity log, colour-coding headings,
+successes, warnings, and errors, plus the text analytics summary after every
+refresh.
+
+Around the tabs: a branded header showing the PostgreSQL target the app is
+pointed at, a left sidebar grouping the actions into **Input File** (Browse /
+Generate Sample Log), **Pipeline** (Initialize Database, Ingest Selected
+File), and **Dashboard** (Refresh, plus the optional PNG and CSV/JSON
+exports), and a status bar with an indeterminate progress bar showing what is
+currently running.
 
 There is also a menu bar (File / Run / View / Help) and keyboard shortcuts:
 `Ctrl+O` open a log file, `Ctrl+G` generate a sample, `Ctrl+I` ingest,
-`Ctrl+R` run analytics, `Ctrl+L` clear the console.
+`Ctrl+R` refresh the dashboard, `Ctrl+1/2/3` switch tabs, `Ctrl+L` clear the
+console.
 
-All long-running actions run on a background thread with live output streamed
-into the console, so the window never freezes, and every action button is
-disabled while a job is in flight. No extra dependencies — Tkinter ships with
-Python.
+Analytics and figure-building run on a background thread and are handed back
+to the window with `root.after()`, so it never freezes, and every action
+button is disabled while a job is in flight. Ingesting a file refreshes the
+dashboard automatically, so what's on screen is never stale. No extra
+dependencies — Tkinter ships with Python.
 
 ### Building a standalone .exe
 
@@ -300,14 +341,17 @@ Response-time / HTTP metrics (from the same run's `analytics_summary.json`):
 "top_endpoints": [{ "endpoint": "/api/v1/notifications", "count": 546 }]
 ```
 
-Generated charts (`outputs/charts/`):
+The same charts, exported as PNGs (**Run -> Export Charts as PNG**, or
+`logsx charts`, into `outputs/charts/`) — light-themed for viewing on a white
+page rather than in the dark window:
 
 | | |
 |---|---|
 | ![Level distribution](docs/images/level_distribution.png) | ![Daily trend](docs/images/daily_trend.png) |
 | ![Status code distribution](docs/images/status_code_distribution.png) | ![Response time distribution](docs/images/response_time_distribution.png) |
 | ![Peak hours](docs/images/hourly_activity.png) | ![Top errors](docs/images/top_errors.png) |
-| ![Top endpoints](docs/images/top_endpoints.png) | ![Top users](docs/images/top_users.png) |
+| ![Top endpoints](docs/images/top_endpoints.png) | ![Slowest endpoints](docs/images/slowest_endpoints.png) |
+| ![Top users](docs/images/top_users.png) | ![Exception types](docs/images/exception_breakdown.png) |
 
 ## Database Schema
 

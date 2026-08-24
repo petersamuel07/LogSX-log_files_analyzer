@@ -10,8 +10,9 @@ src/log_analyzer/
 ├── database/       Engine/session management, DB + schema bootstrap
 ├── services/       IngestionService — orchestrates parser -> database
 ├── analytics/      Pandas/NumPy/SciPy analysis over the stored data
-├── visualization/  Matplotlib chart generation
+├── visualization/  Matplotlib figure builders (+ PNG export)
 ├── reports/        CSV/JSON report exporters
+├── gui/            Tkinter window + in-app dashboard views
 └── utils/          Sample log generator (cross-cutting helper)
 ```
 
@@ -56,9 +57,30 @@ flowchart LR
    DataFrame once, then every metric (level counts, top errors, peak hours,
    trends, NumPy/SciPy statistics) is a cheap in-memory operation on that
    DataFrame rather than a fresh SQL query per metric.
-5. **Present** — `ChartGenerator` renders Matplotlib PNGs; `ReportExporter`
-   writes the same analytics summary to CSV (per-metric tables) and JSON
-   (full nested detail).
+5. **Present** — `FigureBuilder` turns the analytics into Matplotlib
+   figures. Those figures have two consumers: the GUI dashboard embeds them
+   in the window (`FigureCanvasTkAgg`), and `ChartGenerator` saves them as
+   PNGs. `ReportExporter` still writes the same analytics summary to CSV and
+   JSON for anyone who wants the files.
+
+## Presentation: one figure set, two surfaces
+
+The figure builders in `visualization/figures.py` never touch `pyplot`. Every
+chart is a bare `matplotlib.figure.Figure`, which matters twice over: pyplot's
+global figure registry would leak memory in a GUI that re-renders on every
+refresh, and a bare figure can be handed to *either* backend — Agg for the PNG
+files, TkAgg for the live window — from the same code. `visualization/theme.py`
+supplies the light palette for exported PNGs (viewed on a white page) and the
+dark one for the dashboard (rendered on the app's dark panels); both are the
+same validated, colourblind-safe palette stepped for its surface.
+
+`gui/dashboard.py` splits cleanly along the thread boundary that a responsive
+GUI needs. `build_dashboard_data()` runs the analytics and builds the figures
+and touches no widget, so the window's background worker can call it;
+`kpi_tiles()` and `report_sections()` turn that snapshot into the exact tiles
+and tables to draw, as plain data. Only the view classes touch Tk, on the main
+thread. That split is also what lets the dashboard's *content* be unit-tested
+with no display attached (`tests/test_dashboard.py`).
 
 ## Why a normalized schema instead of one flat table
 
@@ -100,3 +122,14 @@ print/format the result. Every subcommand (`init-db`, `generate-sample`,
 one of the underlying classes, which is what keeps each of those classes
 independently testable and reusable outside the CLI (e.g. from a notebook or
 a scheduled job).
+
+## GUI orchestration
+
+`log_analyzer/gui/app.py` is the same kind of thin layer over the same
+classes — the GUI is a second front end, never a second implementation. Its
+one addition over the CLI is the dashboard: where the CLI's `charts` and
+`report` commands write files for the user to go and open, the window renders
+the charts and the full summary in place, and file export is a menu action for
+when someone actually wants a file. Every long-running action runs on a
+background thread and marshals its result back with `root.after()`, so the
+window never blocks.
